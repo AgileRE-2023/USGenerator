@@ -150,3 +150,7 @@ input#search-bar {
 .name-position-profile p {
   margin: 0;
 }
+
+main {
+  width: 75%;
+}
