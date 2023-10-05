@@ -57,7 +57,10 @@ input#search-bar {
   padding: 1rem;
 }
 .User--table table tbody tr td {
-  padding: 1rem;
+  padding: 1em 1em 1em 1em;
+}
+.User--table table tbody tr td:first-child {
+  padding: 1em 1em 1em 0.5em;
 }
 tr td a {
   color: #808080;
@@ -69,7 +72,7 @@ tr td a {
   background: rgba(182, 57, 66, 0.6);
   border-radius: 50%;
 }
-.User--table span {
+.User--table span:last-child {
   margin-left: 10px;
 }
 table thead tr th:first-child {
