@@ -13,3 +13,7 @@ def regist(request):
     return render(request,'signin-reg/regist.html')
 def outputScenario(request):
     return render(request, 'output-user-scenario/output_scenario.html')
+
+def inputUserStory(request):
+    return render(request, 'input-user/input.html')
+

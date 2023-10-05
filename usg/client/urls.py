@@ -11,4 +11,5 @@ urlpatterns = [
     path('baseSignIn',views.baseSignIn, name='base-signin'),
     path('signin',views.SignIn, name='signin'),
     path('regist',views.regist, name='regist'),
+    path('inputUserStory',views.inputUserStory, name='inputUserStory'),
 ]

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'client/input.css' %}"/>
+{% endblock %}
+{% block title %}
+  Input User
+{% endblock %}
+{% block content %}
+    <div class="Gui-user">
+        <p class="Teks-judul">USER STORIES</p>
+        <div class="form">
+            <form class="form-inline">
+                <div class="form-group mb-2">
+                  <label for="staticEmail2" class="sr-only">Project Title</label>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                  <input type="text" class="form-control" id="inputProject" placeholder="Ketik projek anda">
+                </div>
+              </form>
+              <div class="form-paragraf">
+                <input type="text" class="form-control" id="inputParagraf" placeholder="Ketik paragraf">
+              </div>
+              <div class="d-grid gap-2 d-md-flex justify-content-end">
+                <button class="btn btn-primary" type="button">Submit</button>
+              </div>
+              <form>
+                <div class="form-group">
+                  <label for="formGroupExampleInput">User Stories</label>
+                  <div class="inputUS">
+                    <input type="text" class="form-control" id="formUserStories" placeholder="Example input">
+                    <input type="text" class="form-control" id="formUserStories" placeholder="Another input">
+                    <input type="text" class="form-control" id="formUserStories" placeholder="Another">
+                  </div>
+                </div>
+              </form>
+              <form>
+                <div class="form-group2">
+                  <label for="formGroupExampleInput">User Scenario</label>
+                  <div class="inputUS">
+                    <input type="text" class="form-control" id="formUserScenario" placeholder="Example input">
+                    <input type="text" class="form-control" id="formUserScenario" placeholder="Another input">
+                    <input type="text" class="form-control" id="formUserScenario" placeholder="Another">
+                  </div>
+                  <div class="d-grid gap-2 d-md-flex justify-content-end">
+                    <button class="btn btn-primary" type="button" onclick="submitUS()">Submit</button>
+                  </div>
+                </div>
+              </form>
+        </div>
+    </div>
+{% endblock %}
+
+  {% comment %} <link rel="stylesheet" href="/CSS/Input.css"> {% endcomment %}

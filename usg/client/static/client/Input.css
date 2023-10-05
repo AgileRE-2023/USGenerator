@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* sign {
+    color: #1C2331;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110%;
+    text-transform: capitalize;
+} */
+
+body {
+    font-family: "Poppins";
+    /* background-color: aqua; */
+}
+
+
+header {
+    background-color: #b63942;
+    padding: 10px 15%;
+}
+
+header img {
+    height: 70px;
+    width: 70px;
+    border-radius: 35px;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+    margin-right: 2.25rem;
+    font-size: 25px;
+}
+
+.Gui-user {
+    margin: 90px;
+    margin-left: 200px;
+    margin-right: 500px;
+}
+
+.Teks-judul {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.form {
+    margin-left: 20px;
+}
+
+
+.form-inline {
+    display: inline-flex;
+}
+
+#inputProject {
+    border-radius: 20px;
+    width: 530px;
+    border: solid;
+    background-color: bisque;
+}
+
+.form-paragraf {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#inputParagraf {
+    border-radius: 20px;
+    width: 630px;
+    border: solid;
+    background-color: bisque;
+    height: 350px;
+}
+
+
+.btn {
+    align-items: flex-end;
+}
+
+.sr-only   {
+    padding-top: 8px;
+}
+
+.inputUS {
+    margin-top: 20px;
+    margin-left: 70px;
+    margin-right: 50px;
+}
+
+#formUserStories {
+    border: solid;
+    background-color: #b63942;
+
+}
+
+.form-group2 {
+    margin-top: 30px;
+}
+
+#formUserScenario {
+    border: solid;
+    background-color: #b63942;
+}
