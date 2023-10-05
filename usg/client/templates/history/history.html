@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar with Bootstrap</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar menggunakan Bootstrap -->
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <a class="navbar-brand" href="#">User Stories</a>
+        <a class="nav-brand" href="#">History</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <img src="mashironoise6.png" alt="Gambar Profil" class="profile-img">
+            </li> 
+        </ul>
+    </nav>
+
+<!-- Tabel -->
+<div class="container">
+    <nav class="top_table">
+        <ul class="Judul">HISTORY</ul>
+        <ul class="Filter">
+            <div class="dropdown">
+                <button id="filterButton">FILTER &#9662;</button>
+                <div class="dropdown-content">
+                    <a href="#" data-filter="Latest">Latest</a>
+                    <a href="#" data-filter="Current">Current</a>
+                </div>
+            </div>
+        </ul>
+    </nav>
+    
+    <table class="table">
+        <thead class="kolom">
+            <tr>
+                <th scope="col">Timestamp</th>
+                <th scope="col">Input Project</th>
+                <th scope="col">As a User</th>
+                <th scope="col">I Want To</th>
+                <th scope="col">So That</th>
+                <th scope="col">User Scenario</th>
+            </tr>
+        </thead>
+        <tbody class="baris">
+            <tr>
+                <th scope="row">1696505921</th>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                <td>Sebagai seorang pengguna</td>
+                <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
+                <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
+                <td>
+                    Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
+                    <a href="halaman-lain.html" class="btn btn-outline-dark btn-sm">Detail</a>
+                </td>
+            </tr>
+                <th scope="row">1696505921</th>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                <td>Sebagai seorang pengguna</td>
+                <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
+                <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
+                <td>
+                    Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
+                    <a href="halaman-lain.html" class="btn btn-outline-dark btn-sm">Detail</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">1696505921</th>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                <td>Sebagai seorang pengguna</td>
+                <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
+                <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
+                <td>
+                    Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
+                    <a href="halaman-lain.html" class="btn btn-outline-dark btn-sm">Detail</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">1696505921</th>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                <td>Sebagai seorang pengguna</td>
+                <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
+                <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
+                <td>
+                    Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
+                    <a href="halaman-lain.html" class="btn btn-outline-dark btn-sm">Detail</a>
+                </td>
+            </tr>
+                <th scope="row">1696505921</th>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                <td>Sebagai seorang pengguna</td>
+                <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
+                <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
+                <td>
+                    Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
+                    <a href="halaman-lain.html" class="btn btn-outline-dark btn-sm">Detail</a>
+                </td>
+            </tr>
+                <th scope="row">1696505921</th>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                <td>Sebagai seorang pengguna</td>
+                <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
+                <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
+                <td>
+                    Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
+                    <a href="detail_history.html" class="btn btn-outline-dark btn-sm">Detail</a>
+                </td>
+            </tr>   
+        </tbody>
+    </table>
+</div>
+
+
+<style>
+/* Custom CSS untuk navbar */
+.custom-navbar {
+    background-color: #B63942; /* Warna merah maroon */
+    padding: 10px 250px;
+}
+
+.custom-navbar>a {
+    color: white;
+    font-size: 28px; /* Mengubah ukuran font */
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    padding-right: 30px;
+}
+
+.custom-navbar>a:hover {
+    color: black;
+}
+
+
+/* Custom CSS untuk gambar profil */
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Membuat gambar profil menjadi bulat */
+    margin-left: 10px;
+}
+
+
+/* Atas Tabel */
+.top_table {
+    display: flex;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+/* Tampilkan dropdown saat tombol diklik */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.Filter {
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+.Judul {
+    font-size: 35px;
+    padding-left: 0px;
+    padding-bottom: 10px;
+}
+
+
+/* List History */
+.container {
+    padding-left: 50px;
+    padding-top: 150px;
+    padding-bottom: 200px;
+    padding-right: 50px;
+    font-weight: bold;
+}
+
+.table {
+    position: relative;
+    border-collapse: collapse;
+    margin: auto;
+    border: 1px solid #1D3557; /* Mengatur border luaran tabel */
+    width: 100%;
+    font-weight: bold;
+}
+
+.kolom {
+    background-color: #B63942;
+    color: #F2FBEE;
+    font-size: 20px;
+}
+
+.baris {
+    color: #1D3557 ;
+    background-color: #F2FBEE;
+}
+
+th, td {
+    border: 1px solid #1D3557;
+    padding: 8px; /* Padding di dalam sel */
+    text-align: center; /* Alignment teks dalam sel (opsional) */
+    font-family: Arial, sans-serif;
+}
+
+</style>
+
+
+<script>
+// Tangkap elemen-elemen yang diperlukan
+var filterButton = document.getElementById("filterButton");
+var dropdownContent = document.querySelector(".dropdown-content");
+
+// Tambahkan event listener untuk tombol
+filterButton.addEventListener("click", function () {
+    dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+});
+
+// Event listener untuk item dropdown (misalnya, "Current" atau "Latest")
+dropdownContent.addEventListener("click", function (e) {
+    if (e.target.tagName === "A") {
+        var selectedFilter = e.target.getAttribute("data-filter");
+        filterButton.innerHTML = "FILTER " + selectedFilter + " &#9662;";
+        dropdownContent.style.display = "none";
+    }
+});
+</script>
+
+    <!-- Script untuk mengaktifkan Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

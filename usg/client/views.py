@@ -16,4 +16,6 @@ def outputScenario(request):
 
 def inputUserStory(request):
     return render(request, 'input-user/input.html')
+def history(request):
+    return render(request, 'history/history.html')
 
