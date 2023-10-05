@@ -1,0 +1,31 @@
+/* *{
+    margin: 0;
+    padding: 0;
+} */
+
+body {
+    font-family: "Poppins";
+}
+
+header {
+    background-color: #b63942;
+    padding: 10px 15%;
+}
+
+header img {
+    height: 70px;
+    width: 70px;
+    border-radius: 35px;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+    margin-right: 2.25rem;
+    font-size: 25px;
+}
+
+.profile{
+    margin-left: 2.2;
+}
+

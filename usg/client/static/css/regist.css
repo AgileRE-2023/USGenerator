@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* width: 100%; */
+    /* height: 100%;/ */
+}
+
+/* sign {
+    color: #1C2331;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110%;
+    text-transform: capitalize;
+} */
+
+body {
+    font-family: "Poppins";
+    /* background-color: aqua; */
+}
+
+
+header {
+    background-color: #b63942;
+    padding: 10px 15%;
+}
+
+header img {
+    height: 70px;
+    width: 70px;
+    border-radius: 35px;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+    margin-right: 2.25rem;
+    font-size: 25px;
+}
+
+.profile {
+    margin-left: 2.25rem;
+}
+
+.wrapper {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 900px;
+    /* Your fixed height */
+    margin-top: 144px;
+    width: 750px;
+    /* height: 953px; */
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: var(--gray-scales-white, #FFF);
+    box-shadow: 0px 0px 30px 0px rgba(39, 35, 67, 0.12);
+    /* margin-bottom: 100px; */
+}
+
+.name {
+    display: flex;
+}
+
+
+form {
+    text-align: center;
+}
+
+form h2 {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+input[type="text"] {
+    width: 648px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    opacity: 0.7;
+    background: var(--gray-scales-off-white, #F0F2F3);
+
+}
+
+button {
+    width: 580.651px;
+    border-radius: 8px;
+    /* background-color: #B63942; */
+    color: var(--gray-scales-white, #FFF);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110%;
+    /* 17.6px */
+    text-transform: capitalize;
+}
+
+.checkbox {
+    display: flex;
+    margin-left: 32px;
+    margin-top: 18.5px;
+    justify-content: space-between;
+    margin-bottom: 46px;
+}
+
+.remember {
+    display: flex;
+}
+
+.remember p {
+    margin: 0 0 0 8px;
+}
+
+.remember a {
+    margin-left: 2px;
+    text-decoration: none;
+    color: #b63942;
+}
+
+.already{
+    text-decoration: none;
+    color: var(--gray-scales-black, #272343); 
+}
+
+.alreadySignin{
+    text-decoration: none;
+    color: #b63942;
+}
