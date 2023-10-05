@@ -7,3 +7,5 @@ def index(request):
 
 def user(request):
     return render(request, 'user.html')
+def projectView(request):
+    return render(request, 'project-view.html')
