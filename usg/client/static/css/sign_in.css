@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* sign {
+    color: #1C2331;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110%;
+    text-transform: capitalize;
+} */
+
+body {
+    font-family: "Poppins";
+    /* background-color: aqua; */
+}
+
+
+header {
+    background-color: #b63942;
+    padding: 10px 15%;
+}
+
+header img {
+    height: 70px;
+    width: 70px;
+    border-radius: 35px;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+    margin-right: 2.25rem;
+    font-size: 25px;
+}
+
+form {
+    margin-top: 32px;
+}
+
+.profile {
+    margin-left: 2.25rem;
+}
+
+.login {
+    width: 648px;
+    height: 382px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: var(--gray-scales-white, #FFF);
+    box-shadow: 0px 0px 30px 0px rgba(39, 35, 67, 0.12);
+    text-align: center;
+}
+
+#email {
+    width: 584px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    opacity: 0.7;
+    background: var(--gray-scales-off-white, #F0F2F3);
+}
+
+#password {
+    width: 584px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    opacity: 0.7;
+    background: var(--gray-scales-off-white, #F0F2F3);
+}
+
+button {
+    width: 584px;
+    border-radius: 8px;
+    /* background-color: #B63942; */
+    color: var(--gray-scales-white, #FFF);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110%;
+    /* 17.6px */
+    text-transform: capitalize;
+}
+
+.loginbutton {
+    margin-top: 26.5px;
+}
+
+.checkbox {
+    display: flex;
+    margin-left: 32px;
+    margin-top: 18.5px;
+    justify-content: space-between;
+}
+
+.remember {
+    display: flex;
+}
+
+.remember p {
+    margin: 0 0 0 8px;
+}
+
+.checkbox a {
+    margin-right: 32px;
+    text-decoration: none;
+    color: #B63942;
+}
+
+
+input::placeholder {
+    padding: 20px;
+}
+
+.dontHave{
+    display: flex;
+    justify-content: center;
+}
+
+.signup a{
+    text-decoration: none;
+    color: #B63942;
+    padding-left: 2px;
+}
