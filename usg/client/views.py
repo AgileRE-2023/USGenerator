@@ -7,3 +7,5 @@ def baseSignIn(request):
     return render(request,'base_signin.html')
 def SignIn(request):
     return render(request,'signin-reg/signin.html')
+def regist(request):
+    return render(request,'signin-reg/regist.html')

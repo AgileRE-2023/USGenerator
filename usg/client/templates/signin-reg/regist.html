@@ -1,0 +1,93 @@
+{% extends "base_regist.html" %} {% block content %}
+<div class="wrapper d-flex align-items-center justify-content-center">
+  <form action="" >
+    <h2 class="pt-2">Sign Up</h2>
+
+    <div class="username mt-4 mb-3">
+        <div class="name">
+            <p>*Full Name</p>
+        </div>
+      <input
+        type="text"
+        id="nama"
+        placeholder=""
+        class="form rounded"
+        required />
+      <p></p>
+    </div>
+
+    <div class="username mt-2 mb-3">
+        <div class="name">
+            <p>*Email Address</p>
+        </div>
+      <input
+        type="text"
+        id="email"
+        placeholder=""
+        class="form rounded"
+        required />
+      <p></p>
+    </div>
+
+    <div class="username mt-2 mb-3">
+        <div class="name">
+            <p>*Phone Number</p>
+        </div>
+      <input
+        type="text"
+        id="password"
+        placeholder=""
+        class="form rounded"
+        required />
+      <p></p>
+    </div>
+
+    <div class="password mb-3">
+        <div class="name">
+            <p>*Password</p>
+        </div>
+      <input
+        type="text"
+        id="re-type_password"
+        class="form rounded"
+        placeholder=""
+        required />
+      <p></p>
+      
+    </div>
+
+    <div class="password mb-3">
+        <div class="name">
+            <p>*Confirm Password</p>
+        </div>
+      <input
+        type="text"
+        id="re-type_password"
+        class="form rounded"
+        placeholder=""
+        required />
+      <p></p>
+      
+    </div>
+
+    <div class="checkbox">
+        <div class="remember">
+          <input type="checkbox" id="myCheckbox" name="myCheckbox" />
+          <p>Agree with</p>
+          <a href="">Terms & Conditions</a>
+        </div>
+        <!-- <a href="">Forgot Password</a> -->
+      </div>
+
+    
+    <button type="submit" name="submit" class="btn btn-danger mb-3">
+      Regist
+    </button>
+    <br />
+    <a href="#"
+      ><label class="form-check-label mb-2 already">Already have account? </label></a
+    >
+    <a href="" class="alreadySignin">Sign in</a>
+  </form>
+</div>
+{%endblock%}

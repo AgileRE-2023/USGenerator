@@ -1,6 +1,8 @@
 * {
     margin: 0;
     padding: 0;
+    /* width: 100%; */
+    /* height: 100%;/ */
 }
 
 /* sign {
@@ -38,44 +40,54 @@ header a {
     font-size: 25px;
 }
 
-form {
-    margin-top: 32px;
-}
-
 .profile {
     margin-left: 2.25rem;
 }
 
-.login {
-    width: 648px;
-    height: 382px;
+.wrapper {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 900px;
+    /* Your fixed height */
+    margin-top: 144px;
+    width: 750px;
+    /* height: 953px; */
     flex-shrink: 0;
     border-radius: 12px;
     background: var(--gray-scales-white, #FFF);
     box-shadow: 0px 0px 30px 0px rgba(39, 35, 67, 0.12);
+    /* margin-bottom: 100px; */
+}
+
+.name {
+    display: flex;
+}
+
+
+form {
     text-align: center;
 }
 
-input[type="text"] {
-    width: 584px;
-    height: 50px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    opacity: 0.7;
-    background: var(--gray-scales-off-white, #F0F2F3);
+form h2 {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
 }
 
-/* #password {
-    width: 584px;
+input[type="text"] {
+    width: 648px;
     height: 50px;
     flex-shrink: 0;
     border-radius: 8px;
     opacity: 0.7;
     background: var(--gray-scales-off-white, #F0F2F3);
-} */
+
+}
 
 button {
-    width: 584px;
+    width: 580.651px;
     border-radius: 8px;
     /* background-color: #B63942; */
     color: var(--gray-scales-white, #FFF);
@@ -89,15 +101,12 @@ button {
     text-transform: capitalize;
 }
 
-.loginbutton {
-    margin-top: 26.5px;
-}
-
 .checkbox {
     display: flex;
     margin-left: 32px;
     margin-top: 18.5px;
     justify-content: space-between;
+    margin-bottom: 46px;
 }
 
 .remember {
@@ -108,24 +117,18 @@ button {
     margin: 0 0 0 8px;
 }
 
-.checkbox a {
-    margin-right: 32px;
+.remember a {
+    margin-left: 2px;
     text-decoration: none;
-    color: #B63942;
+    color: #b63942;
 }
 
-
-input::placeholder {
-    padding: 20px;
-}
-
-.dontHave{
-    display: flex;
-    justify-content: center;
-}
-
-.signup a{
+.already{
     text-decoration: none;
-    color: #B63942;
-    padding-left: 2px;
+    color: var(--gray-scales-black, #272343); 
+}
+
+.alreadySignin{
+    text-decoration: none;
+    color: #b63942;
 }
