@@ -1,7 +1,7 @@
 from django.urls import path
 
 from . import views
-
+apps_name = 'client'
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("output-scenario", views.outputScenario, name="index"),
 ]
