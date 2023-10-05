@@ -19,7 +19,7 @@ body {
 }
 
 .sidebar {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 0 2rem;
   width: 40%;
   /* position: fixed; */
@@ -42,6 +42,10 @@ body {
 }
 .sidebar .sidebar--menu {
   margin-top: 1rem;
+}
+
+.sidebar .sidebar--menu a {
+  text-decoration: none;
 }
 .sidebar .sidebar--menu a.active {
   background: #457b9d;
@@ -80,7 +84,7 @@ body {
   flex-direction: column;
   width: 100%;
   /* flex-grow: 1; Ini akan mengisi sisa ruang di sisi kanan */
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .navbar {
   display: flex;
