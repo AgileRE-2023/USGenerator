@@ -1,0 +1,52 @@
+{% extends "base_signin.html" %} {% block content %}
+<div class="wrapper position-absolute top-50 start-50 translate-middle login">
+  <form action="#">
+    <h1 class="sign">Sign in</h1>
+
+    <div class="username mt-3 mb-3">
+      <input
+        type="text"
+        id="email"
+        placeholder="Email"
+        class="form rounded"
+        required />
+      <p></p>
+    </div>
+    <div class="password mb-2">
+      <input
+        type="text"
+        id="password"
+        class="form rounded"
+        placeholder="Password"
+        required />
+      <p></p>
+    </div>
+
+    {% comment %}
+    <a href="#"
+      ><label class="form-check-label mb-3"
+        >Dont have an account yet? Register Here</label
+      ></a
+    >
+    {% endcomment %}
+    <div class="checkbox">
+      <div class="remember">
+        <input type="checkbox" id="myCheckbox" name="myCheckbox" />
+        <p>Remember Me</p>
+      </div>
+      <a href="#">Forgot Password</a>
+    </div>
+    <div class="loginbutton">
+      <button type="submit" name="submit" class="btn btn-danger mb-2">
+        Sign In
+      </button>
+    </div>
+
+    <div class="dontHave">
+      <p>Don't have an account?</p> 
+      <div class="signup"><a href="#">Sign up</a></div>
+    </div>
+
+  </form>
+</div>
+{% endblock %}
