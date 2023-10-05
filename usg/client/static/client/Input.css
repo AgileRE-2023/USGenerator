@@ -62,7 +62,7 @@ header a {
     border-radius: 20px;
     width: 530px;
     border: solid;
-    background-color: bisque;
+    background-color: #F2FBEE;
 }
 
 .form-paragraf {
@@ -74,7 +74,7 @@ header a {
     border-radius: 20px;
     width: 630px;
     border: solid;
-    background-color: bisque;
+    background-color: #F2FBEE;
     height: 350px;
 }
 
@@ -95,8 +95,7 @@ header a {
 
 #formUserStories {
     border: solid;
-    background-color: #b63942;
-
+    background: var(--B63942, #B63942);
 }
 
 .form-group2 {
@@ -105,5 +104,5 @@ header a {
 
 #formUserScenario {
     border: solid;
-    background-color: #b63942;
+    background: var(--B63942, #B63942);
 }
