@@ -102,11 +102,10 @@ body {
 }
 
 .search-container {
-  width: 500px;
+  width: 75%;
   height: 50px;
   display: flex;
   align-items: center;
-  margin: 0 auto;
   border: 0.5px solid #808080;
   border-radius: 4px;
 }
@@ -128,7 +127,7 @@ input#search-bar {
 
 .profile {
   display: flex;
-  width: 300px;
+  width: 250px;
   height: 100px;
   border: 1px #000000;
   align-items: center;
@@ -174,5 +173,5 @@ main {
 .divider {
   width: 65%;
   height: 1px;
-  background-color: #808080;
+  background-color: #796868;
 }

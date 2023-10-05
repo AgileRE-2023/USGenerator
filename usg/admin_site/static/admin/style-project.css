@@ -240,3 +240,8 @@ table thead tr th:last-child {
 main button {
   border: none;
 }
+.divider {
+  width: 65%;
+  height: 1px;
+  background-color: #796868;
+}

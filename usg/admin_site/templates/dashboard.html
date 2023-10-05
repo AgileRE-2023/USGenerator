@@ -1,13 +1,42 @@
 {% extends "base.html" %} {% block style %} {% load static %}
-<link rel="stylesheet" href="{% static 'admin/user.css' %}" />
+<link rel="stylesheet" href="{% static 'admin/dashboard.css' %}" />
 {% endblock %} {% block title %}User{% endblock %} 
 {% block content %}
 <div class="title">
-  <h3>User</h3>
+    <h3>Dashboard</h3>
+    <div class="container-dash">
+        <div class="card-dash">
+            <h4>
+            10.000
+            </h4>
+            <p>
+                Total Project
+            </p>
+        </div>
+        <div class="card-dash">
+            <h4>
+            20.000
+            </h4>
+            <p>
+                Active Users
+            </p>
+        </div>
+        <div class="card-dash">
+            <h4>
+            30.000
+            </h4>
+            <p>
+                Total Users
+            </p>
+        </div>
+    </div>
 </div>
+<h4>
+    In the last 30 days
+</h4>
 <div class="User">
   <div class="User--head">
-    <h5>Monitor User</h5>
+    <h5>In the last 30 days</h5>
     <div class="User--action--menu">
       <div class="User--search">
         <div class="search-container">
@@ -34,7 +63,7 @@
           <th style="width: 91.8px">ID</th>
           <th style="width: 81.8px">User</th>
           <th style="width: 105.85px">Email</th>
-          <th style="width: 105.85px">No Telp</th>
+          <th style="width: 105.85px">Status</th>
         </tr>
       </thead>
 
@@ -48,7 +77,8 @@
           </td>
           <td>lorem</td>
           <td>lorem</td>
-          <td>lorem</td>
+          <td><div class="red-light-indicator">
+        </div>Offline</td>
         </tr>
         <tr>
           <td>
@@ -59,8 +89,26 @@
           </td>
           <td>lorem</td>
           <td>lorem</td>
-          <td>lorem</td>
+          <td>
+            <div class="red-light-indicator">
+        </div>
+        Offline</td>
         </tr>
+        
+        <tr>
+            <td>
+              <a class="User-data" href="#"
+                ><span><img src={% static 'admin/icons/user.svg'%}></span
+                ><span>User</span></a
+              >
+            </td>
+            <td>lorem</td>
+            <td>lorem</td>
+            <td>
+              <div class="red-light-indicator">
+          </div>
+          Offline</td>
+          </tr>
         <tr>
           <td>
             <a href="#"
@@ -70,7 +118,9 @@
           </td>
           <td>lorem</td>
           <td>lorem</td>
-          <td>lorem</td>
+          
+          <td><div class="green-light-indicator">
+        </div>Online</td>
         </tr>
       </tbody>
     </table>
