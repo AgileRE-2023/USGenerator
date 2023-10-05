@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    {% load static %}
+    </head>{% load static %}
     {% block style %}{% endblock %}
     <link rel="stylesheet" href="{% static 'admin/style-base.css' %}" />
     <link
@@ -39,11 +39,13 @@
             <li>
               <a href="#"
                 ><span><img src={% static 'admin/icons/project.svg'%}></span
-                ><span>Destination</span></a
+                ><span>Projects</span></a
               >
             </li>
           </ul>
         </div>
+        <div class="divider"></div>
+        <div class="divider"></div>
         <div class="sidebar--menu action">
           <ul>
             <li>
