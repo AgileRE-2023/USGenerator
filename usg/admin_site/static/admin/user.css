@@ -65,9 +65,17 @@ tr td a {
 }
 .User--table thead {
   padding: 0.5rem;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   background: rgba(182, 57, 66, 0.6);
+  border-radius: 50%;
 }
 .User--table span {
   margin-left: 10px;
+}
+table thead tr th:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+table thead tr th:last-child {
+  border-radius: 0 4px 4px 0;
 }
