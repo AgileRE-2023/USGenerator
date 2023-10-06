@@ -65,6 +65,15 @@ input[type="text"] {
     background: var(--gray-scales-off-white, #F0F2F3);
 }
 
+input[type="password"] {
+    width: 584px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    opacity: 0.7;
+    background: var(--gray-scales-off-white, #F0F2F3);
+}
+
 /* #password {
     width: 584px;
     height: 50px;
@@ -93,6 +102,11 @@ button {
     margin-top: 26.5px;
 }
 
+.loginbutton a {
+    text-decoration: none;
+    color: #fff;
+}
+
 .checkbox {
     display: flex;
     margin-left: 32px;
@@ -119,12 +133,12 @@ input::placeholder {
     padding: 20px;
 }
 
-.dontHave{
+.dontHave {
     display: flex;
     justify-content: center;
 }
 
-.signup a{
+.signup a {
     text-decoration: none;
     color: #B63942;
     padding-left: 2px;
