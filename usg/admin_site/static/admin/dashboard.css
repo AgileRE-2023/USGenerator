@@ -40,6 +40,12 @@
     align-items: center;
 }
 
+.status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .User--action--menu {
     display: flex;
     flex-direction: row;
