@@ -1,5 +1,5 @@
-<div style="display: flex; align: center; align-items: center;">
-    <h1 style="align: center;">
+<div>
+    <h1>
     Pengembangan Perangkat Lunak Praktikum i3
   </h1>
   <h3>
