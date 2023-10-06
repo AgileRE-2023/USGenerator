@@ -25,13 +25,13 @@
         <div class="sidebar--menu">
           <ul>
             <li>
-              <a href="#"><span><img src={% static 'admin/icons/dashboard.svg'%}></span><span>Dashboard</span></a>
+              <a href="{% url 'admin_site:dashboard' %}"><span><img src={% static 'admin/icons/dashboard.svg'%}></span><span>Dashboard</span></a>
             </li>
             <li>
-              <a href="#"><span><img src={% static 'admin/icons/user.svg'%}></span><span>User</span></a>
+              <a href="{% url 'admin_site:user' %}"><span><img src={% static 'admin/icons/user.svg'%}></span><span>User</span></a>
             </li>
             <li>
-              <a href="#"><span><img src={% static 'admin/icons/project.svg'%}></span><span>Project</span></a>
+              <a href="{% url 'admin_site:projectview' %}"><span><img src={% static 'admin/icons/project.svg'%}></span><span>Project</span></a>
             </li>
           </ul>
         </div>
