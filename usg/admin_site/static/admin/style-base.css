@@ -171,7 +171,8 @@ main {
 }
 
 .divider {
-  width: 65%;
+  width: 60%;
   height: 1px;
-  background-color: #796868;
+  background-color: #8f8f8f;
+  opacity: 0.6;
 }

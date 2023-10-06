@@ -134,12 +134,6 @@ table thead tr th:last-child {
     border-radius: 0 4px 4px 0;
 }
 
-.divider {
-    width: 65%;
-    height: 1px;
-    background-color: #796868;
-}
-
 .red-light-indicator {
     width: 15px;
     height: 15px;
