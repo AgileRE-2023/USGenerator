@@ -5,4 +5,4 @@
     User Story Generator Kelompok 1
   </h3>
 </br>
-<img src="https://unair.ac.id/wp-content/uploads/filr/5374/Lambang%20Universitas%20Airlangga%20(bg%20transparan).png" alt="#">
+<img src="https://img2.pngdownload.id/20180426/xge/kisspng-airlangga-university-logo-bandung-institute-of-tec-5ae1badc0c3307.38478167152474287605.jpg" alt="#">
