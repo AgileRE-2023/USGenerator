@@ -35,13 +35,13 @@ header a {
     text-decoration: none;
     color: white;
     margin-right: 2.25rem;
-    font-size: 25px;
+    font-size: 25px;
 }
 
 .Gui-user {
-    margin: 90px;
-    margin-left: 200px;
-    margin-right: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .Teks-judul {
@@ -50,9 +50,11 @@ header a {
 }
 
 .form {
-    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
-
 
 .form-inline {
     display: inline-flex;
@@ -68,6 +70,7 @@ header a {
 .form-paragraf {
     margin-top: 20px;
     margin-bottom: 30px;
+    position: relative;
 }
 
 #inputParagraf {
@@ -78,12 +81,19 @@ header a {
     height: 350px;
 }
 
-
-.btn {
-    align-items: flex-end;
+.btn-submit-button {
+    font-family: "Poppins";
+    background: #1D3557;
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
-.sr-only   {
+.sr-only {
     padding-top: 8px;
 }
 
@@ -95,7 +105,14 @@ header a {
 
 #formUserStories {
     border: solid;
-    background: var(--B63942, #B63942);
+    background-color: #B63942;
+    border: 2px solid #000;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+#formUserStories::placeholder {
+    color: #fff;
 }
 
 .form-group2 {
@@ -104,5 +121,4 @@ header a {
 
 #formUserScenario {
     border: solid;
-    background: var(--B63942, #B63942);
 }

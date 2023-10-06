@@ -80,14 +80,16 @@
       </div>
 
     
-    <button type="submit" name="submit" class="btn btn-danger mb-3">
-      Regist
+    <button type="submit" name="submit" class="btn btn-danger mb-3" method="POST">
+      <a href="{% url 'client:signin' %}">
+      </a>
+      Register
     </button>
     <br />
     <a href="#"
       ><label class="form-check-label mb-2 already">Already have account? </label></a
     >
-    <a href="" class="alreadySignin">Sign in</a>
+    <a href="{% url 'client:signin' %}" class="alreadySignin">Sign in</a>
   </form>
 </div>
 {%endblock%}
