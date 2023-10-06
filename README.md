@@ -10,7 +10,6 @@ user story generator ppl prak keompok 1 kelas i3
 <div align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./assets/django-logo-negative.svg">
-  <img alt="Dark and Light mode version of the Django logo" src="./assets/django-logo-positive.svg">
 </picture>
 </div>
 
