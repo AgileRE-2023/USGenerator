@@ -1,3 +1,3 @@
-<h1 style="align:center;">
+<h1 style="text-align:center;">
   Pengembangan Perangkat Lunak Praktikum i3
 </h1>
