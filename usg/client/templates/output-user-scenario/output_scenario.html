@@ -1,55 +1,33 @@
-{% extends "base.html" %}
-{% load static %}
-{% block style %}
- {% load static %}
+{% extends "base.html" %} {% load static %} {% block style %} {% load static %}
 <link rel="stylesheet" href="{% static 'client/user-scenario.css' %}" />
-{% endblock %}
-{% block title %} output scenario {% endblock %}
-{% block content %}
-    <form>
-        <input
-        type="text"
-        id="judul"
-        class="form-judul"
-        />
-    </form>
-    <form action="/action_page.php">
-        <p><label for="input-user-scenario">User Story Scenario:</label></p>
-        <textarea id="user-scenario" rows="8" cols="100" placeholder="Enter Paragraph"></textarea>
-        <br>
-        <input type="submit" value="Submit">
-    </form>
-
-    <div class="px-4 mt-5 mb-4">
-        <h4 style="color: #1D3557" class="mb-3">User Stories</h4>
-        <div class="ms-5">
-            <div class="item-red">
-                Sebagai seorang pengguna
-            </div>
-            <div class="item-red">
-                Saya dapat mendaftar akun menggunakan email dan kata sandi 
-            </div>
-            <div class="item-red">
-                Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut
-            </div>
-        </div>
+{% endblock %} {% block title %} output scenario {% endblock %} {% block content %}
+<div class="input">
+  <h1>Project Title</h1>
+  <form action="/action_page.php">
+    <p><label for="input-user-scenario">User Story Scenario:</label></p>
+    <textarea class="form-paragraf" id="inputParagraf" cols="100" placeholder="Enter Paragraph"></textarea>
+    <br />
+    <div class="submit-button">
+      <button class="btn-submit-button" type="button">Submit</button>
     </div>
+  </form>
+</div>
 
-    <div class="px-4 mt-5 mb-4">
-        <h4 style="color: #1D3557" class="mb-3">User Scenario</h4>
-        <div class="ms-5">
-            <div class="item-red">
-                1.  Pengguna membuka aplikasi.
-            </div>
-            <div class="item-red">
-                2.  Pengguna melihat tombol "Sign up" pada halaman utama aplikasi dan mengkliknya.
-            </div>
-            <div class="item-red">
-                3.  
-            </div>
-        </div>
-    </div>
+<div class="px-4 mt-5 mb-4">
+  <h4 style="color: #1d3557" class="mb-3">User Stories</h4>
+  <div class="ms-5">
+    <div class="item-red">Sebagai seorang pengguna</div>
+    <div class="item-red">Saya dapat mendaftar akun menggunakan email dan kata sandi</div>
+    <div class="item-red">Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</div>
+  </div>
+</div>
+
+<div class="px-4 mt-5 mb-4">
+  <h4 style="color: #1d3557" class="mb-3">User Scenario</h4>
+  <div class="ms-5">
+    <div class="item-red">1. Pengguna membuka aplikasi.</div>
+    <div class="item-red">2. Pengguna melihat tombol "Sign up" pada halaman utama aplikasi dan mengkliknya.</div>
+    <div class="item-red">3.</div>
+  </div>
+</div>
 {% endblock %}
-
-
-
