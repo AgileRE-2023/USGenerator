@@ -47,6 +47,7 @@ header a {
 .Teks-judul {
     font-size: 28px;
     font-weight: bold;
+    margin-top: 20px;
 }
 
 .form {
@@ -79,6 +80,7 @@ header a {
     border: solid;
     background-color: #F2FBEE;
     height: 350px;
+    padding: 15px;
 }
 
 .btn-submit-button {
