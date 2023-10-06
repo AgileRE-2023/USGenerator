@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'client.apps.ClientConfig',
+    #admin
+    'admin_site.apps.AdminSiteConfig',
     'bootstrap5',
 ]
 
