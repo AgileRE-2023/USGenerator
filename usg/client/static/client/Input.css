@@ -85,14 +85,26 @@ header a {
 
 .btn-submit-button {
     font-family: "Poppins";
-    background: #1D3557;
+    background-color: #1D3557;
     width: 150px;
     height: 40px;
     border-radius: 20px;
+    color: #fff;
+    text-decoration: none;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
+}
+
+.btn-submit-button a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.button-link {
+    text-decoration: none;
+    color: #fff;
 }
 
 .sr-only {

@@ -15,8 +15,8 @@
 <body>
     <header class="d-flex justify-content-between">
         <div class="d-flex align-items-center">
-            <a href="">User Stories</a>
-            <a href="">History</a>
+            <a href="{% url 'client:inputUserStory' %}">User Stories</a>
+            <a href="{% url 'client:history' %}">History</a>
         </div>
         <div class="d-flex align-items-center">
             <img src="{% static 'profile.png' %}" alt="profile">

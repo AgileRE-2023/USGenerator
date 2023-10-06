@@ -14,7 +14,7 @@
     </div>
     <div class="password mb-2">
       <input
-        type="text"
+        type="password"
         id="password"
         class="form rounded"
         placeholder="Password"
@@ -23,7 +23,7 @@
     </div>
 
     {% comment %}
-    <a href="{% url 'client:regist' %}"
+    <a href=""
       ><label class="form-check-label mb-3"
         >Dont have an account yet? Register Here</label
       ></a
@@ -38,13 +38,15 @@
     </div>
     <div class="loginbutton">
       <button type="submit" name="submit" class="btn btn-danger mb-2">
-        Sign In
+        <a href="{% url 'client:inputUserStory' %}">
+          Sign In
+        </a>
       </button>
     </div>
 
     <div class="dontHave">
       <p>Don't have an account?</p> 
-      <div class="signup"><a href="#">Sign up</a></div>
+      <div class="signup"><a href="{% url 'client:regist' %}">Sign up</a></div>
     </div>
 
   </form>
