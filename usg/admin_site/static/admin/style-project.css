@@ -74,6 +74,10 @@ body {
   padding-left: 1rem;
 }
 
+.navbar {
+  display: flex;
+  align-items: center;
+}
 .content {
   margin-top: 3rem;
   position: relative;
@@ -85,10 +89,6 @@ body {
   width: 100%;
   /* flex-grow: 1; Ini akan mengisi sisa ruang di sisi kanan */
   /* border: 1px solid black; */
-}
-.navbar {
-  display: flex;
-  align-items: center;
 }
 
 .search-container {
@@ -201,6 +201,7 @@ input#search-bar {
   border: none;
   outline: none;
 }
+
 .Project--search input::placeholder {
   font-size: 0.85rem;
 }

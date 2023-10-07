@@ -5,6 +5,9 @@ app_name = 'client'
 urlpatterns = [
     # path("", views.index, name="index"),
     # path("sign_in", views.signIn, name="index")/,
+    path("dashboard", views.dasboardClient, name="dashboard-client"),
+    path("dashboard-non", views.dasboardClientNone, name="dashboard-client-non"),
+
     path("output-scenario", views.outputScenario, name="output-scenario"),
     path("detail-history", views.detailHistory, name="detail-history"),
     path('base', views.base, name='base'),
