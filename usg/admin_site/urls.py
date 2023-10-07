@@ -4,7 +4,7 @@ from . import views
 
 app_name = 'admin_site'
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.baseAdmin, name='baseAdmin'),
     path('user', views.user, name='user'),
     path('projectview', views.projectView, name='projectview'),
     path('dashboard', views.dashboard, name='dashboard')

@@ -4,8 +4,8 @@ from django.template import loader
 # Create your views here.
 
 
-def index(request):
-    return render(request, 'base.html')
+def baseAdmin(request):
+    return render(request, 'base-admin.html')
 
 
 def user(request):
