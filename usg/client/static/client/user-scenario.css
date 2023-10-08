@@ -101,11 +101,7 @@ header a {
   margin-left: 600px;
   flex-direction: column;
 } */
-.kotak {
-  width: 200px;
-  height: 200px;
-  background-color: #1d3557;
-}
+
 .container-user-story {
   border: 1px solid salmon;
   border-radius: 16px;

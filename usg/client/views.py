@@ -17,4 +17,6 @@ def inputUserStory(request):
     return render(request, 'input-user/input.html')
 def history(request):
     return render(request, 'history/history.html')
+def userProfile(request):
+    return render(request, 'user_profile/user-profile.html')
 
