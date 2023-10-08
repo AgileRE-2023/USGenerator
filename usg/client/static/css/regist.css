@@ -1,8 +1,7 @@
 * {
-    margin: 0;
-    padding: 0;
-    /* width: 100%; */
-    /* height: 100%;/ */
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins";
 }
 
 /* sign {
@@ -15,125 +14,174 @@
     line-height: 110%;
     text-transform: capitalize;
 } */
-
-body {
-    font-family: "Poppins";
-    /* background-color: aqua; */
+.sign{
+  font-style: normal;
+  font-weight: 600;
 }
 
-
 header {
-    background-color: #b63942;
-    padding: 10px 15%;
+  background-color: #b63942;
+  padding: 10px 15%;
+  height: 6rem;
 }
 
 header img {
-    height: 70px;
-    width: 70px;
-    border-radius: 35px;
+  height: 70px;
+  width: 70px;
+  border-radius: 35px;
 }
 
 header a {
-    text-decoration: none;
-    color: white;
-    margin-right: 2.25rem;
-    font-size: 25px;
+  text-decoration: none;
+  color: white;
+  margin-right: 2.25rem;
+  font-size: 25px;
+}
+
+form {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.form-group label{
+    display: flex;
+    width: 90%;
+}
+/* .form-group label span{
+    opacity: 0.5;
+} */
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.form-content{
+    width: 90%;
 }
 
 .profile {
-    margin-left: 2.25rem;
+  margin-left: 2.25rem;
 }
 
-.wrapper {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 900px;
-    /* Your fixed height */
-    margin-top: 144px;
-    width: 750px;
-    /* height: 953px; */
-    flex-shrink: 0;
-    border-radius: 12px;
-    background: var(--gray-scales-white, #FFF);
-    box-shadow: 0px 0px 30px 0px rgba(39, 35, 67, 0.12);
-    /* margin-bottom: 100px; */
+.login {
+  width: 648px;
+  height: 382px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--gray-scales-white, #fff);
+  box-shadow: 0px 0px 30px 0px rgba(39, 35, 67, 0.12);
+  text-align: center;
 }
 
-.name {
-    display: flex;
+input {
+  width: 100%;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  opacity: 0.7;
+  background: var(--gray-scales-off-white, #f0f2f3);
+  padding-left: 20px;
 }
 
 
-form {
-    text-align: center;
-}
-
-form h2 {
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 600;
-}
-
-input[type="text"], input[type="password"] {
-    width: 648px;
+/* #password {
+    width: 584px;
     height: 50px;
     flex-shrink: 0;
     border-radius: 8px;
     opacity: 0.7;
     background: var(--gray-scales-off-white, #F0F2F3);
-    padding-left: 20px;
-}
+} */
 
 button {
-    width: 580.651px;
-    border-radius: 8px;
-    /* background-color: #B63942; */
-    color: var(--gray-scales-white, #FFF);
-    text-align: center;
-    font-family: Poppins;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 110%;
-    /* 17.6px */
-    text-transform: capitalize;
+  width: 584px;
+  border-radius: 8px;
+  /* background-color: #B63942; */
+  color: var(--gray-scales-white, #fff);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 110%;
+  /* 17.6px */
+  text-transform: capitalize;
+}
+
+.sign-up-button {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.sign-up-button a {
+  text-decoration: none;
+  color: #fff;
+  width: 90%;
+}
+
+i {
+  color: #1789fc;
+}
+
+.fa {
+  height: 1rem;
+  width: 1rem;
+  color: #000;
+  /* background-color: #fff; */
+}
+.input-with-icon {
+  position: relative;
+  width: 100%;
+}
+.input-with-icon .eye {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1; /* Add this line to ensure icons are above the input */
+}
+
+#hide1 {
+  display: none;
 }
 
 .checkbox {
-    display: flex;
-    margin-left: 32px;
-    margin-top: 18.5px;
-    justify-content: space-between;
-    margin-bottom: 46px;
+  width: calc(100% - 2rem);
+  display: flex;
+  margin-left: 2rem;
+  margin-top: 1.5rem;
+  justify-content: space-between;
 }
 
 .remember {
-    display: flex;
+  display: flex;
 }
 
 .remember p {
-    margin: 0 0 0 8px;
+  margin: 0 0 0 8px;
 }
 
-.remember a {
-    margin-left: 2px;
-    text-decoration: none;
-    color: #b63942;
+.checkbox a {
+  margin-right: 32px;
+  text-decoration: none;
+  color: #b63942;
 }
 
-.already {
-    text-decoration: none;
-    color: var(--gray-scales-black, #272343);
+.dontHave {
+  display: flex;
+  justify-content: center;
 }
 
-.alreadySignin {
-    text-decoration: none;
-    color: #b63942;
-}
-
-button a {
-    text-decoration: none;
-    color: #fff;
+.signup a {
+  text-decoration: none;
+  color: #b63942;
+  padding-left: 2px;
 }

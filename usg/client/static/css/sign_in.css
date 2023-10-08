@@ -1,6 +1,7 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins";
 }
 
 /* sign {
@@ -13,67 +14,71 @@
     line-height: 110%;
     text-transform: capitalize;
 } */
-
-body {
-    font-family: "Poppins";
-    /* background-color: aqua; */
+.sign{
+  font-style: normal;
+  font-weight: 600;
 }
 
-
 header {
-    background-color: #b63942;
-    padding: 10px 15%;
+  background-color: #b63942;
+  padding: 10px 15%;
+  height: 6rem;
 }
 
 header img {
-    height: 70px;
-    width: 70px;
-    border-radius: 35px;
+  height: 70px;
+  width: 70px;
+  border-radius: 35px;
 }
 
 header a {
-    text-decoration: none;
-    color: white;
-    margin-right: 2.25rem;
-    font-size: 25px;
+  text-decoration: none;
+  color: white;
+  margin-right: 2.25rem;
+  font-size: 25px;
 }
 
 form {
-    margin-top: 32px;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .profile {
-    margin-left: 2.25rem;
+  margin-left: 2.25rem;
 }
 
 .login {
-    width: 648px;
-    height: 382px;
-    flex-shrink: 0;
-    border-radius: 12px;
-    background: var(--gray-scales-white, #FFF);
-    box-shadow: 0px 0px 30px 0px rgba(39, 35, 67, 0.12);
-    text-align: center;
+  width: 648px;
+  height: 382px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--gray-scales-white, #fff);
+  box-shadow: 0px 0px 30px 0px rgba(39, 35, 67, 0.12);
+  text-align: center;
 }
 
 input[type="text"] {
-    width: 584px;
-    height: 50px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    opacity: 0.7;
-    background: var(--gray-scales-off-white, #F0F2F3);
-    padding-left: 20px;
+  width: 584px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  opacity: 0.7;
+  background: var(--gray-scales-off-white, #f0f2f3);
+  padding-left: 20px;
 }
 
 input[type="password"] {
-    width: 584px;
-    height: 50px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    opacity: 0.7;
-    background: var(--gray-scales-off-white, #F0F2F3);
-    padding-left: 20px;
+  width: 584px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  opacity: 0.7;
+  background: var(--gray-scales-off-white, #f0f2f3);
+  padding-left: 20px;
 }
 
 /* #password {
@@ -86,61 +91,86 @@ input[type="password"] {
 } */
 
 button {
-    width: 584px;
-    border-radius: 8px;
-    /* background-color: #B63942; */
-    color: var(--gray-scales-white, #FFF);
-    text-align: center;
-    font-family: Poppins;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 110%;
-    /* 17.6px */
-    text-transform: capitalize;
+  width: 584px;
+  border-radius: 8px;
+  /* background-color: #B63942; */
+  color: var(--gray-scales-white, #fff);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 110%;
+  /* 17.6px */
+  text-transform: capitalize;
 }
 
 .loginbutton {
-    margin-top: 26.5px;
+  width: 100%;
+  margin-top: 1rem;
 }
 
 .loginbutton a {
-    text-decoration: none;
-    color: #fff;
+  text-decoration: none;
+  color: #fff;
+  width: 90%;
+}
+
+i {
+  color: #1789fc;
+}
+
+.fa {
+  height: 1rem;
+  width: 1rem;
+  color: #000;
+  /* background-color: #fff; */
+}
+.input-with-icon {
+  position: relative;
+}
+.input-with-icon .eye {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1; /* Add this line to ensure icons are above the input */
+}
+
+#hide1 {
+  display: none;
 }
 
 .checkbox {
-    display: flex;
-    margin-left: 32px;
-    margin-top: 18.5px;
-    justify-content: space-between;
+  width: calc(100% - 2rem);
+  display: flex;
+  margin-left: 2rem;
+  margin-top: 1.5rem;
+  justify-content: space-between;
 }
 
 .remember {
-    display: flex;
+  display: flex;
 }
 
 .remember p {
-    margin: 0 0 0 8px;
+  margin: 0 0 0 8px;
 }
 
 .checkbox a {
-    margin-right: 32px;
-    text-decoration: none;
-    color: #B63942;
+  margin-right: 32px;
+  text-decoration: none;
+  color: #b63942;
 }
 
-
-
-
 .dontHave {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .signup a {
-    text-decoration: none;
-    color: #B63942;
-    padding-left: 2px;
+  text-decoration: none;
+  color: #b63942;
+  padding-left: 2px;
 }
-
