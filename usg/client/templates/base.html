@@ -19,8 +19,8 @@
             {% comment %} <a href="{% url 'client:history' %}">History</a> {% endcomment %}
         </div>
         <div class="d-flex align-items-center">
-            <img src="{% static 'profile.png' %}" alt="profile">
-            <a href="" class="profile">Cipunk</a>
+            <a href="{% url 'client:user-profile' %}"><img src="{% static 'profile.png' %}" alt="profile"></a>
+            <a href="" class="profile ms-3">Cipunk</a>
         </div>
     </header>
     <main>
