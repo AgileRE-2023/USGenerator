@@ -79,16 +79,16 @@
 
     <div class="sign-up-button">
       <a
-        href="{% url 'client:dashboard-client' %}"
+        href="{% url 'client:signin' %}"
         class="btn btn-danger mb-3"
         role="button"
-        >Sign In</a
+        >Sign Up</a
       >
     </div>
 
     <div class="dontHave">
-      <p>Don't have an account?</p>
-      <div class="signup"><a href="{% url 'client:regist' %}">Sign up</a></div>
+      <p>Already have acoount?</p>
+      <div class="signup"><a href="{% url 'client:signin' %}">Sign in</a></div>
     </div>
   </form>
 </div>
