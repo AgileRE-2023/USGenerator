@@ -1,0 +1,79 @@
+{% extends "base.html" %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'client/dashboard.css' %}" />
+{% endblock %} {% block title %} Dashboard {% endblock %} {% block content %}
+<div class="Project">
+  <div class="title">
+    <h3>Project</h3>
+  </div>
+  <div class="Project konten">
+    <div class="Project--head">
+      <h5>Monitor Project</h5>
+      <div class="Project--action--menu">
+        <div class="Project--search">
+          {% comment %}
+          <div class="search-container">
+            <a href="#"
+              ><img
+                class="search-icon"
+                src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"
+            /></a>
+            <input type="text" id="search-bar" placeholder="Search.." />
+          </div>
+          {% endcomment %}
+        </div>
+        <div class="Project--add">
+          <a href="{% url 'client:inputUserStory' %}">
+            <span><img src={% static 'icons/plus.svg'%}></span>
+            <span>add</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="Project--table">
+      <table>
+        <thead>
+          <tr style="border-radius: 50%">
+            <th style="width: 91.8px">ID</th>
+            <th style="width: 81.8px">Project</th>
+            <th style="width: 105.85px">Timestamp</th>
+            <th style="width: 105.85px">Result</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>001</td>
+            <td>lorem</td>
+            <td>lorem</td>
+            <td>
+              <a href="{% url 'client:detail-history' %}">
+                <img src={% static 'admin/icons/view-button.svg'%}>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td>lorem</td>
+            <td>lorem</td>
+            <td>
+              <a href="{% url 'client:detail-history' %}">
+                <img src={% static 'admin/icons/view-button.svg'%}>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>003</td>
+            <td>lorem</td>
+            <td>lorem</td>
+            <td>
+              <a href="{% url 'client:detail-history' %}">
+                <img src={% static 'admin/icons/view-button.svg'%}>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

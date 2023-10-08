@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'client/user-profile.css' %}" />
+
+{% endblock %} {% block title %} Input User {% endblock %} {% block content %}
+
+<!-- Main -->
+<div class="main">
+  <div class="profile-card">
+    <div class="card-banner">
+      <div class="card-profile"></div>
+      <h3>Your Name Here</h3>
+      <a mailto:example@email.com class="text-user">yourEmailHere@email.com</a>
+      <p class="text-user">+123 456 789</p>
+      <p class="text-user">72 Project Complished</p>
+      <div class="submit-button">
+        <button class="btn-submit-button" type="button">
+          <a href=""> Edit Profile </a>
+        </button>
+      </div>
+    </div>
+
+    {% endblock %}
+  </div>
+</div>

@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'client/history.css' %}">
+{% endblock %}
+{% block title %}
+    history
+{% endblock %}
+{% block content %}
+<!-- Tabel -->
+<div class="container">
+    <nav class="top_table">
+        <ul class="Judul">HISTORY</ul>
+        <ul class="Filter">
+            <div class="dropdown">
+                <button id="filterButton">FILTER &#9662;</button>
+                <div class="dropdown-content">
+                    <a href="#" data-filter="Latest">Latest</a>
+                    <a href="#" data-filter="Current">Current</a>
+                </div>
+            </div>
+        </ul>
+    </nav>
+    
+    <table class="table">
+        <thead class="kolom">
+            <tr>
+                <th scope="col">Timestamp</th>
+                <th scope="col">Input Project</th>
+                <th scope="col">As a User</th>
+                <th scope="col">I Want To</th>
+                <th scope="col">So That</th>
+                <th scope="col">User Scenario</th>
+            </tr>
+        </thead>
+        <tbody class="baris">
+            <tr>
+                <th scope="row">1696505921</th>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                <td>Sebagai seorang pengguna</td>
+                <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
+                <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
+                <td>
+                    Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
+                    <a href="{% url 'client:detail-history' %}" class="btn btn-outline-dark btn-sm">Detail</a>
+                </td>
+            </tr>
+                <th scope="row">1696505921</th>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                <td>Sebagai seorang pengguna</td>
+                <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
+                <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
+                <td>
+                    Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
+                    <a href="{% url 'client:detail-history' %}" class="btn btn-outline-dark btn-sm">Detail</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">1696505921</th>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                <td>Sebagai seorang pengguna</td>
+                <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
+                <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
+                <td>
+                    Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
+                    <a href="{% url 'client:detail-history' %}" class="btn btn-outline-dark btn-sm">Detail</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">1696505921</th>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                <td>Sebagai seorang pengguna</td>
+                <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
+                <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
+                <td>
+                    Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
+                    <a href="{% url 'client:detail-history' %}" class="btn btn-outline-dark btn-sm">Detail</a>
+                </td>
+            </tr>
+                <th scope="row">1696505921</th>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                <td>Sebagai seorang pengguna</td>
+                <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
+                <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
+                <td>
+                    Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
+                    <a href="{% url 'client:detail-history' %}" class="btn btn-outline-dark btn-sm">Detail</a>
+                </td>
+            </tr>
+                <th scope="row">1696505921</th>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                <td>Sebagai seorang pengguna</td>
+                <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
+                <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
+                <td>
+                    Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
+                    <a href="{% url 'client:detail-history' %}" class="btn btn-outline-dark btn-sm">Detail</a>
+                </td>
+            </tr>   
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
+
+<script>
+// Tangkap elemen-elemen yang diperlukan
+var filterButton = document.getElementById("filterButton");
+var dropdownContent = document.querySelector(".dropdown-content");
+
+// Tambahkan event listener untuk tombol
+filterButton.addEventListener("click", function () {
+    dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+});
+
+// Event listener untuk item dropdown (misalnya, "Current" atau "Latest")
+dropdownContent.addEventListener("click", function (e) {
+    if (e.target.tagName === "A") {
+        var selectedFilter = e.target.getAttribute("data-filter");
+        filterButton.innerHTML = "FILTER " + selectedFilter + " &#9662;";
+        dropdownContent.style.display = "none";
+    }
+});
+</script>

@@ -1,0 +1,81 @@
+{% extends "base-admin.html" %}
+{% block style %}
+    {% load static %} 
+    <link rel="stylesheet" href="{% static 'admin/style-project.css' %}" />
+    {% endblock %}
+{% block title %}Project{% endblock %} 
+{% block content %}
+          <div class="title">
+            <h3>Projects</h3>
+          </div>
+          <div class="Project">
+            <div class="Project--head">
+              <h5>Monitor Project</h5>
+              <div class="Project--action--menu">
+                <div class="Project--search">
+                  <div class="search-container">
+                    <a href="#"
+                      ><img
+                        class="search-icon"
+                        src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"
+                    /></a>
+                    <input type="text" id="search-bar" placeholder="Search.." />
+                  </div>
+                </div>
+                <div class="Project--filter">
+                  <a href="#"
+                    ><span
+                      ><img src={% static 'admin/icons/filter-search.svg'%}></span
+                    ><span>Filter</span></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="Project--table">
+              <table style="width: 100%">
+                <thead>
+                  <tr style="border-radius: 50%">
+                    <th style="width: 91.8px">ID</th>
+                    <th style="width: 81.8px">Nama Project</th>
+                    <th style="width: 105.85px">Input</th>
+                    <th style="width: 105.85px">Output</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>0000001</td>
+                    <td>Project User</td>
+                    <td>lorem ipusium bla bla</td>
+                    <td>
+                      <button>
+                        <img src={% static 'admin/icons/view-button.svg'%}>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0000001</td>
+                    <td>Project User</td>
+                    <td>lorem ipusium bla bla</td>
+                    <td>
+                      <button>
+                        <img src={% static 'admin/icons/view-button.svg'%}>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0000001</td>
+                    <td>Project User</td>
+                    <td>lorem ipusium bla bla</td>
+                    <td>
+                      <button>
+                        <img src={% static 'admin/icons/view-button.svg'%}>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          {% endblock %}

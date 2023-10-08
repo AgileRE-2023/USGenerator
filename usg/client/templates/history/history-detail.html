@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'client/history-detail.css' %}" /> 
+{% endblock %}
+{% block title %} detail-history {% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+  <h2 style="color: #1d3557">DETAIL HISTORY</h2>
+  <h4 style="color: #457b9d">TIMESTAMP : 1696155874</h4>
+</div>
+<div class="px-4 mt-5 mb-4">
+  <h4 style="color: #1d3557" class="mb-3">User Stories</h4>
+  <div class="ms-5">
+    <div class="item-red">Sebagai seorang pengguna</div>
+    <div class="item-red">
+      Saya dapat mendaftar akun menggunakan email dan kata sandi
+    </div>
+    <div class="item-red">
+      Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut
+    </div>
+  </div>
+</div>
+<div class="px-4 mt-5 mb-4">
+  <h4 style="color: #1d3557" class="mb-3">User Scenario</h4>
+  <div class="ms-5">
+    <div class="item-red">1. Pengguna membuka aplikasi.</div>
+    <div class="item-red">
+      2. Pengguna melihat tombol "Sign up" pada halaman utama aplikasi dan
+      mengkliknya.
+    </div>
+    <div class="item-red">
+      3. Aplikasi menampilkan formulir pendaftaran dengan kolom input untuk
+      alamat email dan kata sandi.
+    </div>
+    <div class="item-red">
+      4. Pengguna mengisi kolom email dengan alamat email yang valid.
+    </div>
+    <div class="item-red">
+      5. Pengguna mengisi kolom kata sandi dengan kata sandi yang kuat.
+    </div>
+    <div class="item-red">
+      6. Pengguna mengklik tombol "Submit" atau "Sign Up" untuk melanjutkan.
+    </div>
+    <div class="item-red">
+      7. Aplikasi memvalidasi data yang dimasukkan oleh pengguna. Jika email
+      sudah terdaftar atau kata sandi tidak memenuhi persyaratan, aplikasi
+      memberi tahu pengguna tentang masalah tersebut.
+    </div>
+    <div class="item-red">
+      8. Jika data valid, aplikasi mengirimkan email konfirmasi ke alamat email
+      yang digunakan untuk pendaftaran.
+    </div>
+    <div class="item-red">
+      9. Pengguna pergi ke kotak masuk email mereka dan menemukan email
+      konfirmasi.
+    </div>
+    <div class="item-red">
+      10. Pengguna membuka email konfirmasi dan mengklik tautan yang diberikan
+      untuk mengaktifkan akun mereka.
+    </div>
+    <div class="item-red">
+      11. Setelah mengaktifkan akun, aplikasi mengarahkan pengguna ke layar
+      ‘Login’.
+    </div>
+    <div class="item-red">
+      12. Pengguna memasukkan alamat email dan kata sandi yang telah
+      didaftarkan.
+    </div>
+    <div class="item-red">
+      13. Aplikasi memvalidasi informasi masuk pengguna.
+    </div>
+    <div class="item-red">
+      14. Jika informasi benar, pengguna berhasil masuk ke aplikasi dan
+      diarahkan ke beranda atau layar utama. Dan, jika informasi salah, pengguna
+      akan diarahkan kembali ke layar ‘Login’.
+    </div>
+    <div class="item-red">
+      15. Pengguna sekarang dapat mulai menggunakan fitur-fitur aplikasi.
+    </div>
+  </div>
+</div>
+{% endblock %}

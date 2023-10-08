@@ -1,0 +1,114 @@
+{% extends "base_regist.html" %} {% block content %}
+<div class="wrapper position-absolute top-50 start-50 translate-middle login">
+  <form action="#" class="pb-3">
+    <h2 class="sign">Sign up</h2>
+    <div class="form-group mb-2">
+      <label class="form-label" for="name"><span>*Full Name<span></label>
+      <div class="form-content mb-2">
+        <div class="input-with-icon">
+          <input
+            type="name"
+            class="form rounded"
+            name="name"
+            id="name"
+            placeholder="Full Name"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group mb-2">
+      <label class="form-label" for="email"><span>*Email<span></label>
+      <div class="form-content mb-2">
+        <div class="input-with-icon">
+          <input
+            type="email"
+            class="form rounded"
+            name="email"
+            id="email"
+            placeholder="Email"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group mb-2">
+      <label class="form-label" for="phone"><span>*Phone Number<span></label>
+      <div class="form-content mb-2">
+        <div class="input-with-icon">
+          <input
+            type="tel"
+            class="form rounded"
+            name="phone"
+            id="phone"
+            placeholder="Phone Number"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group mb-2">
+      <label class="form-label" for="password"><span>*Password<span></label>
+      <div class="form-content mb-2">
+        <div class="input-with-icon">
+          <input
+            type="password"
+            class="form rounded"
+            name="password"
+            id="password"
+            placeholder="Password"
+          />
+          <span class="eye" onclick="showp()">
+            <i id="hide1" class="fa fa-light fa-eye"></i>
+            <i id="hide2" class="fa fa-sharp fa-light fa-eye-slash"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group mb-2">
+      <label class="form-label" for="password"><span>*Confirm Password<span></label>
+      <div class="form-content mb-2">
+        <div class="input-with-icon">
+          <input
+            type="password"
+            class="form rounded"
+            name="password"
+            id="password"
+            placeholder="Confirm Password"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="sign-up-button">
+      <a
+        href="{% url 'client:signin' %}"
+        class="btn btn-danger mb-3"
+        role="button"
+        >Sign Up</a
+      >
+    </div>
+
+    <div class="dontHave">
+      <p>Already have acoount?</p>
+      <div class="signup"><a href="{% url 'client:signin' %}">Sign in</a></div>
+    </div>
+  </form>
+</div>
+{%endblock%}
+
+{% block script %}
+<script>
+  function showp() {
+    var x = document.getElementById("password");
+    var y = document.getElementById("hide1");
+    var z = document.getElementById("hide2");
+    if (x.type === "password") {
+      x.type = "text";
+      y.style.display = "none";
+      z.style.display = "block";
+    } else {
+      x.type = "password";
+      y.style.display = "block";
+      z.style.display = "none";
+    }
+  }
+</script>
+{% endblock %}
