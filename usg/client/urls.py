@@ -15,5 +15,6 @@ urlpatterns = [
     path('signin', views.SignIn, name='signin'),
     path('regist', views.regist, name='regist'),
     path('inputUserStory', views.inputUserStory, name='inputUserStory'),
-    path('history', views.history, name='history')
+    path('history', views.history, name='history'),
+    path('user-profile', views.userProfile, name='user-profile')
 ]

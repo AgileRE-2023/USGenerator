@@ -1,0 +1,96 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin-top: 78px;
+  height: 100vh;
+  /* font-family: 'Roboto', sans-serif; */
+  /*   background: -webkit-linear-gradient(#81C784, #A5D6A7); */
+}
+.profile-card {
+  background: #ffffff;
+  width: 400px;
+  height: 600px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin-bottom: 0px;
+  -webkit-transition: 0.6s, ease-in-out;
+  transition: 0.6s, ease-in-out;
+}
+
+.profile-card:hover {
+  margin-top: -15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-banner {
+  background: url('https://images.unsplash.com/photo-1531330969550-7e8a9b2fb3df?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=a03bd3a711775d6e4f3d742237adbf8e');
+  width: inherit;
+  height: 200px;
+  padding-top: 100px;
+  background-color: #fafafa;
+  background-position: top;
+  background-size: cover;
+}
+
+.card-profile {
+  background: url('https://images.unsplash.com/photo-1514846226882-28b324ef7f28?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=427df64ea1bbb4c45008bd6ffe11812a');
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: auto auto;
+  background-size: cover;
+  background-color: #f1f1f1;
+  border: 3px solid #fff;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+h3 {
+  margin-top: 80px;
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #212121;
+}
+.text-user {
+  display: block;
+  padding: 5px 0px;
+  font-size: 14px;
+  color: #9e9e9e;
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 0px;
+}
+
+.text-user:hover {
+  background-color: #ccc;
+  color: #000;
+}
+.btn-submit-button {
+  margin-top: 56px;
+  font-family: 'Poppins';
+  background-color: #1d3557;
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  color: #fff;
+  text-decoration: none;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.btn-submit-button a {
+  text-decoration: none;
+  color: #fff;
+  cursor: none;
+}
+
+.button-link {
+  text-decoration: none;
+  color: #fff;
+}
