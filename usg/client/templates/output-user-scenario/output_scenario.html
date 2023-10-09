@@ -1,9 +1,19 @@
 {% extends "base.html" %} {% load static %} {% block style %}
 <link rel="stylesheet" href="{% static 'client/user-scenario.css' %}" />
 
-{% endblock %} {% block title %} Input User {% endblock %} {% block content %}
+{% endblock %} {% block title %} Input Scenario {% endblock %} {% block content%}
 <div class="Gui-user">
-  <h1 class="Teks-judul">Project Title</h1>
+  <div class="title-input">
+    <h1 class="Teks-judul">Project Title</h1>
+    <button
+      type="button"
+      class="ms-4"
+      data-bs-toggle="modal"
+      data-bs-target="#Rules"
+    >
+      <i data-feather="help-circle"></i>
+    </button>
+  </div>
   <div class="output-user-story">
     <h5>User Stories :</h5>
     <div class="container-user-story">
@@ -17,7 +27,12 @@
     <div class="input-scenario"><h5>Input User Story Scenario :</h5></div>
     <div class="form">
       <div class="form-paragraf">
-        <textarea type="text" class="form-control" id="inputParagraf" placeholder="Ketik paragraf"></textarea>
+        <textarea
+          type="text"
+          class="form-control"
+          id="inputParagraf"
+          placeholder="Ketik paragraf"
+        ></textarea>
       </div>
       <div class="submit-button">
         <button class="btn-submit-button" type="button">
@@ -49,6 +64,36 @@
         <div class="desc-scenario"><p>My wallet in this app decrease</p></div>
       </div>
     </div>
-    {% endblock %}
   </div>
 </div>
+
+<!-- modal -->
+<div class="modal fade" id="Rules" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">User Story Scenario Rules</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Lorem Cillum cillum magna occaecat cupidatat esse consequat sunt ut eiusmod id laboris Lorem amet ullamco.</li>
+          <li>Lorem Cillum cillum magna occaecat cupidatat esse consequat sunt ut eiusmod id laboris Lorem amet ullamco.</li>
+          <li>Lorem Cillum cillum magna occaecat cupidatat esse consequat sunt ut eiusmod id laboris Lorem amet ullamco.</li>
+          <li>Lorem Cillum cillum magna occaecat cupidatat esse consequat sunt ut eiusmod id laboris Lorem amet ullamco.</li>
+          <li>Lorem Cillum cillum magna occaecat cupidatat esse consequat sunt ut eiusmod id laboris Lorem amet ullamco.</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+  feather.replace()
+</script>
+{% endblock %}

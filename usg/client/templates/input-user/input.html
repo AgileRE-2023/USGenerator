@@ -2,7 +2,12 @@
 <link rel="stylesheet" href="{% static 'client/input.css' %}" />
 {% endblock %} {% block title %} Input User {% endblock %} {% block content %}
 <div class="Gui-user">
-  <h1 class="Teks-judul">USER STORIES</h1>
+  <div class="title-input">
+    <h1 class="Teks-judul">USER STORIES</h1>
+      <button type="button" class="ms-4" data-bs-toggle="modal" data-bs-target="#Rules">
+          <i data-feather="help-circle"></i>
+      </button>
+  </div>
   <div class="form">
     <form class="form-inline">
       <div class="form-group mb-2">
@@ -49,4 +54,33 @@
     </div>
   </div>
 </div>
-{% endblock %} {% comment %} <link rel="stylesheet" href="/CSS/Input.css" /> {% endcomment %}
+
+<!-- modal -->
+<div class="modal fade" id="Rules" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">User Story Rules</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Lorem Cillum cillum magna occaecat cupidatat esse consequat sunt ut eiusmod id laboris Lorem amet ullamco.</li>
+          <li>Lorem Cillum cillum magna occaecat cupidatat esse consequat sunt ut eiusmod id laboris Lorem amet ullamco.</li>
+          <li>Lorem Cillum cillum magna occaecat cupidatat esse consequat sunt ut eiusmod id laboris Lorem amet ullamco.</li>
+          <li>Lorem Cillum cillum magna occaecat cupidatat esse consequat sunt ut eiusmod id laboris Lorem amet ullamco.</li>
+          <li>Lorem Cillum cillum magna occaecat cupidatat esse consequat sunt ut eiusmod id laboris Lorem amet ullamco.</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+  feather.replace()
+</script>
+{% endblock %}
