@@ -20,7 +20,7 @@ body {
 }
 
 header {
-  background-color: #b63942;
+  background-color: #17193D;
   padding: 10px 15%;
 }
 
@@ -84,7 +84,7 @@ header a {
 
 .btn-submit-button {
   font-family: 'Poppins';
-  background-color: #1d3557;
+  background-color: #F29F05;
   width: 150px;
   height: 40px;
   border-radius: 20px;
@@ -94,11 +94,31 @@ header a {
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
+  border: 1px solid #F29F05;
+}
+
+.btn-submit-button:hover {
+  background: transparent;
+  transition: .3s ease;
+  -webkit-transition: .3s ease;
+  -moz-transition: .3s ease;
+  -ms-transition: .3s ease;
+  -o-transition: .3s ease;
 }
 
 .btn-submit-button a {
   text-decoration: none;
   color: #fff;
+  transition: .3s ease;
+  -webkit-transition: .3s ease;
+  -moz-transition: .3s ease;
+  -ms-transition: .3s ease;
+  -o-transition: .3s ease;
+}
+
+.btn-submit-button a:hover {
+  text-decoration: none;
+  color: #F29F05;
 }
 
 .button-link {
@@ -125,18 +145,20 @@ header a {
   display: flex;
   margin-bottom: 10px;
 }
+
 .numof-container {
   border-radius: 16px 0px 0px 16px;
   width: 150px;
   height: auto;
   font-size: 44px;
-  background-color: #b63942;
+  background-color: #F29F05;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   color: aliceblue;
 }
+
 .numof-container:hover {
   color: aliceblue;
 }
@@ -146,6 +168,7 @@ header a {
   flex-direction: column;
   font-weight: 500;
 }
+
 .grid-as-can-for-1 {
   border: 1px solid salmon;
   border-radius: 0px 16px 0px 0px;
@@ -154,6 +177,7 @@ header a {
   display: flex;
   align-items: center;
 }
+
 .grid-as-can-for {
   border: 1px solid salmon;
   width: 480px;
@@ -161,6 +185,7 @@ header a {
   display: flex;
   align-items: center;
 }
+
 .grid-as-can-for-2 {
   border: 1px solid salmon;
   border-radius: 0px 0px 16px 0px;
@@ -169,14 +194,17 @@ header a {
   display: flex;
   align-items: center;
 }
+
 .grid-as-can-for-1 p {
   margin-bottom: 0;
   padding-left: 1rem;
 }
+
 .grid-as-can-for p {
   margin-bottom: 0;
   padding-left: 1rem;
 }
+
 .grid-as-can-for-2 p {
   margin-bottom: 0;
   padding-left: 1rem;
