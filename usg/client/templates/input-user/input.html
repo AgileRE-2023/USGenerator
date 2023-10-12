@@ -9,19 +9,30 @@
         <label for="staticEmail2" class="sr-only">Project Title</label>
       </div>
       <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control" id="inputProject" placeholder="Ketik projek anda" />
+        <input
+          type="text"
+          class="form-control"
+          id="inputProject"
+          placeholder="Ketik projek anda"
+        />
       </div>
     </form>
     <div class="form-paragraf">
-      <textarea type="text" class="form-control" id="inputParagraf" placeholder="Ketik paragraf"></textarea>
+      <textarea
+        type="text"
+        class="form-control"
+        id="inputParagraf"
+        placeholder="Ketik paragraf"
+      ></textarea>
     </div>
     <div class="submit-button">
-      <button class="btn-submit-button" type="button">
-        <a href="{% url 'client:output-scenario' %}"> Generate </a>
+      <button class="btn-submit-button" type="button" onclick="OutputUser()">
+        <a href="#"> Generate </a>
       </button>
     </div>
   </div>
-  <div class="output-user-story">
+
+  <div class="output-user-story hidden" id="user-story-container">
     <h3>User Stories :</h3>
     <div class="container-user-story">
       <a class="numof-container" href="{% url 'client:output-scenario' %}">1</a>
@@ -67,5 +78,14 @@
     </div>
   </div>
 </div>
-{% endblock %} {% comment %}
-<link rel="stylesheet" href="/CSS/Input.css" /> {% endcomment %}
+{% endblock %} {% block script %}
+<script>
+  const userStoryContainer = document.getElementById("user-story-container");
+  const generateButton = document.querySelector(".btn-submit-button");
+
+  generateButton.addEventListener("click", () => {
+    userStoryContainer.classList.toggle("hidden");
+  });
+</script>
+
+{% endblock %}

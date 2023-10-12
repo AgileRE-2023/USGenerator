@@ -112,6 +112,10 @@ header a {
   flex-direction: column;
 } */
 
+.hidden {
+  display: none;
+}
+
 .container-user-story {
   border: 1px solid #F29F05;
   border-radius: 16px;
