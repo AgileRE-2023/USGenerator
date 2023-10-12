@@ -3,12 +3,20 @@
     padding: 0;
 } */
 
+html::-webkit-scrollbar {
+    display: none;
+}
+html {
+    -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 body {
-    font-family: "Poppins";
+    font-family: "Poppins"
 }
 
 header {
-    background-color: #b63942;
+    background-color: #17193D;
     padding: 10px 15%;
 }
 
@@ -25,7 +33,15 @@ header a {
     font-size: 25px;
 }
 
-.profile{
-    margin-left: 2.2;
+header a:hover {
+    color: #F29F05;
+    transition: .3s ease;
+    -webkit-transition: .3s ease;
+    -moz-transition: .3s ease;
+    -ms-transition: .3s ease;
+    -o-transition: .3s ease;
 }
 
+.profile {
+    margin-left: 2.2;
+}

@@ -1,12 +1,14 @@
 /* Custom CSS untuk navbar */
 .custom-navbar {
-    background-color: #B63942; /* Warna merah maroon */
+    background-color: #17193D;
+    /* Warna merah maroon */
     padding: 10px 250px;
 }
 
 .custom-navbar>a {
     color: white;
-    font-size: 28px; /* Mengubah ukuran font */
+    font-size: 28px;
+    /* Mengubah ukuran font */
     text-decoration: none;
     font-family: Arial, sans-serif;
     padding-right: 30px;
@@ -21,7 +23,8 @@
 .profile-img {
     width: 80px;
     height: 80px;
-    border-radius: 50%; /* Membuat gambar profil menjadi bulat */
+    border-radius: 50%;
+    /* Membuat gambar profil menjadi bulat */
     margin-left: 10px;
 }
 
@@ -83,7 +86,8 @@
     position: relative;
     border-collapse: collapse;
     margin: auto;
-    border: 1px solid #1D3557; /* Mengatur border luaran tabel */
+    border: 1px solid #1D3557;
+    /* Mengatur border luaran tabel */
     width: 100%;
     font-weight: bold;
 }
@@ -95,13 +99,15 @@
 }
 
 .baris {
-    color: #1D3557 ;
+    color: #1D3557;
     background-color: #F2FBEE;
 }
 
 th, td {
     border: 1px solid #1D3557;
-    padding: 8px; /* Padding di dalam sel */
-    text-align: center; /* Alignment teks dalam sel (opsional) */
+    padding: 8px;
+    /* Padding di dalam sel */
+    text-align: center;
+    /* Alignment teks dalam sel (opsional) */
     font-family: Arial, sans-serif;
 }

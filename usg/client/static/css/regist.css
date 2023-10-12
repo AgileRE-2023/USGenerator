@@ -14,13 +14,13 @@
     line-height: 110%;
     text-transform: capitalize;
 } */
-.sign{
+.sign {
   font-style: normal;
   font-weight: 600;
 }
 
 header {
-  background-color: #b63942;
+  background-color: #17193D;
   padding: 10px 15%;
   height: 6rem;
 }
@@ -38,6 +38,43 @@ header a {
   font-size: 25px;
 }
 
+header a:hover {
+  color: #F29F05;
+  transition: .3s ease;
+  -webkit-transition: .3s ease;
+  -moz-transition: .3s ease;
+  -ms-transition: .3s ease;
+  -o-transition: .3s ease;
+}
+
+main {
+  display: flex;
+  background-color: #000;
+  height: 100%;
+}
+
+.signup-container {
+  width: 600px;
+  height: 700px;
+  display: flex;
+  box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+}
+
 form {
   margin-top: 32px;
   display: flex;
@@ -46,15 +83,17 @@ form {
   justify-content: center;
   width: 100%;
 }
-.form-group label{
-    display: flex;
-    width: 90%;
+
+.form-group label {
+  display: flex;
+  width: 90%;
 }
+
 /* .form-group label span{
     opacity: 0.5;
 } */
 
-.form-group{
+.form-group {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,8 +101,8 @@ form {
   width: 100%;
 }
 
-.form-content{
-    width: 90%;
+.form-content {
+  width: 90%;
 }
 
 .profile {
@@ -103,7 +142,7 @@ input {
 button {
   width: 584px;
   border-radius: 8px;
-  /* background-color: #B63942; */
+  background-color: #F29F05;
   color: var(--gray-scales-white, #fff);
   text-align: center;
   font-family: Poppins;
@@ -118,6 +157,7 @@ button {
 .sign-up-button {
   width: 100%;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .sign-up-button a {
@@ -136,17 +176,20 @@ i {
   color: #000;
   /* background-color: #fff; */
 }
+
 .input-with-icon {
   position: relative;
   width: 100%;
 }
+
 .input-with-icon .eye {
   position: absolute;
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
   cursor: pointer;
-  z-index: 1; /* Add this line to ensure icons are above the input */
+  z-index: 1;
+  /* Add this line to ensure icons are above the input */
 }
 
 #hide1 {
@@ -182,6 +225,40 @@ i {
 
 .signup a {
   text-decoration: none;
-  color: #b63942;
+  color: #F29F05;
   padding-left: 2px;
+  transition: .5s ease;
+  -webkit-transition: .5s ease;
+  -moz-transition: .5s ease;
+  -ms-transition: .5s ease;
+  -o-transition: .5s ease;
+}
+
+.sign-up-button {
+  background-color: #f29f05;
+  width: 90%;
+  height: 30px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-up-button a {
+  color: #fff;
+  text-align: center;
+}
+
+.sign-up-button a:hover {
+  color: #F29F05;
+}
+
+.sign-up-button:hover {
+  background-color: transparent;
+  border: solid 1px #f29f05;
+  transition: .5s ease;
+  -webkit-transition: .5s ease;
+  -moz-transition: .5s ease;
+  -ms-transition: .5s ease;
+  -o-transition: .5s ease;
 }

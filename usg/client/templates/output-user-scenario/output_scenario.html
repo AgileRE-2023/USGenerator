@@ -35,33 +35,35 @@
         ></textarea>
       </div>
       <div class="submit-button">
-        <button class="btn-submit-button" type="button">
-          <a href=""> Generate </a>
+        <button class="btn-submit-button" type="button" onclick="OutputUser()">
+          <a href="#"> Generate </a>
         </button>
       </div>
     </div>
 
-    <div class="scenario">
-      <h5>User Story Scenario :</h5>
-      <div class="container-scenario">
-        <div class="type-scenario"><p>GIVEN</p></div>
-        <div class="desc-scenario"><p>I'm a software engineer</p></div>
-      </div>
-      <div class="container-scenario">
-        <div class="type-scenario"><p>AND</p></div>
-        <div class="desc-scenario"><p>I'm a data scientist</p></div>
-      </div>
-      <div class="container-scenario">
-        <div class="type-scenario">WHEN</div>
-        <div class="desc-scenario"><p>I withdraw from this app</p></div>
-      </div>
-      <div class="container-scenario">
-        <div class="type-scenario"><p>THEN</p></div>
-        <div class="desc-scenario"><p>My bank account increase</p></div>
-      </div>
-      <div class="container-scenario">
-        <div class="type-scenario"><p>AND</p></div>
-        <div class="desc-scenario"><p>My wallet in this app decrease</p></div>
+    <div class="scenario-content hidden" id="scenario-container">
+      <div class="scenario">
+        <h5>User Story Scenario :</h5>
+        <div class="container-scenario">
+          <div class="type-scenario"><p>GIVEN</p></div>
+          <div class="desc-scenario"><p>I'm a software engineer</p></div>
+        </div>
+        <div class="container-scenario">
+          <div class="type-scenario"><p>AND</p></div>
+          <div class="desc-scenario"><p>I'm a data scientist</p></div>
+        </div>
+        <div class="container-scenario">
+          <div class="type-scenario">WHEN</div>
+          <div class="desc-scenario"><p>I withdraw from this app</p></div>
+        </div>
+        <div class="container-scenario">
+          <div class="type-scenario"><p>THEN</p></div>
+          <div class="desc-scenario"><p>My bank account increase</p></div>
+        </div>
+        <div class="container-scenario">
+          <div class="type-scenario"><p>AND</p></div>
+          <div class="desc-scenario"><p>My wallet in this app decrease</p></div>
+        </div>
       </div>
     </div>
   </div>
@@ -96,4 +98,18 @@
 <script>
   feather.replace()
 </script>
+{% endblock %}
+{% endblock %}
+
+
+{% block script %}
+<script>
+  const userStoryContainer = document.getElementById("scenario-container");
+  const generateButton = document.querySelector(".btn-submit-button");
+
+  generateButton.addEventListener("click", () => {
+    userStoryContainer.classList.toggle("hidden");
+  });
+</script>
+
 {% endblock %}
