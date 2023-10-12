@@ -91,7 +91,7 @@ tr td a {
 .Project--table thead {
   padding: 0.5rem;
   /* border: 1px solid black; */
-  background: rgba(182, 57, 66, 0.6);
+  background: #f29f05;
   border-radius: 50%;
 }
 .Project--table span:last-child {
