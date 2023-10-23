@@ -10,7 +10,7 @@
     padding: 20px;
     width: 30%;
     height: 100px;
-    background-color: #B63942;
+    background-color: #17193D;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -118,8 +118,9 @@ tr td a {
 .User--table thead {
     padding: 0.5rem;
     /* border: 1px solid black; */
-    background: rgba(182, 57, 66, 0.6);
+    background: #17193D;
     border-radius: 50%;
+    color: #fff;
 }
 
 .User--table span:last-child {
