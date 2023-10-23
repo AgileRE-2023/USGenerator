@@ -137,6 +137,14 @@ header a {
   flex-direction: column;
 } */
 
+/* .output-user-story.active {
+
+} */
+
+.hidden {
+  display: none;
+}
+
 .container-user-story {
   border: 1px solid salmon;
   border-radius: 16px;
