@@ -1,11 +1,11 @@
 from django.urls import path
-from django.urls import re_path as url
 from . import views
+from django.contrib import admin
+from django.contrib import client
 
-app_name = 'admin_site'
+app_name = 'admin'
 urlpatterns = [
-    path('', views.baseAdmin, name='baseAdmin'),
-    path('user', views.user, name='user'),
+    path('admin/user', views.user, name='user'),
     path('projectview', views.projectView, name='projectview'),
-    path('dashboard', views.dashboard, name='dashboard')
+    path('admin/', views.dashboard, name='dashboard')
 ]
