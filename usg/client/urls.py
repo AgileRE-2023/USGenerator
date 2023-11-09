@@ -22,7 +22,13 @@ urlpatterns = [
     # Registration & Login
 
     path('', views.SignIn, name='signin'),
-    path('postsignin/', views.SignIn),
+    path('postsignin/', views.postsignin),
 
     path('regist', views.regist, name='regist'),
+    path('postsignup/', views.postsignup),
+
+    # Forgot Password
+
+    path('reset', views.reset),
+    path('postreset/', views.postreset)
 ]
