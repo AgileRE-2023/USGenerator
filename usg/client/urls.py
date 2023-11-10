@@ -21,7 +21,7 @@ urlpatterns = [
 
     # Registration & Login
 
-    path('', views.SignIn, name='signin'),
+    path('', views.signin, name='signin'),
     path('postsignin/', views.postsignin),
 
     path('regist', views.regist, name='regist'),

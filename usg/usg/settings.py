@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'client.apps.ClientConfig',
+    'social_django',
+    'usg',
     # admin
     'admin_site.apps.AdminSiteConfig',
 ]
@@ -51,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthEexceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'usg.urls'
@@ -66,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
             ],
         },
     },
@@ -121,6 +125,20 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGIN_URL = 'signin'
+LOGIN_REDIRECT_URL = 'client-dashboard'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'signin'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '################'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '###################'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

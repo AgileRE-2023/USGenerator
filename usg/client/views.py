@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import pyrebase
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 config = {
@@ -16,23 +17,27 @@ firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 db = firebase.database()
 
-
 def signin(request):
-    return render(request, 'signin.html')
+    return render(request, 'signin-reg/signin.html')
+@login_required
+def home(request):
+    return render(request, 'client-dashboard.html')
 
+def regist(request):
+    return render(request, 'signin-reg/regist.html')
 
 def postsignin(request):
     email = request.POST.get('email')
     password = request.POST.get('password')
     try:
-        user = auth.sign_in_with_email_and_password('email', 'password')
+        user = auth.sign_in_with_email_and_password(email, password)
     except:
         message = "Invalid Email or Password"
-        return render(request, 'signin.html', {'email': email})
+        return render(request, 'signin-reg/signin.html', {'email': email})
     session_id = user['idToken']
     session_id['uid'] = str(session_id)
     message = 'Login Success'
-    return render(request, '', {'message': message})
+    return render(request, "client-dashboard.html'=", {'message': message})
 
 
 def logout(request):
@@ -42,13 +47,13 @@ def logout(request):
         pass
     return render(request, 'signin.html')
 
-
 def postsignup(request):
     email = request.POST.get('email')
-    passs = request.POST.get('pass')
+    passs = request.POST.get('passwd')
     name = request.POST.get('name')
+    phone = request.POST.get('phone')
     try:
-        user = auth.sign_in_with_email_and_password('email', passs)
+        user = auth.sign_in_with_email_and_password(email, passs)
         uid = user['localID']
         idtoken = request.session['uid']
         print(uid)
@@ -93,12 +98,7 @@ def baseSignIn(request):
     return render(request, 'base_signin.html')
 
 
-def SignIn(request):
-    return render(request, 'signin-reg/signin.html')
 
-
-def regist(request):
-    return render(request, 'signin-reg/regist.html')
 
 
 def outputScenario(request):
