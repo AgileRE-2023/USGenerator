@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import pyrebase
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
 
 # Create your views here.
 config = {
@@ -11,20 +12,24 @@ config = {
     'storageBucket': "usg-django-pplprak.appspot.com",
     'messagingSenderId': "1048754184838",
     'appId': "1:1048754184838:web:16794aa3970c3b8dd2a707",
-    'measurementId': "G-PC679TGGMD"
 }
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 db = firebase.database()
 
+
 def signin(request):
     return render(request, 'signin-reg/signin.html')
+
+
 @login_required
 def home(request):
     return render(request, 'client-dashboard.html')
 
+
 def regist(request):
     return render(request, 'signin-reg/regist.html')
+
 
 def postsignin(request):
     email = request.POST.get('email')
@@ -35,9 +40,9 @@ def postsignin(request):
         message = "Invalid Email or Password"
         return render(request, 'signin-reg/signin.html', {'email': email})
     session_id = user['idToken']
-    session_id['uid'] = str(session_id)
+    request.session['uid'] = str(session_id)
     message = 'Login Success'
-    return render(request, "client-dashboard.html'=", {'message': message})
+    return render(request, "client-dashboard.html", {'message': message})
 
 
 def logout(request):
@@ -45,21 +50,19 @@ def logout(request):
         del request.session['uid']
     except:
         pass
-    return render(request, 'signin.html')
+    return render(request, 'signin-reg/signin.html')
+
 
 def postsignup(request):
     email = request.POST.get('email')
-    passs = request.POST.get('passwd')
+    passs = request.POST.get('password')
     name = request.POST.get('name')
     phone = request.POST.get('phone')
     try:
-        user = auth.sign_in_with_email_and_password(email, passs)
-        uid = user['localID']
-        idtoken = request.session['uid']
-        print(uid)
+        user = auth.create_user_with_email_and_password(email, passs)
     except:
         return render(request, 'signin-reg/regist.html')
-    return render(request, 'signin.html')
+    return render(request, 'signin-reg/signin.html')
 
 
 def reset(request):
@@ -96,9 +99,6 @@ def base(request):
 
 def baseSignIn(request):
     return render(request, 'base_signin.html')
-
-
-
 
 
 def outputScenario(request):
