@@ -62,17 +62,17 @@ def postsignup(request):
     return render(request, 'signin-reg/signin.html')
 
 def reset(request):
-    return render(request, 'reset.html')
+    return render(request, 'signin-reg/send.html')
 
 def postreset(request):
     email = request.POST.get('email')
     try:
         auth.send_password_reset_email(email)
         message = "An email to reset password is successfully sent"
-        return render(request, 'reset.html', {'msg': message})
+        return render(request, 'signin-reg/reset.html', {'msg': message})
     except:
         message = "Something went wrong, Please re-check the email you provided"
-        return render(request, 'reset.html', {'msg': message})
+        return render(request, 'signin-reg/reset.html', {'msg': message})
 # Create your views here.
 
 

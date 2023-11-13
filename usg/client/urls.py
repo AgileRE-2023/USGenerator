@@ -29,6 +29,6 @@ urlpatterns = [
 
     # Forgot Password
 
-    path('reset', views.reset),
-    path('postreset/', views.postreset)
+    path('reset', views.reset, name='reset'),
+    path('postreset/', views.postreset, name='postreset')
 ]
