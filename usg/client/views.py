@@ -2,6 +2,8 @@ from django.shortcuts import render
 import pyrebase
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+from django.core import serializers
+# import json
 
 # Create your views here.
 config = {
@@ -73,7 +75,12 @@ def postreset(request):
     except:
         message = "Something went wrong, Please re-check the email you provided"
         return render(request, 'signin-reg/reset.html', {'msg': message})
-# Create your views here.
+
+
+
+def my_view(request):
+    data = serializers.serialize('json', User.objects.all())
+    return HttpResponse(data, content_type='application/json')
 
 
 def dasboardClient(request):
