@@ -1,4 +1,4 @@
-<div>
+<div style="display: flex; align-items: center;">
     <h1>
     Pengembangan Perangkat Lunak Praktikum i3
   </h1>
