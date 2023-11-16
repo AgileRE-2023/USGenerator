@@ -7,7 +7,7 @@ app_name = 'client'
 urlpatterns = [
     # path("", views.index, name="index"),
     # path("sign_in", views.signIn, name="index")/,
-    path("dashboard", views.dashboardClient, name="dashboard-client"),
+    path("dashboard/", views.dashboardClient, name="dashboardClient"),
     path("dashboard-non", views.dashboardClientNone, name="dashboard-client-non"),
 
     path("output-scenario", views.outputScenario, name="output-scenario"),
@@ -23,6 +23,7 @@ urlpatterns = [
 
     path('', views.signin, name='signin'),
     path('postsignin/', views.postsignin),
+    path('signin', views.signin, name='signin'),
 
     path('regist', views.regist, name='regist'),
     path('postsignup/', views.postsignup),
