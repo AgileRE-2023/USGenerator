@@ -1,7 +1,26 @@
 {% extends "base.html" %}
 {% load static %}
 {% block style %}
-<link rel="stylesheet" href="{% static 'client/history-detail.css' %}" /> 
+<link rel="stylesheet" type="text/css" href="{% static 'client/history-detail.css' %}" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
+<style>
+
+</style>
+<script>
+  var swiper = new Swiper('.blog-slider', {
+      spaceBetween: 30,
+      effect: 'fade',
+      loop: true,
+      mousewheel: {
+        invert: false,
+      },
+      // autoHeight: true,
+      pagination: {
+        el: '.blog-slider__pagination',
+        clickable: true,
+      }
+    });
+</script>
 {% endblock %}
 {% block title %} detail-history {% endblock %}
 {% block content %}
@@ -11,6 +30,8 @@
 </div>
 <div class="px-4 mt-5 mb-4">
   <h4 style="color: #1d3557" class="mb-3">User Stories</h4>
+    <div class="blog-slider__pagination"></div>
+  </div>
   <div class="ms-5">
     <div class="item-red">Sebagai seorang pengguna</div>
     <div class="item-red">
@@ -79,5 +100,43 @@
       15. Pengguna sekarang dapat mulai menggunakan fitur-fitur aplikasi.
     </div>
   </div>
+</div>
+<div class="blog-slider">
+  <div class="blog-slider__wrp swiper-wrapper">
+    <div class="blog-slider__item swiper-slide">
+      <div class="blog-slider__img">
+        <img src="https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/who-icon.png" alt="">
+      </div>
+      <div class="blog-slider__content">
+        <span class="blog-slider__code">User Stories</span>
+        <div class="blog-slider__title">Aspect of Who</div>
+        <div class="blog-slider__text">Sebagai seorang pengguna</div>
+        <a href="#" class="blog-slider__button">READ MORE</a>
+      </div>
+    </div>
+    <div class="blog-slider__item swiper-slide">
+      <div class="blog-slider__img">
+        <img src="https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/what-icon.png" alt="">
+      </div>
+      <div class="blog-slider__content">
+        <span class="blog-slider__code">User Stories</span>
+        <div class="blog-slider__title">Aspect of What</div>
+        <div class="blog-slider__text">Saya dapat mendaftar akun menggunakan email dan kata sandi</div>
+        <a href="#" class="blog-slider__button">READ MORE</a>
+      </div>
+    </div>
+    <div class="blog-slider__item swiper-slide">
+      <div class="blog-slider__img">
+        <img src="https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/why-icon.png" alt="">
+      </div>
+      <div class="blog-slider__content">
+        <span class="blog-slider__code">User Stories</span>
+        <div class="blog-slider__title">Aspect of Why</div>
+        <div class="blog-slider__text">Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</div>
+        <a href="#" class="blog-slider__button">READ MORE</a>
+      </div>
+    </div>
+  </div>
+  <div class="blog-slider__pagination"></div>
 </div>
 {% endblock %}

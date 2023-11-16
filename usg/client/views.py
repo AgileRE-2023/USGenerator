@@ -30,6 +30,7 @@ def home(request):
 def regist(request):
     return render(request, 'signin-reg/regist.html')
 
+
 def postsignin(request):
     email = request.POST.get('email')
     passwrd = request.POST.get('password')
@@ -43,12 +44,14 @@ def postsignin(request):
     message = 'Login Success'
     return render(request, "client-dashboard.html", {'message': message})
 
+
 def logout(request):
     try:
         del request.session['uid']
     except:
         pass
     return render(request, 'signin-reg/signin.html')
+
 
 def postsignup(request):
     email = request.POST.get('email')
@@ -61,8 +64,10 @@ def postsignup(request):
         return render(request, 'signin-reg/regist.html')
     return render(request, 'signin-reg/signin.html')
 
+
 def reset(request):
     return render(request, 'reset.html')
+
 
 def postreset(request):
     email = request.POST.get('email')
@@ -73,14 +78,16 @@ def postreset(request):
     except:
         message = "Something went wrong, Please re-check the email you provided"
         return render(request, 'reset.html', {'msg': message})
+
+
 # Create your views here.
 
 
-def dasboardClient(request):
+def dashboardClient(request):
     return render(request, 'client-dashboard.html')
 
 
-def dasboardClientNone(request):
+def dashboardClientNone(request):
     return render(request, 'client-dashboard-non.html')
 
 

@@ -81,7 +81,7 @@ input#search-bar {
 }
 
 .Project--table table tbody tr td {
-  padding: 1em 1em 1em 1em;
+  padding: 1em;
 }
 
 .Project--table table tbody tr td:first-child {
@@ -115,7 +115,7 @@ table thead tr th:last-child {
 .divider {
   width: 65%;
   height: 1px;
-  background-color: #796868;
+  background-color: #fff;
 }
 
 main {
