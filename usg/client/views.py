@@ -59,6 +59,7 @@ def postsignup(request):
     phone = request.POST.get('phone')
     try:
         user = auth.create_user_with_email_and_password(email, passs)
+        db.child("users").child(user['localId']).set({"email": email, "name": name, "phone": phone})
     except:
         return render(request, 'signin-reg/regist.html')
     return render(request, 'signin-reg/signin.html')
@@ -76,11 +77,6 @@ def postreset(request):
         message = "Something went wrong, Please re-check the email you provided"
         return render(request, 'signin-reg/reset.html', {'msg': message})
 
-
-
-def my_view(request):
-    data = serializers.serialize('json', User.objects.all())
-    return HttpResponse(data, content_type='application/json')
 
 
 def dasboardClient(request):
