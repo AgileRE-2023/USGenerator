@@ -3,6 +3,7 @@ import pyrebase
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.core import serializers
+from client.models import User
 # import json
 
 # Create your views here.
@@ -112,4 +113,7 @@ def history(request):
 
 
 def userProfile(request):
-    return render(request, 'user_profile/user-profile.html')
+    user_auth = auth.current_user['localId']
+    users_value = db.child(f'users/{user_auth}').get()
+    # user.fromJson(users_by_name)
+    return render(request, 'user_profile/user-profile.html', {'user': users_value.val()})

@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 # from firebase_admin import auth
 
 class User:
-        def __init__(self, email, password, name, phone):
+        def __init__(self, email = None, password = None, name = None, phone = None):
                 self.email = email
                 self.password = password
                 self.name = name
