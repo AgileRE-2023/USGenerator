@@ -3,7 +3,8 @@ import pyrebase
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.core import serializers
-from client.models import User
+from client.models import UserStory
+import uuid
 # import json
 
 # Create your views here.
@@ -106,6 +107,23 @@ def outputScenario(request):
 
 def inputUserStory(request):
     return render(request, 'input-user/input.html')
+
+def postInputStory(request):
+    ProjectTitle = request.POST.get('ProjectTitle')
+    inputParagraf = request.POST.get('inputParagraf')
+    idtoken=request.session['uid']
+    a=auth.get_account_info(idtoken)
+    uid = uuid.uuid4()
+    print(str(a))
+    data= {
+        "ProjectTitle":ProjectTitle,
+        "inputParagraf":inputParagraf
+    }
+    db.child("UserStory").child(UserStory['localId']).set(data)
+    
+    # result = db.put('/UserStory', UserStory, data)
+    return render(request, 'input-user/input.html')
+
 
 
 def history(request):
