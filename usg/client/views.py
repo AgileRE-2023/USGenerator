@@ -2,6 +2,7 @@ from django.shortcuts import render
 import pyrebase
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+# from django.contrib import auth
 from django.core import serializers
 from client.models import User
 # import json
@@ -46,12 +47,14 @@ def postsignin(request):
     message = 'Login Success'
     return render(request, "client-dashboard.html", {'message': message})
 
-def logout(request):
+def signout(request):
     try:
-        del request.session['uid']
+        auth.current_user = None
     except:
         pass
+    breakpoint()
     return render(request, 'signin-reg/signin.html')
+
 
 def postsignup(request):
     email = request.POST.get('email')
@@ -62,7 +65,8 @@ def postsignup(request):
         user = auth.create_user_with_email_and_password(email, passs)
         db.child("users").child(user['localId']).set({"email": email, "name": name, "phone": phone})
     except:
-        return render(request, 'signin-reg/regist.html')
+        message="invalid credentials"
+        return render(request, 'signin-reg/regist.html', {'message': message})
     return render(request, 'signin-reg/signin.html')
 
 def reset(request):

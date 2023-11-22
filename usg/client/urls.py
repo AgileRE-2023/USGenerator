@@ -27,6 +27,8 @@ urlpatterns = [
     path('regist', views.regist, name='regist'),
     path('postsignup/', views.postsignup),
 
+    path('signout', views.signout, name='signout'),
+
     # Forgot Password
 
     path('reset', views.reset, name='reset'),
