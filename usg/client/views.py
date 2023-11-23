@@ -2,6 +2,8 @@ from django.shortcuts import render
 import pyrebase
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+from django.contrib import messages
+from django.views.decorators.cache import never_cache
 
 # Create your views here.
 config = {
@@ -31,17 +33,18 @@ def regist(request):
     return render(request, 'signin-reg/regist.html')
 
 
+@never_cache
 def postsignin(request):
     email = request.POST.get('email')
     passwrd = request.POST.get('password')
     try:
         user = auth.sign_in_with_email_and_password(email, passwrd)
     except:
-        message = "Invalid Email or Password"
+        messages.error(request, 'Invalid Email or Password')
         return render(request, 'signin-reg/signin.html', {'email': email})
     session_id = user['idToken']
     request.session['uid'] = str(session_id)
-    message = 'Login Success'
+    messages.success(request, 'Login Success')
     return redirect('client:dashboardClient')
 
 
@@ -50,6 +53,7 @@ def logout(request):
         del request.session['uid']
     except:
         pass
+    messages.success(request, 'Logout Completed')
     return redirect('client:signin')
 
 
@@ -60,8 +64,10 @@ def postsignup(request):
     phone = request.POST.get('phone')
     try:
         user = auth.create_user_with_email_and_password(email, passs)
-    except:
+    except Exception as e:
+        messages.error(request, f'Registration Failed. {str(e)}')
         return redirect('client:regist')
+    messages.success(request, 'Registration Success')
     return redirect('client:signin')
 
 
@@ -73,11 +79,12 @@ def postreset(request):
     email = request.POST.get('email')
     try:
         auth.send_password_reset_email(email)
-        message = "An email to reset password is successfully sent"
-        return render(request, 'reset.html', {'msg': message})
+        messages.success(request, 'An Email to Reset Password has been sent')
+        return redirect('client:reset', {'msg': messages})
     except:
-        message = "Something went wrong, Please re-check the email you provided"
-        return render(request, 'reset.html', {'msg': message})
+        messages.error(
+            request, 'Something went wrong, Please re-check the email you provided')
+        return redirect('client:reset', {'msg': messages})
 
 
 # Create your views here.

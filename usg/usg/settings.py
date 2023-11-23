@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+import firebase_admin
+from firebase_admin import credentials
+import json
+
+# Load Firebase Configuration from the JSON file
+with open('firebase_config.json') as f:
+    firebase_config = json.load(f)
+cred = credentials.Certificate(firebase_config)
+firebase_admin.initialize_app(cred)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -54,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
+    'client.middleware.RedirectIfAuthenticatedMiddleware',
 ]
 
 ROOT_URLCONF = 'usg.urls'
@@ -144,3 +154,5 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '###################'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'client.CustomUser'

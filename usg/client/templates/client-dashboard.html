@@ -1,8 +1,9 @@
 {% extends "base.html" %} {% load static %} {% block style %}
 <link rel="stylesheet" href="{% static 'client/dashboard.css' %}" />
 {% endblock %} {% block title %} Dashboard {% endblock %} {% block content %}
+
 {% if user.is_authenticated %}
-        <p>Welcome {{ user.username }} !!!</p>       
+        <p class="welcome-user">Welcome {{ user.name }} !!!</p>
     {% endif %}
 <div class="Project">
   <div class="title">
