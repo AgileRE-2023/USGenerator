@@ -108,21 +108,48 @@ def outputScenario(request):
 def inputUserStory(request):
     return render(request, 'input-user/input.html')
 
+# def postInputStory(request):
+#     ProjectTitle = request.POST.get('ProjectTitle')
+#     inputParagraf = request.POST.get('inputParagraf')
+#     idtoken=request.session['uid']
+#     a=auth.get_account_info(idtoken)
+#     a=a['users']
+#     # a=a[0]
+#     a=a[0]['localId']
+#     print(str(a))
+#     data= {
+#         'userStory' : {
+#             "ProjectTitle":ProjectTitle,
+#             "inputParagraf":inputParagraf
+#         }
+#     }
+#     db.child('users').child(str(a)).update(data)
+    
+#     # result = db.put('/UserStory', UserStory, data)
+#     return render(request, 'input-user/input.html')
+
 def postInputStory(request):
     ProjectTitle = request.POST.get('ProjectTitle')
     inputParagraf = request.POST.get('inputParagraf')
-    idtoken=request.session['uid']
-    a=auth.get_account_info(idtoken)
-    uid = uuid.uuid4()
-    print(str(a))
-    data= {
-        "ProjectTitle":ProjectTitle,
-        "inputParagraf":inputParagraf
-    }
-    db.child("UserStory").child(UserStory['localId']).set(data)
+    idtoken = request.session['uid']
+    user_info = auth.get_account_info(idtoken)
     
-    # result = db.put('/UserStory', UserStory, data)
-    return render(request, 'input-user/input.html')
+    if 'users' in user_info:
+        users_list = user_info['users']
+        if users_list:
+            user_local_id = users_list[0].get('localId')
+            print(user_local_id)
+            if user_local_id:
+                # data = {
+                #     'userStory': {
+                #         "ProjectTitle": ProjectTitle,
+                #         "inputParagraf": inputParagraf
+                #     }
+                # }
+                # data = /
+                db.child('users').child(user_local_id).child('userstories').push({"ProjectTitle": ProjectTitle,"inputParagraf": inputParagraf})
+                print("Data updated successfully")
+                return render(request, 'input-user/input.html')
 
 
 
