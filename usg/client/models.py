@@ -1,31 +1,24 @@
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+# from firebase_admin import auth
 
+class User:
+        def __init__(self, email = None, password = None, name = None, phone = None):
+                self.email = email
+                self.password = password
+                self.name = name
+                self.phone = phone
 
-class CustomUserManager(BaseUserManager):
-    def create_user(self, email, password=None, **extra_fields):
-        if not email:
-            raise ValueError('The Email field must be set')
-        email = self.normalize_email(email)
-        user = self.model(email=email)
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
+        def fromJson(self, json):
+                self.email = json['email']
+                self.password = json['password']
+                self.name = json['name']
+                self.phone = json['phone']
 
-    def create_superuser(self, email, password=None, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
-
-        return self.create_user(email, password, **extra_fields)
-
-
-class CustomUser(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(unique=True)
-
-    objects = CustomUserManager()
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
-
-    def __str__(self):
-        return self.email
+        def toJson(self):
+                return {
+                        'email': self.email,
+                        'password': self.password,
+                        'name': self.name,
+                        'phone': self.phone
+                 }

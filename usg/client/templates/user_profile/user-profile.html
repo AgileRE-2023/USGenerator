@@ -8,13 +8,16 @@
   <div class="profile-card">
     <div class="card-banner">
       <div class="card-profile"></div>
-      <h3>Your Name Here</h3>
-      <a mailto:example@email.com class="text-user">yourEmailHere@email.com</a>
-      <p class="text-user">+123 456 789</p>
+      <h3>{{ user.name }}</h3>
+      <a mailto:example@email.com class="text-user">{{ user.email }}</a>
+      <p class="text-user">{{ user.phone }}</p>
       <p class="text-user">72 Project Complished</p>
       <div class="submit-button">
         <button class="btn-submit-button" type="button">
           <a href=""> Edit Profile </a>
+        </button>
+        <button class="btn-submit-button" type="button">
+          <a href="{% url 'client:signout' %}"> Sign Out </a>
         </button>
       </div>
     </div>

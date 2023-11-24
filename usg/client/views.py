@@ -2,8 +2,10 @@ from django.shortcuts import render
 import pyrebase
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
-from django.contrib import messages
-from django.views.decorators.cache import never_cache
+# from django.contrib import auth
+from django.core import serializers
+from client.models import User
+# import json
 
 # Create your views here.
 config = {
@@ -48,13 +50,14 @@ def postsignin(request):
     return redirect('client:dashboardClient')
 
 
-def logout(request):
+def signout(request):
     try:
-        del request.session['uid']
+        auth.current_user = None
     except:
         pass
     messages.success(request, 'Logout Completed')
     return redirect('client:signin')
+
 
 
 def postsignup(request):
@@ -64,15 +67,15 @@ def postsignup(request):
     phone = request.POST.get('phone')
     try:
         user = auth.create_user_with_email_and_password(email, passs)
-    except Exception as e:
-        messages.error(request, f'Registration Failed. {str(e)}')
-        return redirect('client:regist')
-    messages.success(request, 'Registration Success')
-    return redirect('client:signin')
-
+        db.child("users").child(user['localId']).set({"email": email, "name": name, "phone": phone})
+    except:
+        message="invalid credentials"
+        return render(request, 'signin-reg/regist.html', {'message': message})
+    return render(request, 'signin-reg/signin.html')
 
 def reset(request):
-    return render(request, 'reset.html')
+    return render(request, 'signin-reg/send.html')
+
 
 
 def postreset(request):
@@ -123,4 +126,7 @@ def history(request):
 
 
 def userProfile(request):
-    return render(request, 'user_profile/user-profile.html')
+    user_auth = auth.current_user['localId']
+    users_value = db.child(f'users/{user_auth}').get()
+    # user.fromJson(users_by_name)
+    return render(request, 'user_profile/user-profile.html', {'user': users_value.val()})
