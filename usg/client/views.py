@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import pyrebase
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 # from django.contrib import auth
 from django.core import serializers
@@ -31,7 +31,7 @@ def signin(request):
     return render(request, 'signin-reg/signin.html')
 
 
-@login_required
+# @login_required
 def home(request):
     return render(request, 'client-dashboard.html')
 
@@ -55,7 +55,7 @@ def postsignin(request):
     return redirect('client:dashboardClient')
 
 
-@login_required
+# @login_required
 def signout(request):
     try:
         auth.current_user = None
@@ -100,48 +100,52 @@ def postreset(request):
         return redirect('client:reset')
 
 
+def resetpw(request):
+    render(request, 'signin-reg/signin.html')
+
 # Create your views here.
-@login_required
+
+
 def dashboardClient(request):
     return render(request, 'client-dashboard.html')
 
 
-@login_required
+# @login_required
 def dashboardClientNone(request):
     return render(request, 'client-dashboard-non.html')
 
 
-@login_required
+# @login_required
 def detailHistory(request):
     return render(request, 'history/history-detail.html')
 
 
-@login_required
+# @login_required
 def base(request):
     return render(request, 'base.html')
 
 
-@login_required
+# @login_required
 def baseSignIn(request):
     return render(request, 'base_signin.html')
 
 
-@login_required
+# @login_required
 def outputScenario(request):
     return render(request, 'output-user-scenario/output_scenario.html')
 
 
-@login_required
+# @login_required
 def inputUserStory(request):
     return render(request, 'input-user/input.html')
 
 
-@login_required
+# @login_required
 def history(request):
     return render(request, 'history/history.html')
 
 
-@login_required
+# @login_required
 def userProfile(request):
     user_auth = auth.current_user['localId']
     users_value = db.child(f'users/{user_auth}').get()
