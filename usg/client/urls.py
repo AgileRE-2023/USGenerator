@@ -33,5 +33,6 @@ urlpatterns = [
     # Forgot Password
 
     path('reset', views.reset, name='reset'),
+    path('send', views.send, name='send'),
     path('postreset/', views.postreset, name='postreset')
 ]

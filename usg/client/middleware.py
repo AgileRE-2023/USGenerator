@@ -6,7 +6,7 @@ class RedirectIfAuthenticatedMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        if request.user.is_authenticated and request.path == '/':
+        if request.user.is_authenticated and request.path == '/signin/':
             return redirect('client:dashboardClient')
 
         response = self.get_response(request)

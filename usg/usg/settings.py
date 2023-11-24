@@ -141,10 +141,10 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-LOGIN_URL = 'signin'
-LOGIN_REDIRECT_URL = 'client-dashboard'
-LOGOUT_URL = 'logout'
-LOGOUT_REDIRECT_URL = 'signin'
+LOGIN_URL = 'client:signin'
+LOGIN_REDIRECT_URL = 'client:clientDashboard'
+LOGOUT_URL = 'client:logout'
+LOGOUT_REDIRECT_URL = 'client:signin'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '################'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '###################'

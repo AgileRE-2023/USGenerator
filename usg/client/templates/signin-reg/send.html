@@ -9,9 +9,9 @@
     <div class="mb-3 par-reset">
       Enter the email address to get link reset your password
     </div>
-
     <div class="send-container">
-      <form action="">
+      <form action="/postreset/" method="POST">
+        {% csrf_token %}
         <label class="mb-1" for="">Email address</label>
         <div class="form-group mb-5">
           <input

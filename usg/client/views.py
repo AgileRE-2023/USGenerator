@@ -25,6 +25,9 @@ db = firebase.database()
 
 
 def signin(request):
+    if request.user.is_authenticated:
+        messages.info(request, 'You are Already Logged in.')
+        return redirect('client:dashboardClient')
     return render(request, 'signin-reg/signin.html')
 
 
@@ -52,6 +55,7 @@ def postsignin(request):
     return redirect('client:dashboardClient')
 
 
+@login_required
 def signout(request):
     try:
         auth.current_user = None
@@ -61,7 +65,6 @@ def signout(request):
     return redirect('client:signin')
 
 
-
 def postsignup(request):
     email = request.POST.get('email')
     passs = request.POST.get('password')
@@ -69,15 +72,20 @@ def postsignup(request):
     phone = request.POST.get('phone')
     try:
         user = auth.create_user_with_email_and_password(email, passs)
-        db.child("users").child(user['localId']).set({"email": email, "name": name, "phone": phone})
+        db.child("users").child(user['localId']).set(
+            {"email": email, "name": name, "phone": phone})
     except:
-        message="invalid credentials"
-        return render(request, 'signin-reg/regist.html', {'message': message})
+        message = "invalid credentials"
+        return redirect('client:regist', {'message': message})
     return redirect('client:signin')
+
+
+def send(request):
+    return render(request, 'signin-reg/send.html')
+
 
 def reset(request):
-    return redirect('client:signin')
-
+    return render(request, 'signin-reg/reset.html')
 
 
 def postreset(request):
@@ -85,48 +93,55 @@ def postreset(request):
     try:
         auth.send_password_reset_email(email)
         messages.success(request, 'An Email to Reset Password has been sent')
-        return redirect('client:reset', {'msg': messages})
+        return redirect('client:signin')
     except:
         messages.error(
             request, 'Something went wrong, Please re-check the email you provided')
-        return redirect('client:reset', {'msg': messages})
+        return redirect('client:reset')
 
 
 # Create your views here.
-
-
+@login_required
 def dashboardClient(request):
     return render(request, 'client-dashboard.html')
 
 
+@login_required
 def dashboardClientNone(request):
     return render(request, 'client-dashboard-non.html')
 
 
+@login_required
 def detailHistory(request):
     return render(request, 'history/history-detail.html')
 
 
+@login_required
 def base(request):
     return render(request, 'base.html')
 
 
+@login_required
 def baseSignIn(request):
     return render(request, 'base_signin.html')
 
 
+@login_required
 def outputScenario(request):
     return render(request, 'output-user-scenario/output_scenario.html')
 
 
+@login_required
 def inputUserStory(request):
     return render(request, 'input-user/input.html')
 
 
+@login_required
 def history(request):
     return render(request, 'history/history.html')
 
 
+@login_required
 def userProfile(request):
     user_auth = auth.current_user['localId']
     users_value = db.child(f'users/{user_auth}').get()
