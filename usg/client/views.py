@@ -76,7 +76,7 @@ def postsignup(request):
     return redirect('client:signin')
 
 def reset(request):
-    return redirect('client:signin')
+    return render(request,'signin-reg/send.html')
 
 
 
