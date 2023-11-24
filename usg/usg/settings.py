@@ -155,4 +155,4 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '###################'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'client.CustomUser'
+# AUTH_USER_MODEL = 'client.CustomUser'

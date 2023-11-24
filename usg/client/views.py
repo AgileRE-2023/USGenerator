@@ -5,6 +5,8 @@ from django.shortcuts import redirect
 # from django.contrib import auth
 from django.core import serializers
 from client.models import User
+from django.views.decorators.cache import never_cache
+from django.contrib import messages
 # import json
 
 # Create your views here.
@@ -71,10 +73,10 @@ def postsignup(request):
     except:
         message="invalid credentials"
         return render(request, 'signin-reg/regist.html', {'message': message})
-    return render(request, 'signin-reg/signin.html')
+    return redirect('client:signin')
 
 def reset(request):
-    return render(request, 'signin-reg/send.html')
+    return redirect('client:signin')
 
 
 
