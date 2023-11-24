@@ -85,7 +85,8 @@ def send(request):
 
 
 def reset(request):
-    return render(request, 'signin-reg/reset.html')
+    return render(request,'signin-reg/send.html')
+
 
 
 def postreset(request):
