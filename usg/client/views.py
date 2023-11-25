@@ -45,7 +45,11 @@ def postsignin(request):
     session_id = user['idToken']
     request.session['uid'] = str(session_id)
     message = 'Login Success'
-    return render(request, "client-dashboard.html", {'message': message})
+    user_auth = auth.current_user['localId']
+    users_value = db.child(f'users/{user_auth}/userstories').get()
+    UserStory_values=users_value.val()
+    print(UserStory_values)
+    return render(request, "client-dashboard.html", {'message': message,'UserStory_values': UserStory_values})
 
 def logout(request):
     try:
@@ -82,7 +86,11 @@ def postreset(request):
 
 
 def dasboardClient(request):
-    return render(request, 'client-dashboard.html')
+    user_auth = auth.current_user['localId']
+    users_value = db.child(f'users/{user_auth}/userstories').get()
+    UserStory_values=users_value.val()
+    print(UserStory_values)
+    return render(request, 'client-dashboard.html', {'UserStory_values': UserStory_values})
 
 
 def dasboardClientNone(request):
