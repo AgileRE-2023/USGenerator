@@ -100,48 +100,78 @@ def postreset(request):
 
 
 def resetpw(request):
-    render(request, 'signin-reg/signin.html')
+    user = request.user
+    user_auth = auth.current_user['localId']
+    users_value = db.child(f'users/{user_auth}').get()
+    # user.fromJson(users_by_name)
+    return render(request, 'signin-reg/signin.html', {'user': users_value.val()})
 
 # Create your views here.
 
 
 def dashboardClient(request):
-    return render(request, 'client-dashboard.html')
+    user = request.user
+    user_auth = auth.current_user['localId']
+    users_value = db.child(f'users/{user_auth}').get()
+    # user.fromJson(users_by_name)
+    return render(request, 'client-dashboard.html', {'user': users_value.val()})
 
 
 # @login_required
 def dashboardClientNone(request):
+    user = request.user
     return render(request, 'client-dashboard-non.html')
 
 
 # @login_required
 def detailHistory(request):
-    return render(request, 'history/history-detail.html')
+    user = request.user
+    user_auth = auth.current_user['localId']
+    users_value = db.child(f'users/{user_auth}').get()
+    # user.fromJson(users_by_name)
+    return render(request, 'history/history-detail.html', {'user': users_value.val()})
 
 
 # @login_required
 def base(request):
-    return render(request, 'base.html')
+    user = request.user
+    user_auth = auth.current_user['localId']
+    users_value = db.child(f'users/{user_auth}').get()
+    # user.fromJson(users_by_name)
+    return render(request, 'base.html', {'user': users_value.val()})
 
 
 # @login_required
 def baseSignIn(request):
+    user = request.user
     return render(request, 'base_signin.html')
 
 
 # @login_required
 def outputScenario(request):
-    return render(request, 'output-user-scenario/output_scenario.html')
+    user = request.user
+    user_auth = auth.current_user['localId']
+    users_value = db.child(f'users/{user_auth}').get()
+    # user.fromJson(users_by_name)
+    return render(request, 'output-user-scenario/output_scenario.html', {'user': users_value.val()})
 
 
 # @login_required
 def inputUserStory(request):
-    return render(request, 'input-user/input.html')
+    user = request.user
+    user_auth = auth.current_user['localId']
+    users_value = db.child(f'users/{user_auth}').get()
+    # user.fromJson(users_by_name)
+    return render(request, 'input-user/input.html', {'user': users_value.val()})
 
 
 # @login_required
 def history(request):
-    return render(request, 'history/history.html')
+    user = request.user
+    user_auth = auth.current_user['localId']
+    users_value = db.child(f'users/{user_auth}').get()
+    # user.fromJson(users_by_name)
+    return render(request, 'history/history.html', {'user': users_value.val()})
 
 
 # @login_required
@@ -153,5 +183,9 @@ def userProfile(request):
     return render(request, 'user_profile/user-profile.html', {'user': users_value.val()})
 
 
-def editProfile(request):
-    return render(request, 'user_profile/edit-profile.html')
+def editProfile(request):user = request.user
+    user_auth = auth.current_user['localId']
+    users_value = db.child(f'users/{user_auth}').get()
+    # user.fromJson(users_by_name)
+    return render(request, 'user_profile/edit-profile.html', {'user': users_value.val()})
+

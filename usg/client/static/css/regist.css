@@ -237,28 +237,21 @@ i {
 .sign-up-button {
   background-color: #f29f05;
   width: 90%;
-  height: 30px;
+  height: 35px;
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.sign-up-button a {
-  color: #fff;
-  text-align: center;
-}
-
-.sign-up-button a:hover {
-  color: #F29F05;
+  color: #17193D;
+  transition: all .5s ease;
+  border: solid 1px #17193D;
 }
 
 .sign-up-button:hover {
   background-color: transparent;
-  border: solid 1px #f29f05;
-  transition: .5s ease;
-  -webkit-transition: .5s ease;
-  -moz-transition: .5s ease;
-  -ms-transition: .5s ease;
-  -o-transition: .5s ease;
+  border: solid 1px #17193D;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
 }
