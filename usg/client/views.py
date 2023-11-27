@@ -1,7 +1,6 @@
-from django.shortcuts import render
 import pyrebase
 # from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 # from django.contrib import auth
 from django.core import serializers
 from client.models import User
@@ -147,6 +146,7 @@ def history(request):
 
 # @login_required
 def userProfile(request):
+    user = request.user
     user_auth = auth.current_user['localId']
     users_value = db.child(f'users/{user_auth}').get()
     # user.fromJson(users_by_name)

@@ -1,11 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends "base_regist.html" %} {% block content %}
+<div class="signup-container">
+    <form action="/posteditprofile/" method="post" class="pb-3">
+        {% csrf_token %}
+        <h2 class="sign">Sign up</h2>
+        <div class="form-group mb-2">
+            <label class="form-label" for="name"><span>*Full Name<span></label>
+            <div class="form-content mb-2">
+                <div class="input-with-icon">
+                    <input type="name" class="form rounded" name="name" id="name" placeholder="Full Name" required />
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="form-label" for="email"><span>*Email<span></label>
+            <div class="form-content mb-2">
+                <div class="input-with-icon">
+                    <input type="email" class="form rounded" name="email" id="email" placeholder="Email" required />
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="form-label" for="phone"><span>*Phone Number<span></label>
+            <div class="form-content mb-2">
+                <div class="input-with-icon">
+                    <input type="tel" class="form rounded" name="phone" id="phone" placeholder="Phone Number"
+                        required />
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="form-label" for="password"><span>*Password<span></label>
+            <div class="form-content mb-2">
+                <div class="input-with-icon">
+                    <input type="password" class="form rounded" name="password" id="password" placeholder="Password"
+                        required />
+                    <span class="eye" onclick="showp()">
+                        <i id="hide1" class="fa fa-light fa-eye"></i>
+                        <i id="hide2" class="fa fa-sharp fa-light fa-eye-slash"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="form-label" for="password"><span>*Confirm Password<span></label>
+            <div class="form-content mb-2">
+                <div class="input-with-icon">
+                    <input type="password" class="form rounded" name="passwd" id="password"
+                        placeholder="Confirm Password" required />
+                </div>
+            </div>
+        </div>
+        <input class="sign-up-button" type="submit" value="Edit">
+    </form>
+</div>
+{%endblock%}
+
+{% block script %}
+<script>
+    function showp() {
+        var x = document.getElementById("password");
+        var y = document.getElementById("hide1");
+        var z = document.getElementById("hide2");
+        if (x.type === "password") {
+            x.type = "text";
+            y.style.display = "none";
+            z.style.display = "block";
+        } else {
+            x.type = "password";
+            y.style.display = "block";
+            z.style.display = "none";
+        }
+    }
+</script>
+{% endblock %}
