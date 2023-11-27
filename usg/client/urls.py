@@ -18,6 +18,7 @@ urlpatterns = [
     path('inputUserStory', views.inputUserStory, name='inputUserStory'),
     path('history', views.history, name='history'),
     path('user-profile', views.userProfile, name='user-profile'),
+    path('edit-profile', views.editProfile, name='edit-profile'),
 
     # Registration & Login
 
@@ -35,4 +36,6 @@ urlpatterns = [
     path('reset', views.reset, name='reset'),
     path('send', views.send, name='send'),
     path('postreset/', views.postreset, name='postreset')
+
+    #
 ]

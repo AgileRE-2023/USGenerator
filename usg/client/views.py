@@ -48,7 +48,7 @@ def postsignin(request):
         user = auth.sign_in_with_email_and_password(email, passwrd)
     except:
         messages.error(request, 'Invalid Email or Password')
-        return render(request, 'signin-reg/signin.html', {'email': email})
+        return redirect('client:signin')
     session_id = user['idToken']
     request.session['uid'] = str(session_id)
     messages.success(request, 'Login Success')
@@ -151,3 +151,7 @@ def userProfile(request):
     users_value = db.child(f'users/{user_auth}').get()
     # user.fromJson(users_by_name)
     return render(request, 'user_profile/user-profile.html', {'user': users_value.val()})
+
+
+def editProfile(request):
+    return render(request, 'user_profile/edit-profile.html')

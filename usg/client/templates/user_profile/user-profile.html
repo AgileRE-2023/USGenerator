@@ -13,15 +13,18 @@
       <p class="text-user">{{ user.phone }}</p>
       <p class="text-user">72 Project Complished</p>
       <div class="submit-button">
-        <button class="btn-submit-button" type="button">
-          <a href=""> Edit Profile </a>
-        </button>
-        <button class="btn-submit-button" type="button">
-          <a href="{% url 'client:signout' %}"> Sign Out </a>
-        </button>
+          <a href="{% url 'client:edit-profile' %}">
+            <button class="edit-button" type="button">
+              Edit Profile
+            </button>
+          </a>
+          <a href="{% url 'client:signout' %}">
+            <button class="logout-button" type="button">
+              Logout
+            </button>
+          </a>
       </div>
     </div>
-
     {% endblock %}
   </div>
 </div>
