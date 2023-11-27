@@ -183,9 +183,9 @@ def userProfile(request):
     return render(request, 'user_profile/user-profile.html', {'user': users_value.val()})
 
 
-def editProfile(request):user = request.user
+def editProfile(request):
+    user = request.user
     user_auth = auth.current_user['localId']
     users_value = db.child(f'users/{user_auth}').get()
     # user.fromJson(users_by_name)
     return render(request, 'user_profile/edit-profile.html', {'user': users_value.val()})
-
