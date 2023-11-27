@@ -16,8 +16,9 @@ body {
 }
 
 header {
-    background-color: #17193D;
+    background-color: #17193d;
     padding: 10px 15%;
+    height: 6rem;
 }
 
 header img {

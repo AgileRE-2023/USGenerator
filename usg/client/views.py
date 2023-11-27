@@ -23,6 +23,7 @@ auth = firebase.auth()
 db = firebase.database()
 
 
+@never_cache
 def signin(request):
     if request.user.is_authenticated:
         messages.info(request, 'You are Already Logged in.')
