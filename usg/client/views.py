@@ -23,7 +23,7 @@ auth = firebase.auth()
 db = firebase.database()
 
 
-@never_cache
+# @never_cache
 def signin(request):
     if request.user.is_authenticated:
         messages.info(request, 'You are Already Logged in.')
@@ -40,7 +40,7 @@ def regist(request):
     return render(request, 'signin-reg/regist.html')
 
 
-@never_cache
+# @never_cache
 def postsignin(request):
     email = request.POST.get('email')
     passwrd = request.POST.get('password')
@@ -50,7 +50,7 @@ def postsignin(request):
         messages.error(request, 'Invalid Email or Password')
         return redirect('client:signin')
     session_id = user['idToken']
-    request.session['uid'] = str(session_id)
+    request.session.uid = str(session_id)
     messages.success(request, 'Login Success')
     return redirect('client:dashboardClient')
 
@@ -76,7 +76,7 @@ def postsignup(request):
             {"email": email, "name": name, "phone": phone})
     except:
         message = "invalid credentials"
-        return redirect('client:regist', {'message': message})
+        return redirect('client:regist')
     return redirect('client:signin')
 
 
@@ -190,3 +190,58 @@ def editProfile(request):
     users_value = db.child(f'users/{user_auth}').get()
     # user.fromJson(users_by_name)
     return render(request, 'user_profile/edit-profile.html', {'user': users_value.val()})
+
+
+def posteditprofile(request):
+    # user_auth = auth.current_user['localId']
+    # user = request.user
+    # if request.method == 'POST':
+    #     if user.is_authenticated:
+    #         name = request.POST.get('name')
+    #         email = request.POST.get('email')
+    #         phone = request.POST.get('phone')
+
+    #         # Assuming 'name', 'email', and 'phone' are fields in your user model
+    #         db.child("users").child(f'users/{user_auth}').update({
+    #             "email": email,
+    #             "name": name,
+    #             "phone": phone
+    #         })
+    #         return redirect('client:user-profile')
+
+    # return redirect('client:edit-profile')
+    # if request.method == 'POST':
+    #     # Assuming you have a way to get the user ID
+    #     user_auth = auth.current_user['localId']
+    #     name = request.POST.get('name')
+    #     email = request.POST.get('email')
+    #     phone = request.POST.get('phone')
+
+    #     # Update user profile in the Realtime Database
+    #     db.child("users").child(user_auth['localId']).update({
+    #         "email": email,
+    #         "name": name,
+    #         "phone": phone
+    #     })
+
+    #     messages.success(request, 'Profile updated successfully!')
+    #     return redirect('client:user-profile')
+
+    # return redirect('client:edit-profile')
+    if request.method == 'POST':
+        # Assuming auth.current_user provides the user information
+        user_auth = auth.current_user
+        if 'localId' in user_auth:
+            name = request.POST.get('name')
+            email = request.POST.get('email')
+            phone = request.POST.get('phone')
+            # Update user profile in the Realtime Database
+            db.child("users").child(user_auth['localId']).update({
+                "email": email,
+                "name": name,
+                "phone": phone
+            })
+            messages.success(request, 'Profile updated successfully!')
+            return redirect('client:user-profile')
+        messages.error(request, 'Failed to update profile.')
+        return redirect('client:edit-profile')

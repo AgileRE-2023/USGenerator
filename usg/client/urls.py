@@ -19,6 +19,7 @@ urlpatterns = [
     path('history', views.history, name='history'),
     path('user-profile', views.userProfile, name='user-profile'),
     path('edit-profile', views.editProfile, name='edit-profile'),
+    path('posteditprofile/', views.posteditprofile),
 
     # Registration & Login
 

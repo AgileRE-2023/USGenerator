@@ -1,8 +1,8 @@
-{% extends "base_regist.html" %} {% block content %}
+{% extends "base_edit.html" %} {% block content %}
 <div class="signup-container">
     <form action="/posteditprofile/" method="post" class="pb-3">
         {% csrf_token %}
-        <h2 class="sign">Sign up</h2>
+        <h2 class="sign">Edit Profile</h2>
         <div class="form-group mb-2">
             <label class="form-label" for="name"><span>*Full Name<span></label>
             <div class="form-content mb-2">
@@ -15,7 +15,8 @@
             <label class="form-label" for="email"><span>*Email<span></label>
             <div class="form-content mb-2">
                 <div class="input-with-icon">
-                    <input type="email" class="form rounded" name="email" id="email" value="{{ user.email }}" required />
+                    <input type="email" class="form rounded" name="email" id="email" value="{{ user.email }}"
+                        required />
                 </div>
             </div>
         </div>
@@ -23,12 +24,11 @@
             <label class="form-label" for="phone"><span>*Phone Number<span></label>
             <div class="form-content mb-2">
                 <div class="input-with-icon">
-                    <input type="tel" class="form rounded" name="phone" id="phone" value="{{ user.phone }}"
-                        required />
+                    <input type="tel" class="form rounded" name="phone" id="phone" value="{{ user.phone }}" required />
                 </div>
             </div>
         </div>
-        <input class="sign-up-button" type="submit" value="Edit">
+        <button class="edit-button" type="submit">Save Changes</button>
     </form>
 </div>
 {%endblock%}
