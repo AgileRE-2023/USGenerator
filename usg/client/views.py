@@ -229,7 +229,6 @@ def posteditprofile(request):
 
     # return redirect('client:edit-profile')
     if request.method == 'POST':
-        # Assuming auth.current_user provides the user information
         user_auth = auth.current_user
         if 'localId' in user_auth:
             name = request.POST.get('name')
