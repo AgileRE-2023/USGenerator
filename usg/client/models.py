@@ -23,3 +23,24 @@ class User:
             'name': self.name,
             'phone': self.phone
         }
+
+
+class UserStory:
+    def __init__(self, idUserStory=None, nameUserStory=None,ProjectTitle=None,inputParagraf=None):
+        self.idUserStory = idUserStory
+        # self.nameUserStory = nameUserStory
+        self.ProjectTitle= ProjectTitle
+        self.inputParagraf= inputParagraf
+
+    def fromJson(self, json):
+        # self.idUserStory = json['id']
+        # self.nameUserStory = json['name']        
+        self.ProjectTitle = json['ProjectTitle']
+        self.inputParagraf = json['inputParagraf']
+
+    def toJson(self):
+        return {
+            'ProjectTitle': self.ProjectTitle,
+            'inputParagraf': self.inputParagraf,
+        }
+

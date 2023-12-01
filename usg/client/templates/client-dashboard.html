@@ -40,7 +40,10 @@
             <th>Result</th>
           </tr>
         </thead>
+        <!-- batas awal -->
 
+        <!-- {{ UserStory_values}} -->
+        {%if UserStory_values%}
         <tbody>
           <tr>
             <td>001</td>
@@ -73,7 +76,13 @@
             </td>
           </tr>
         </tbody>
+        {% else %}
+        <tbody></tbody>
+        <h1>No Project Exist</h1>
+        {% endif%}
+        <!-- Batas akhir -->
       </table>
+
     </div>
   </div>
 </div>

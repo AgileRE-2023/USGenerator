@@ -15,11 +15,14 @@ urlpatterns = [
     path('base', views.base, name='base'),
     path('baseSignIn', views.baseSignIn, name='base-signin'),
 
-    path('inputUserStory', views.inputUserStory, name='inputUserStory'),
     path('history', views.history, name='history'),
     path('user-profile', views.userProfile, name='user-profile'),
     path('edit-profile', views.editProfile, name='edit-profile'),
     path('posteditprofile/', views.posteditprofile),
+
+    # Input User Story
+    path('inputUserStory', views.inputUserStory, name='inputUserStory'),
+    path('postInputStory/', views.postInputStory),
 
     # Registration & Login
 

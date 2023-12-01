@@ -46,7 +46,15 @@ header a {
 .Teks-judul {
   font-size: 28px;
   font-weight: bold;
+  color: #17193D;
+  font-family: 'Poppins', sans-serif;
   margin-top: 20px;
+  padding-top: 55px;
+  padding-bottom: 40px;
+}
+
+.form-inline {
+  display: inline-flex;
 }
 
 .form {
@@ -56,8 +64,23 @@ header a {
   width: 100%;
 }
 
-.form-inline {
-  display: inline-flex;
+.form-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+#ProjectTitle {
+  border-radius: 20px;
+  width: 509px;
+  border: solid;
+}
+
+.sr-only {
+  font-size: 18px;
+  font-weight: bold;
+  color: #17193D;
+  font-family: 'Poppins', sans-serif;
+  padding-right: 20px;
 }
 
 #inputProject {
@@ -77,12 +100,11 @@ header a {
   border-radius: 20px;
   width: 630px;
   border: solid;
-  background-color: #f2fbee;
   height: 350px;
   padding: 15px;
 }
 
-.btn-submit-button {
+.submit-button {
   font-family: 'Poppins';
   background-color: #F29F05;
   width: 150px;
@@ -97,16 +119,19 @@ header a {
   border: 1px solid #F29F05;
 }
 
-.btn-submit-button:hover {
+.submit-button:hover {
   background: transparent;
   transition: .3s ease;
   -webkit-transition: .3s ease;
   -moz-transition: .3s ease;
   -ms-transition: .3s ease;
   -o-transition: .3s ease;
+  background-color: #17193D;
+  border: 1px solid #17193D;
+  color: #fff;
 }
 
-.btn-submit-button a {
+.submit-button a {
   text-decoration: none;
   color: #fff;
   transition: .3s ease;
@@ -116,7 +141,7 @@ header a {
   -o-transition: .3s ease;
 }
 
-.btn-submit-button a:hover {
+.submit-button a:hover {
   text-decoration: none;
   color: #F29F05;
 }
@@ -143,6 +168,13 @@ header a {
 
 .hidden {
   display: none;
+}
+
+#user-story-container h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #17193D;
+  font-family: 'Poppins', sans-serif;
 }
 
 .container-user-story {

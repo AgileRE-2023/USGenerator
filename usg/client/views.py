@@ -3,7 +3,8 @@ import pyrebase
 from django.shortcuts import redirect, render
 # from django.contrib import auth
 from django.core import serializers
-from client.models import User
+from client.models import UserStory
+import uuid
 from django.views.decorators.cache import never_cache
 from django.contrib import messages
 # import json
@@ -50,12 +51,10 @@ def postsignin(request):
         messages.error(request, 'Invalid Email or Password')
         return redirect('client:signin')
     session_id = user['idToken']
-    request.session.uid = str(session_id)
-    messages.success(request, 'Login Success')
+    request.session['uid'] = str(session_id)
     return redirect('client:dashboardClient')
 
 
-# @login_required
 def signout(request):
     try:
         auth.current_user = None
@@ -114,8 +113,11 @@ def dashboardClient(request):
     user = request.user
     user_auth = auth.current_user['localId']
     users_value = db.child(f'users/{user_auth}').get()
+    users_stories = db.child(f'users/{user_auth}/userstories').get()
+    UserStory_values = users_stories.val()
+    # print(UserStory_values)
     # user.fromJson(users_by_name)
-    return render(request, 'client-dashboard.html', {'user': users_value.val()})
+    return render(request, 'client-dashboard.html', {'user': users_value.val(), 'UserStory_values': UserStory_values})
 
 
 # @login_required
@@ -164,6 +166,96 @@ def inputUserStory(request):
     users_value = db.child(f'users/{user_auth}').get()
     # user.fromJson(users_by_name)
     return render(request, 'input-user/input.html', {'user': users_value.val()})
+
+# def postInputStory(request):
+#     ProjectTitle = request.POST.get('ProjectTitle')
+#     inputParagraf = request.POST.get('inputParagraf')
+#     idtoken=request.session['uid']
+#     a=auth.get_account_info(idtoken)
+#     a=a['users']
+#     # a=a[0]
+#     a=a[0]['localId']
+#     print(str(a))
+#     data= {
+#         'userStory' : {
+#             "ProjectTitle":ProjectTitle,
+#             "inputParagraf":inputParagraf
+#         }
+#     }
+#     db.child('users').child(str(a)).update(data)
+
+#     # result = db.put('/UserStory', UserStory, data)
+#     return render(request, 'input-user/input.html')
+
+
+def postInputStory(request):
+    ProjectTitle = request.POST.get('ProjectTitle')
+    inputParagraf = request.POST.get('inputParagraf')
+    idtoken = request.session['uid']
+    user_info = auth.get_account_info(idtoken)
+
+    if 'users' in user_info:
+        users_list = user_info['users']
+        if users_list:
+            user_local_id = users_list[0].get('localId')
+            print(user_local_id)
+            if user_local_id:
+                # data = {
+                #     'userStory': {
+                #         "ProjectTitle": ProjectTitle,
+                #         "inputParagraf": inputParagraf
+                #     }
+                # }
+                # data = /
+                db.child('users').child(user_local_id).child('userstories').push(
+                    {"ProjectTitle": ProjectTitle, "inputParagraf": inputParagraf})
+                print("Data updated successfully")
+                return render(request, 'input-user/input.html')
+
+# def postInputStory(request):
+#     ProjectTitle = request.POST.get('ProjectTitle')
+#     inputParagraf = request.POST.get('inputParagraf')
+#     idtoken=request.session['uid']
+#     a=auth.get_account_info(idtoken)
+#     a=a['users']
+#     # a=a[0]
+#     a=a[0]['localId']
+#     print(str(a))
+#     data= {
+#         'userStory' : {
+#             "ProjectTitle":ProjectTitle,
+#             "inputParagraf":inputParagraf
+#         }
+#     }
+#     db.child('users').child(str(a)).update(data)
+
+#     # result = db.put('/UserStory', UserStory, data)
+#     return render(request, 'input-user/input.html')
+
+
+def postInputStory(request):
+    ProjectTitle = request.POST.get('ProjectTitle')
+    inputParagraf = request.POST.get('inputParagraf')
+    idtoken = request.session['uid']
+    user_info = auth.get_account_info(idtoken)
+
+    if 'users' in user_info:
+        users_list = user_info['users']
+        if users_list:
+            user_local_id = users_list[0].get('localId')
+            print(user_local_id)
+            if user_local_id:
+                # data = {
+                #     'userStory': {
+                #         "ProjectTitle": ProjectTitle,
+                #         "inputParagraf": inputParagraf
+                #     }
+                # }
+                # data = /
+                db.child('users').child(user_local_id).child('userstories').push(
+                    {"ProjectTitle": ProjectTitle, "inputParagraf": inputParagraf})
+                print("Data updated successfully")
+                return render(request, 'input-user/input.html')
 
 
 # @login_required
