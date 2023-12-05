@@ -7,6 +7,8 @@ from client.models import UserStory
 import uuid
 from django.views.decorators.cache import never_cache
 from django.contrib import messages
+from django.db import models
+
 # import json
 
 # Create your views here.
@@ -110,14 +112,58 @@ def resetpw(request):
 
 
 def dashboardClient(request):
+    from datetime import datetime
     user = request.user
     user_auth = auth.current_user['localId']
     users_value = db.child(f'users/{user_auth}').get()
     users_stories = db.child(f'users/{user_auth}/userstories').get()
+
+
+    # get the id of user stories, stll dictionary need to convert to list
+    users_stories_title = db.child(f'users/{user_auth}/userstories').shallow().get()
+    # convert to list
+    arr_users_stories_title = list(users_stories_title.val())
+    # sort the id
+    arr_users_stories_title.sort()
+
+
+    # get the data for dashboard
+    # get the ProjectTitle
+    projectTitle=[]
+    for i in arr_users_stories_title:
+        projectTemp=db.child(f'users/{user_auth}/userstories/{i}').child('ProjectTitle').get().val()
+        projectTitle.append(projectTemp)
+    print(projectTitle)
+    # get the user story
+    userStories=[]
+    for i in arr_users_stories_title:
+        projectTemp=db.child(f'users/{user_auth}/userstories/{i}').child('inputParagraf').get().val()
+        userStories.append(projectTemp)
+    print(userStories)
+
+    # get the time stamp
+    timestamp=[]
+    for i in arr_users_stories_title:
+        projectTemp=db.child(f'users/{user_auth}/userstories/{i}').child('created_at').get().val()
+        # projectTemp=projectTemp
+        timestamp.append(projectTemp)
+    # print(timestamp)
+    # for i in arr_users_stories_title:
+    #     i=float(i)
+    #     projectTemp=datetime.datetime.fromtimestamp(i).strftime('%H-%M %d-%m-%Y')
+    #     timestamp.append(projectTemp)
+    print(timestamp)
+    # end get data
+
+
+    # zip the data
+    zip_data=zip(arr_users_stories_title,projectTitle,userStories,timestamp)
+
     UserStory_values = users_stories.val()
-    # print(UserStory_values)
+    UserStory_values_title = users_stories_title.val()
+    print(arr_users_stories_title)
     # user.fromJson(users_by_name)
-    return render(request, 'client-dashboard.html', {'user': users_value.val(), 'UserStory_values': UserStory_values})
+    return render(request, 'client-dashboard.html', {'user': users_value.val(), 'UserStory_values': UserStory_values,'zip_data':zip_data})
 
 
 # @login_required
@@ -132,7 +178,23 @@ def detailHistory(request):
     user_auth = auth.current_user['localId']
     users_value = db.child(f'users/{user_auth}').get()
     # user.fromJson(users_by_name)
-    return render(request, 'history/history-detail.html', {'user': users_value.val()})
+
+    # get timestamp    
+    # get the id of user stories, stll dictionary need to convert to list
+    users_stories_title = db.child(f'users/{user_auth}/userstories').shallow().get()
+    # convert to list
+    arr_users_stories_title = list(users_stories_title.val())
+    # sort the id
+    arr_users_stories_title.sort()
+    # get the time stamp
+    timestamp=[]
+    for i in arr_users_stories_title:
+        projectTemp=db.child(f'users/{user_auth}/userstories/{i}').child('created_at').get().val()
+        # projectTemp=projectTemp
+        timestamp.append(projectTemp)
+    print(timestamp)
+
+    return render(request, 'history/history-detail.html', {'user': users_value.val(),'timestamp':timestamp})
 
 
 # @login_required
@@ -188,29 +250,35 @@ def inputUserStory(request):
 #     return render(request, 'input-user/input.html')
 
 
-def postInputStory(request):
-    ProjectTitle = request.POST.get('ProjectTitle')
-    inputParagraf = request.POST.get('inputParagraf')
-    idtoken = request.session['uid']
-    user_info = auth.get_account_info(idtoken)
+# def postInputStory(request):
+#     import time
+#     from datetime import datetime, timezone
+#     import pytz
 
-    if 'users' in user_info:
-        users_list = user_info['users']
-        if users_list:
-            user_local_id = users_list[0].get('localId')
-            print(user_local_id)
-            if user_local_id:
-                # data = {
-                #     'userStory': {
-                #         "ProjectTitle": ProjectTitle,
-                #         "inputParagraf": inputParagraf
-                #     }
-                # }
-                # data = /
-                db.child('users').child(user_local_id).child('userstories').push(
-                    {"ProjectTitle": ProjectTitle, "inputParagraf": inputParagraf})
-                print("Data updated successfully")
-                return render(request, 'input-user/input.html')
+#     ProjectTitle = request.POST.get('ProjectTitle')
+#     inputParagraf = request.POST.get('inputParagraf')
+#     idtoken = request.session['uid']
+#     user_info = auth.get_account_info(idtoken)
+    
+#     if 'users' in user_info:
+#         users_list = user_info['users']
+#         if users_list:
+#             user_local_id = users_list[0].get('localId')
+#             print(user_local_id)
+#             if user_local_id:
+#                 # data = {
+#                 #     'userStory': {
+#                 #         "ProjectTitle": ProjectTitle,
+#                 #         "inputParagraf": inputParagraf
+#                 #     }
+#                 # }
+#                 # data = /
+#                 db.child('users').child(user_local_id).child('userstories').push(
+#                     {"ProjectTitle": ProjectTitle, "inputParagraf": inputParagraf,"created_at":created_at})
+                
+#                 print("testestes")
+#                 # print("Data updated successfully")
+#                 return render(request, 'input-user/input.html')
 
 # def postInputStory(request):
 #     ProjectTitle = request.POST.get('ProjectTitle')
@@ -234,11 +302,16 @@ def postInputStory(request):
 
 
 def postInputStory(request):
+    import time
+    from datetime import datetime, timezone
+    import pytz
     ProjectTitle = request.POST.get('ProjectTitle')
     inputParagraf = request.POST.get('inputParagraf')
     idtoken = request.session['uid']
     user_info = auth.get_account_info(idtoken)
-
+    tz=pytz.timezone('Asia/Jakarta')
+    created_at = datetime.now(timezone.utc).astimezone(tz).isoformat()
+    print(created_at)
     if 'users' in user_info:
         users_list = user_info['users']
         if users_list:
@@ -253,7 +326,7 @@ def postInputStory(request):
                 # }
                 # data = /
                 db.child('users').child(user_local_id).child('userstories').push(
-                    {"ProjectTitle": ProjectTitle, "inputParagraf": inputParagraf})
+                    {"ProjectTitle": ProjectTitle, "inputParagraf": inputParagraf,"created_at":created_at})
                 print("Data updated successfully")
                 return render(request, 'input-user/input.html')
 

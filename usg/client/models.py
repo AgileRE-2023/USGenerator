@@ -26,21 +26,24 @@ class User:
 
 
 class UserStory:
-    def __init__(self, idUserStory=None, nameUserStory=None,ProjectTitle=None,inputParagraf=None):
-        self.idUserStory = idUserStory
+    def __init__(self, idUserStory=None, nameUserStory=None,ProjectTitle=None,inputParagraf=None,created_at=None):
+        # self.idUserStory = idUserStory
         # self.nameUserStory = nameUserStory
         self.ProjectTitle= ProjectTitle
         self.inputParagraf= inputParagraf
+        self.created_at = created_at
 
     def fromJson(self, json):
         # self.idUserStory = json['id']
         # self.nameUserStory = json['name']        
         self.ProjectTitle = json['ProjectTitle']
         self.inputParagraf = json['inputParagraf']
+        self.created_at = json['created_at']
 
     def toJson(self):
         return {
             'ProjectTitle': self.ProjectTitle,
             'inputParagraf': self.inputParagraf,
+            'created_at': self.created_at
         }
 
