@@ -1,13 +1,10 @@
 import pyrebase
+import pickle
 # from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 # from django.contrib import auth
-from django.core import serializers
-from client.models import UserStory
-import uuid
-from django.views.decorators.cache import never_cache
 from django.contrib import messages
-from django.db import models
+
 
 # import json
 
@@ -25,6 +22,8 @@ firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 db = firebase.database()
 
+#load nlp model
+model_us = pickle.load(open('client/model.sav', 'rb'))
 
 # @never_cache
 def signin(request):
@@ -229,76 +228,28 @@ def inputUserStory(request):
     # user.fromJson(users_by_name)
     return render(request, 'input-user/input.html', {'user': users_value.val()})
 
-# def postInputStory(request):
-#     ProjectTitle = request.POST.get('ProjectTitle')
-#     inputParagraf = request.POST.get('inputParagraf')
-#     idtoken=request.session['uid']
-#     a=auth.get_account_info(idtoken)
-#     a=a['users']
-#     # a=a[0]
-#     a=a[0]['localId']
-#     print(str(a))
-#     data= {
-#         'userStory' : {
-#             "ProjectTitle":ProjectTitle,
-#             "inputParagraf":inputParagraf
-#         }
-#     }
-#     db.child('users').child(str(a)).update(data)
+def nlpUserStory(request):
+    user = request.user
+    user_auth = auth.current_user['localId']
+    users_value = db.child(f'users/{user_auth}').get()
+    users_stories = db.child(f'users/{user_auth}/userstories').get()
 
-#     # result = db.put('/UserStory', UserStory, data)
-#     return render(request, 'input-user/input.html')
+    # get the id of user stories, stll dictionary need to convert to list
+    users_stories_title = db.child(f'users/{user_auth}/userstories').shallow().get()
+    # convert to list
+    arr_users_stories_title = list(users_stories_title.val())
+    # sort the id
+    arr_users_stories_title.sort()
 
 
-# def postInputStory(request):
-#     import time
-#     from datetime import datetime, timezone
-#     import pytz
-
-#     ProjectTitle = request.POST.get('ProjectTitle')
-#     inputParagraf = request.POST.get('inputParagraf')
-#     idtoken = request.session['uid']
-#     user_info = auth.get_account_info(idtoken)
+    # get the data for dashboard
+    # get the user story
+    userStories=[]
+    ValuePar=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[arr_users_stories_title.length-1]}').child('inputParagraf').get().val()
     
-#     if 'users' in user_info:
-#         users_list = user_info['users']
-#         if users_list:
-#             user_local_id = users_list[0].get('localId')
-#             print(user_local_id)
-#             if user_local_id:
-#                 # data = {
-#                 #     'userStory': {
-#                 #         "ProjectTitle": ProjectTitle,
-#                 #         "inputParagraf": inputParagraf
-#                 #     }
-#                 # }
-#                 # data = /
-#                 db.child('users').child(user_local_id).child('userstories').push(
-#                     {"ProjectTitle": ProjectTitle, "inputParagraf": inputParagraf,"created_at":created_at})
-                
-#                 print("testestes")
-#                 # print("Data updated successfully")
-#                 return render(request, 'input-user/input.html')
+    
+    return render(request, 'input-user/output.html', {'user': users_value.val()})
 
-# def postInputStory(request):
-#     ProjectTitle = request.POST.get('ProjectTitle')
-#     inputParagraf = request.POST.get('inputParagraf')
-#     idtoken=request.session['uid']
-#     a=auth.get_account_info(idtoken)
-#     a=a['users']
-#     # a=a[0]
-#     a=a[0]['localId']
-#     print(str(a))
-#     data= {
-#         'userStory' : {
-#             "ProjectTitle":ProjectTitle,
-#             "inputParagraf":inputParagraf
-#         }
-#     }
-#     db.child('users').child(str(a)).update(data)
-
-#     # result = db.put('/UserStory', UserStory, data)
-#     return render(request, 'input-user/input.html')
 
 
 def postInputStory(request):
@@ -318,17 +269,10 @@ def postInputStory(request):
             user_local_id = users_list[0].get('localId')
             print(user_local_id)
             if user_local_id:
-                # data = {
-                #     'userStory': {
-                #         "ProjectTitle": ProjectTitle,
-                #         "inputParagraf": inputParagraf
-                #     }
-                # }
-                # data = /
                 db.child('users').child(user_local_id).child('userstories').push(
                     {"ProjectTitle": ProjectTitle, "inputParagraf": inputParagraf,"created_at":created_at})
                 print("Data updated successfully")
-                return render(request, 'input-user/input.html')
+                return render(request, 'input-user/output.html')
 
 
 # @login_required
@@ -358,41 +302,6 @@ def editProfile(request):
 
 
 def posteditprofile(request):
-    # user_auth = auth.current_user['localId']
-    # user = request.user
-    # if request.method == 'POST':
-    #     if user.is_authenticated:
-    #         name = request.POST.get('name')
-    #         email = request.POST.get('email')
-    #         phone = request.POST.get('phone')
-
-    #         # Assuming 'name', 'email', and 'phone' are fields in your user model
-    #         db.child("users").child(f'users/{user_auth}').update({
-    #             "email": email,
-    #             "name": name,
-    #             "phone": phone
-    #         })
-    #         return redirect('client:user-profile')
-
-    # return redirect('client:edit-profile')
-    # if request.method == 'POST':
-    #     # Assuming you have a way to get the user ID
-    #     user_auth = auth.current_user['localId']
-    #     name = request.POST.get('name')
-    #     email = request.POST.get('email')
-    #     phone = request.POST.get('phone')
-
-    #     # Update user profile in the Realtime Database
-    #     db.child("users").child(user_auth['localId']).update({
-    #         "email": email,
-    #         "name": name,
-    #         "phone": phone
-    #     })
-
-    #     messages.success(request, 'Profile updated successfully!')
-    #     return redirect('client:user-profile')
-
-    # return redirect('client:edit-profile')
     if request.method == 'POST':
         user_auth = auth.current_user
         if 'localId' in user_auth:

@@ -24,6 +24,7 @@ urlpatterns = [
     path('inputUserStory', views.inputUserStory, name='inputUserStory'),
     path('postInputStory/', views.postInputStory),
 
+
     # Registration & Login
 
     path('', views.signin, name='signin'),
@@ -32,6 +33,7 @@ urlpatterns = [
 
     path('regist', views.regist, name='regist'),
     path('postsignup/', views.postsignup),
+    
 
     path('signout', views.signout, name='signout'),
 
