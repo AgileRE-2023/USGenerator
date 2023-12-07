@@ -1,5 +1,6 @@
 import pyrebase
 import pickle
+import json
 # from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 # from django.contrib import auth
@@ -161,18 +162,8 @@ def dashboardClient(request):
 
     # zip the data
     zip_data=zip(arr_users_stories_title,projectTitle,userStories,timestamp)
-
-
-    model_us = pickle.load(open('model.sav', 'rb'))
     UserStory_values = users_stories.val()
-    UserStory_values_title = users_stories_title.val()
-    lenValue = len(arr_users_stories_title)
-    print(arr_users_stories_title)
-    ValuePar=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('inputParagraf').get().val()
-    print("value par ", ValuePar)
-    print(lenValue)
-    outputStory = model_us.nlp_userstory(ValuePar)
-    print(format(outputStory))
+
 
     return render(request, 'client-dashboard.html', {'user': users_value.val(), 'UserStory_values': UserStory_values,'zip_data':zip_data})
 
@@ -240,31 +231,31 @@ def inputUserStory(request):
     # user.fromJson(users_by_name)
     return render(request, 'input-user/input.html', {'user': users_value.val()})
 
-def nlpUserStory(request):
-    user = request.user
-    user_auth = auth.current_user['localId']
-    users_value = db.child(f'users/{user_auth}').get()
-    users_stories = db.child(f'users/{user_auth}/userstories').get()
+# def nlpUserStory(request):
+#     user = request.user
+#     user_auth = auth.current_user['localId']
+#     users_value = db.child(f'users/{user_auth}').get()
+#     users_stories = db.child(f'users/{user_auth}/userstories').get()
 
-    # get the id of user stories, stll dictionary need to convert to list
-    users_stories_title = db.child(f'users/{user_auth}/userstories').shallow().get()
-    # convert to list
-    arr_users_stories_title = list(users_stories_title.val())
-    # sort the id
-    arr_users_stories_title.sort()
+#     # get the id of user stories, stll dictionary need to convert to list
+#     users_stories_title = db.child(f'users/{user_auth}/userstories').shallow().get()
+#     # convert to list
+#     arr_users_stories_title = list(users_stories_title.val())
+#     # sort the id
+#     arr_users_stories_title.sort()
 
 
-    # get the data for dashboard
-    # get the user story
-    lenValue = len(arr_users_stories_title)
-    print(arr_users_stories_title)
-    ValuePar=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('inputParagraf').get().val()
-    print("value par ", ValuePar)
-    print(lenValue)
-    outputStory = model_us([ValuePar])
-    print(format(outputStory))
+#     # get the data for dashboard
+#     # get the user story
+#     lenValue = len(arr_users_stories_title)
+#     print(arr_users_stories_title)
+#     ValuePar=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('inputParagraf').get().val()
+#     print("value par ", ValuePar)
+#     print(lenValue)
+#     outputStory = model_us([ValuePar])
+#     print(format(outputStory))
     
-    return render(request, 'input-user/output.html', {'user': users_value.val()})
+#     return render(request, 'input-user/output.html', {'user': users_value.val()})
 
 
 
@@ -274,6 +265,7 @@ def postInputStory(request):
     import pytz
     ProjectTitle = request.POST.get('ProjectTitle')
     inputParagraf = request.POST.get('inputParagraf')
+    # users_value = db.child(f'users/{user_auth}').get()
     idtoken = request.session['uid']
     user_info = auth.get_account_info(idtoken)
     tz=pytz.timezone('Asia/Jakarta')
@@ -288,7 +280,31 @@ def postInputStory(request):
                 db.child('users').child(user_local_id).child('userstories').push(
                     {"ProjectTitle": ProjectTitle, "inputParagraf": inputParagraf,"created_at":created_at})
                 print("Data updated successfully")
-                return render(request, 'input-user/output.html')
+                model_us = pickle.load(open('model.sav', 'rb'))
+                user_auth = auth.current_user['localId']
+
+                 # get the id of user stories, stll dictionary need to convert to list
+                users_stories_title = db.child(f'users/{user_auth}/userstories').shallow().get()
+                # convert to list
+                arr_users_stories_title = list(users_stories_title.val())
+                # sort the id
+                arr_users_stories_title.sort()
+                # model nlp
+                lenValue = len(arr_users_stories_title)
+                print(arr_users_stories_title)
+                ValuePar=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('inputParagraf').get().val()
+                print("value par ", ValuePar)
+                print(lenValue)
+                outputStory = model_us.nlp_userstory(ValuePar)
+                # print(format(outputStory))
+                # push database
+                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).push(
+                    {"outputStory": outputStory})
+                # projectTemp=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').get().val()
+                projectTemp=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child().child('outputStory').get().val()
+                # projectTemp=list(projectTemp)
+                print(projectTemp)
+                return render(request, 'input-user/output.html',{'projectTemp':projectTemp})
 
 
 # @login_required
