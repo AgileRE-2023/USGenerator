@@ -90,7 +90,7 @@ class UserStory:
             who = list(set(who))
             why = list(set(why))
             what = list(set(what))
-            useStoryVal.append((who, what, why))
+            useStoryVal.append({'who' : who, 'what' : what, 'why' : why})
             print("Kalimat:", sentence)
             print("Aspect of Who:", who)
             print("Aspect of What:", what)
