@@ -8,6 +8,7 @@ import uuid
 from django.views.decorators.cache import never_cache
 from django.contrib import messages
 from django.db import models
+from django.core.paginator import Paginator
 
 # import json
 
@@ -159,6 +160,10 @@ def dashboardClient(request):
     # zip the data
     zip_data=zip(arr_users_stories_title,projectTitle,userStories,timestamp)
 
+    paginate= Paginator(zip_data,5)
+    page= request.GET.get('page')
+
+
     UserStory_values = users_stories.val()
     UserStory_values_title = users_stories_title.val()
     print(arr_users_stories_title)
@@ -173,7 +178,7 @@ def dashboardClientNone(request):
 
 
 # @login_required
-def detailHistory(request):
+def detailHistory(request, id):
     user = request.user
     user_auth = auth.current_user['localId']
     users_value = db.child(f'users/{user_auth}').get()
@@ -181,17 +186,18 @@ def detailHistory(request):
 
     # get timestamp    
     # get the id of user stories, stll dictionary need to convert to list
-    users_stories_title = db.child(f'users/{user_auth}/userstories').shallow().get()
+    # users_stories_title = db.child(f'users/{user_auth}/userstories').shallow().get()
     # convert to list
-    arr_users_stories_title = list(users_stories_title.val())
+    # arr_users_stories_title = list(users_stories_title.val())
     # sort the id
-    arr_users_stories_title.sort()
+    # arr_users_stories_title.sort()
     # get the time stamp
-    timestamp=[]
-    for i in arr_users_stories_title:
-        projectTemp=db.child(f'users/{user_auth}/userstories/{i}').child('created_at').get().val()
-        # projectTemp=projectTemp
-        timestamp.append(projectTemp)
+    # timestamp=[]
+    # for i in arr_users_stories_title:
+    #     projectTemp=db.child(f'users/{user_auth}/userstories/{i}').child('created_at').get().val()
+    #     # projectTemp=projectTemp
+    #     timestamp.append(projectTemp)
+    timestamp=db.child(f'users/{user_auth}/userstories/{id}').child('created_at').get().val()
     print(timestamp)
 
     return render(request, 'history/history-detail.html', {'user': users_value.val(),'timestamp':timestamp})
