@@ -23,7 +23,10 @@ auth = firebase.auth()
 db = firebase.database()
 
 #load nlp model
-model_us = pickle.load(open('client/model.sav', 'rb'))
+try:
+    model_us = pickle.load(open('client/model.sav', 'rb'))
+except Exception as e:
+    print("Error loading the model:", str(e))
 
 # @never_cache
 def signin(request):
@@ -112,6 +115,7 @@ def resetpw(request):
 
 def dashboardClient(request):
     from datetime import datetime
+    
     user = request.user
     user_auth = auth.current_user['localId']
     users_value = db.child(f'users/{user_auth}').get()
@@ -158,10 +162,18 @@ def dashboardClient(request):
     # zip the data
     zip_data=zip(arr_users_stories_title,projectTitle,userStories,timestamp)
 
+
+    model_us = pickle.load(open('model.sav', 'rb'))
     UserStory_values = users_stories.val()
     UserStory_values_title = users_stories_title.val()
+    lenValue = len(arr_users_stories_title)
     print(arr_users_stories_title)
-    # user.fromJson(users_by_name)
+    ValuePar=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('inputParagraf').get().val()
+    print("value par ", ValuePar)
+    print(lenValue)
+    outputStory = model_us.nlp_userstory(ValuePar)
+    print(format(outputStory))
+
     return render(request, 'client-dashboard.html', {'user': users_value.val(), 'UserStory_values': UserStory_values,'zip_data':zip_data})
 
 
@@ -244,9 +256,13 @@ def nlpUserStory(request):
 
     # get the data for dashboard
     # get the user story
-    userStories=[]
-    ValuePar=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[arr_users_stories_title.length-1]}').child('inputParagraf').get().val()
-    
+    lenValue = len(arr_users_stories_title)
+    print(arr_users_stories_title)
+    ValuePar=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('inputParagraf').get().val()
+    print("value par ", ValuePar)
+    print(lenValue)
+    outputStory = model_us([ValuePar])
+    print(format(outputStory))
     
     return render(request, 'input-user/output.html', {'user': users_value.val()})
 
