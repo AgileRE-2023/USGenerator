@@ -137,13 +137,13 @@ def dashboardClient(request):
     for i in arr_users_stories_title:
         projectTemp=db.child(f'users/{user_auth}/userstories/{i}').child('ProjectTitle').get().val()
         projectTitle.append(projectTemp)
-    print(projectTitle)
+    # print(projectTitle)
     # get the user story
     userStories=[]
     for i in arr_users_stories_title:
         projectTemp=db.child(f'users/{user_auth}/userstories/{i}').child('inputParagraf').get().val()
         userStories.append(projectTemp)
-    print(userStories)
+    # print(userStories)
 
     # get the time stamp
     timestamp=[]
@@ -156,7 +156,7 @@ def dashboardClient(request):
     #     i=float(i)
     #     projectTemp=datetime.datetime.fromtimestamp(i).strftime('%H-%M %d-%m-%Y')
     #     timestamp.append(projectTemp)
-    print(timestamp)
+    # print(timestamp)
     # end get data
 
 
@@ -301,10 +301,13 @@ def postInputStory(request):
                 db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).push(
                     {"outputStory": outputStory})
                 # projectTemp=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').get().val()
-                projectTemp=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child().child('outputStory').get().val()
-                # projectTemp=list(projectTemp)
-                print(projectTemp)
-                return render(request, 'input-user/output.html',{'projectTemp':projectTemp})
+                projectTemp=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').get().val()
+                projectTemp =  list(projectTemp.items())
+                valueOutput = projectTemp[0][1]
+                valueOutput=valueOutput['outputStory']
+                print(valueOutput)
+                return render(request, 'input-user/output.html',{'valueOutput':valueOutput})
+                
 
 
 # @login_required
