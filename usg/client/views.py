@@ -228,34 +228,6 @@ def inputUserStory(request):
     # user.fromJson(users_by_name)
     return render(request, 'input-user/input.html', {'user': users_value.val()})
 
-# def nlpUserStory(request):
-#     user = request.user
-#     user_auth = auth.current_user['localId']
-#     users_value = db.child(f'users/{user_auth}').get()
-#     users_stories = db.child(f'users/{user_auth}/userstories').get()
-
-#     # get the id of user stories, stll dictionary need to convert to list
-#     users_stories_title = db.child(f'users/{user_auth}/userstories').shallow().get()
-#     # convert to list
-#     arr_users_stories_title = list(users_stories_title.val())
-#     # sort the id
-#     arr_users_stories_title.sort()
-
-
-#     # get the data for dashboard
-#     # get the user story
-#     lenValue = len(arr_users_stories_title)
-#     print(arr_users_stories_title)
-#     ValuePar=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('inputParagraf').get().val()
-#     print("value par ", ValuePar)
-#     print(lenValue)
-#     outputStory = model_us([ValuePar])
-#     print(format(outputStory))
-    
-#     return render(request, 'input-user/output.html', {'user': users_value.val()})
-
-
-
 def postInputStory(request):
     import time
     from datetime import datetime, timezone
@@ -301,6 +273,7 @@ def postInputStory(request):
                 projectTemp=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').get().val()
                 projectTemp =  list(projectTemp.items())
                 valueOutput = projectTemp[0][1]
+                print(valueOutput)
                 valueOutput=valueOutput['outputStory']
                 print(valueOutput)
                 return render(request, 'input-user/output.html',{'valueOutput':valueOutput})

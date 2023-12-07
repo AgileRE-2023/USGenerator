@@ -35,16 +35,16 @@
     <h3>User Stories :</h3>
     {% for data in valueOutput%}
     <div class="container-user-story">
-      <a class="numof-container" href="{% url 'client:output-scenario' %}">1</a>
+      <a class="numof-container" href="{% url 'client:output-scenario' %}">{{ forloop.counter }}</a>
       <div class="as-can-for">
         <div class="grid-as-can-for-1">
-          <p>{{ data.who }}</p>
+          <p>{{ data.who|join:", " }}</p>
         </div>
         <div class="grid-as-can-for">
-          <p>{{ data.what }}</p>
+          <p>{{ data.what|join:", " }}</p>
         </div>
         <div class="grid-as-can-for-2">
-          <p>{{ data.why }}</p>
+          <p>{{ data.why|join:", " }}</p>
         </div>
       </div>
     </div>
