@@ -11,7 +11,7 @@ urlpatterns = [
     path("dashboard-non", views.dashboardClientNone, name="dashboard-client-non"),
 
     path("output-scenario", views.outputScenario, name="output-scenario"),
-    path("detail-history", views.detailHistory, name="detail-history"),
+    path("detail-history/<str:id>", views.detailHistory, name="detail-history"),
     path('base', views.base, name='base'),
     path('baseSignIn', views.baseSignIn, name='base-signin'),
 

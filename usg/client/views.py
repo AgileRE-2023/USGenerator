@@ -175,7 +175,7 @@ def dashboardClientNone(request):
 
 
 # @login_required
-def detailHistory(request):
+def detailHistory(request,id):
     user = request.user
     user_auth = auth.current_user['localId']
     users_value = db.child(f'users/{user_auth}').get()
@@ -190,10 +190,7 @@ def detailHistory(request):
     arr_users_stories_title.sort()
     # get the time stamp
     timestamp=[]
-    for i in arr_users_stories_title:
-        projectTemp=db.child(f'users/{user_auth}/userstories/{i}').child('created_at').get().val()
-        # projectTemp=projectTemp
-        timestamp.append(projectTemp)
+    timestamp=db.child(f'users/{user_auth}/userstories/{id}').child('created_at').get().val()
     print(timestamp)
 
     return render(request, 'history/history-detail.html', {'user': users_value.val(),'timestamp':timestamp})
