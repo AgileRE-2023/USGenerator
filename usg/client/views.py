@@ -126,46 +126,53 @@ def dashboardClient(request):
     # get the id of user stories, stll dictionary need to convert to list
     users_stories_title = db.child(f'users/{user_auth}/userstories').shallow().get()
     # convert to list
-    arr_users_stories_title = list(users_stories_title.val())
-    # sort the id
-    arr_users_stories_title.sort()
+    print(users_stories_title.val())
+    arr_users_stories_title = users_stories_title.val()
+    # pengecekan apakah ada id userstories jika tidak ada maka akan tampil dashboard non
+    if arr_users_stories_title==None:
+        return render(request, 'client-dashboard-non.html')
+    # jika ada maka akan tampil disini
+    else: 
+        arr_users_stories_title = list(arr_users_stories_title)
+        # sort the id
+        arr_users_stories_title.sort()
 
 
-    # get the data for dashboard
-    # get the ProjectTitle
-    projectTitle=[]
-    for i in arr_users_stories_title:
-        projectTemp=db.child(f'users/{user_auth}/userstories/{i}').child('ProjectTitle').get().val()
-        projectTitle.append(projectTemp)
-    # print(projectTitle)
-    # get the user story
-    userStories=[]
-    for i in arr_users_stories_title:
-        projectTemp=db.child(f'users/{user_auth}/userstories/{i}').child('inputParagraf').get().val()
-        userStories.append(projectTemp)
-    # print(userStories)
+        # get the data for dashboard
+        # get the ProjectTitle
+        projectTitle=[]
+        for i in arr_users_stories_title:
+            projectTemp=db.child(f'users/{user_auth}/userstories/{i}').child('ProjectTitle').get().val()
+            projectTitle.append(projectTemp)
+        # print(projectTitle)
+        # get the user story
+        userStories=[]
+        for i in arr_users_stories_title:
+            projectTemp=db.child(f'users/{user_auth}/userstories/{i}').child('inputParagraf').get().val()
+            userStories.append(projectTemp)
+        # print(userStories)
 
-    # get the time stamp
-    timestamp=[]
-    for i in arr_users_stories_title:
-        projectTemp=db.child(f'users/{user_auth}/userstories/{i}').child('created_at').get().val()
-        # projectTemp=projectTemp
-        timestamp.append(projectTemp)
-    # print(timestamp)
-    # for i in arr_users_stories_title:
-    #     i=float(i)
-    #     projectTemp=datetime.datetime.fromtimestamp(i).strftime('%H-%M %d-%m-%Y')
-    #     timestamp.append(projectTemp)
-    # print(timestamp)
-    # end get data
-
-
-    # zip the data
-    zip_data=zip(arr_users_stories_title,projectTitle,userStories,timestamp)
-    UserStory_values = users_stories.val()
+        # get the time stamp
+        timestamp=[]
+        for i in arr_users_stories_title:
+            projectTemp=db.child(f'users/{user_auth}/userstories/{i}').child('created_at').get().val()
+            # projectTemp=projectTemp
+            timestamp.append(projectTemp)
+        # print(timestamp)
+        # for i in arr_users_stories_title:
+        #     i=float(i)
+        #     projectTemp=datetime.datetime.fromtimestamp(i).strftime('%H-%M %d-%m-%Y')
+        #     timestamp.append(projectTemp)
+        # print(timestamp)
+        # end get data
 
 
-    return render(request, 'client-dashboard.html', {'user': users_value.val(), 'UserStory_values': UserStory_values,'zip_data':zip_data})
+        # zip the data
+        zip_data=zip(arr_users_stories_title,projectTitle,userStories,timestamp)
+        UserStory_values = users_stories.val()
+
+
+        return render(request, 'client-dashboard.html', {'user': users_value.val(), 'UserStory_values': UserStory_values,'zip_data':zip_data})
 
 
 # @login_required
