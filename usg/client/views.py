@@ -280,7 +280,7 @@ def postInputStory(request):
                 projectTemp=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').get().val()
                 projectTemp =  list(projectTemp.items())
                 valueOutput = projectTemp[0][1]
-                print(valueOutput)
+                # print(valueOutput)
                 valueOutput=valueOutput['outputStory']
                 print(valueOutput)
                 return render(request, 'input-user/output.html',{'valueOutput':valueOutput})

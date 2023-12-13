@@ -20,6 +20,8 @@ def detect_subject(sentence):
     subjects_ner = [ent.text for ent in doc.ents if ent.label_ == "PERSON"]
     who_set = set(subjects_dep + subjects_ner)
     who = list(who_set)
+    if who==None:
+        who = []
     return who
 def hapus_who_redundan(data_list):
     data_list_copy = data_list.copy()
@@ -69,6 +71,8 @@ def why_selector(sentence):
 
 def hapus_nilai_yang_terkandung(what, why):
     what = [elemen_what for elemen_what in what if not any(elemen_what in elemen_why for elemen_why in why)]
+    if what==None:
+        what = []
     return what
 
 
@@ -86,7 +90,12 @@ class UserStory:
             who = detect_subject(sentence)
             hapus_who_redundan(who)
             why = why_selector(sentence)
+            # Handle possible None values
+            who = who if who is not None else []
+            why = why if why is not None else []
+            
             what = hapus_nilai_yang_terkandung(what_phrases, why)
+            what = what if what is not None else []
             who = list(set(who))
             why = list(set(why))
             what = list(set(what))
