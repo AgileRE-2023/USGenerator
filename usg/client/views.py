@@ -219,12 +219,6 @@ def baseSignIn(request):
 
 
 # @login_required
-def outputScenario(request):
-    user = request.user
-    user_auth = auth.current_user['localId']
-    users_value = db.child(f'users/{user_auth}').get()
-    # user.fromJson(users_by_name)
-    return render(request, 'output-user-scenario/output_scenario.html', {'user': users_value.val()})
 
 
 # @login_required
@@ -285,6 +279,61 @@ def postInputStory(request):
                 print(valueOutput)
                 return render(request, 'input-user/output.html',{'valueOutput':valueOutput})
                 
+def inputScenario(request):
+    user = request.user
+    user_auth = auth.current_user['localId']
+    users_value = db.child(f'users/{user_auth}').get()
+    # user.fromJson(users_by_name)
+    return render(request, 'output-user-scenario/input_scenario.html', {'user': users_value.val()})
+def outputScenario(request):
+    import time
+    from datetime import datetime, timezone
+    import pytz
+    # ProjectTitle = request.POST.get('ProjectTitle')
+    inputParagraf = request.POST.get('inputParagraf')
+    # users_value = db.child(f'users/{user_auth}').get()
+    idtoken = request.session['uid']
+    user_info = auth.get_account_info(idtoken)
+    tz=pytz.timezone('Asia/Jakarta')
+    created_at = datetime.now(timezone.utc).astimezone(tz).isoformat()
+    print(created_at)
+    if 'users' in user_info:
+        users_list = user_info['users']
+        if users_list:
+            user_local_id = users_list[0].get('localId')
+            print(user_local_id)
+            if user_local_id:
+                db.child('users').child(user_local_id).child('userstories').push(
+                    {"inputParagraf": inputParagraf,"created_at":created_at})
+                print("Data updated successfully")
+                model_us = pickle.load(open('modelScenario.sav', 'rb'))
+                user_auth = auth.current_user['localId']
+
+                 # get the id of user stories, stll dictionary need to convert to list
+                users_stories_title = db.child(f'users/{user_auth}/userstories').shallow().get()
+                # convert to list
+                arr_users_stories_title = list(users_stories_title.val())
+                # sort the id
+                arr_users_stories_title.sort()
+                # model nlp
+                lenValue = len(arr_users_stories_title)
+                print(arr_users_stories_title)
+                ValuePar=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('inputParagraf').get().val()
+                print("value par ", ValuePar)
+                print(lenValue)
+                outputStory = model_us.nlp_userstory(ValuePar)
+                # print(format(outputStory))
+                # push database
+                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).push(
+                    {"outputStory": outputStory})
+                # projectTemp=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').get().val()
+                projectTemp=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').get().val()
+                projectTemp =  list(projectTemp.items())
+                valueOutput = projectTemp[0][1]
+                print(valueOutput)
+                valueOutput=valueOutput['outputStory']
+                print(valueOutput)
+                return render(request, 'output-user-scenario/input_scenario.html', {'valueOutput': valueOutput})
 
 
 # @login_required

@@ -239,3 +239,10 @@ header a {
   margin-top: 20px;
   margin-bottom: 2px;
 }
+
+#ScenarioTitle {
+  margin-top: 1rem;
+  border-radius: 20px;
+  width: 100%;
+  border: solid !important;
+}

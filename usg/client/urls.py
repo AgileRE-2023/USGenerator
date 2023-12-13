@@ -10,6 +10,7 @@ urlpatterns = [
     path("dashboard/", views.dashboardClient, name="dashboardClient"),
     path("dashboard-non", views.dashboardClientNone, name="dashboard-client-non"),
 
+    path("input-scenario", views.inputScenario, name="input-scenario"),
     path("output-scenario", views.outputScenario, name="output-scenario"),
     path("detail-history/<str:id>", views.detailHistory, name="detail-history"),
     path('base', views.base, name='base'),
