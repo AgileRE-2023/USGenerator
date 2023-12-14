@@ -1,26 +1,28 @@
 {% extends "base.html" %} {% load static %} {% block style %}
 <link rel="stylesheet" href="{% static 'client/user-scenario.css' %}" />
 
-{% endblock %} {% block title %} Input User {% endblock %}
- {% block content %}
+{% endblock %} {% block title %} Input User {% endblock %} {% block content %}
 <div class="Gui-user">
   <h1 class="Teks-judul">Project Title</h1>
   <div class="output-user-story">
     <h5>User Stories :</h5>
     <div class="container-user-story">
-      <a class="numof-container" href="{% url 'client:output-scenario' %}">1</a>
+      <a class="numof-container">{{counter}}</a>
 
       <div class="as-can-for">
-        <div class="grid-as-can-for-1"><p>As Programmer</p></div>
-        <div class="grid-as-can-for"><p>I'm able to find my smartphone</p></div>
-        <div class="grid-as-can-for-2"><p>For my daily activity</p></div>
+        <div class="grid-as-can-for-1"><p>{{outputStoryIndex.who}}</p></div>
+        <div class="grid-as-can-for"><p>{{outputStoryIndex.what}}</p></div>
+        <div class="grid-as-can-for-2"><p>{{outputStoryIndex.why}}</p></div>
       </div>
-
     </div>
     <div class="input-scenario"><h5>Input User Story Scenario :</h5></div>
     <div class="form">
       <div class="form-paragraf">
-        <textarea type="text" class="form-control" id="inputParagraf" placeholder="Ketik paragraf"></textarea>
+        <textarea
+          type="text"
+          class="form-control"
+          id="inputParagraf"
+          placeholder="Ketik paragraf"></textarea>
       </div>
       <div class="submit-button">
         <button class="btn-submit-button" type="button" onclick="OutputUser()">
@@ -32,7 +34,7 @@
     <div class="scenario-content" id="scenario-container">
       <div class="scenario">
         <h5>User Story Scenario :</h5>
-        <div class="container-scenario">
+        <!-- <div class="container-scenario">
           <div class="type-scenario"><p>GIVEN</p></div>
           <div class="desc-scenario"><p>I'm a software engineer</p></div>
         </div>
@@ -51,15 +53,35 @@
         <div class="container-scenario">
           <div class="type-scenario"><p>AND</p></div>
           <div class="desc-scenario"><p>My wallet in this app decrease</p></div>
+        </div> -->
+
+        {% for data in retrieveUSS%}
+        <div class="container-scenario">
+          <div class="type-scenario"><p>GIVEN</p></div>
+          <div class="desc-scenario"><p>{{data.given}}</p></div>
         </div>
+        <!-- <div class="container-scenario">
+          <div class="type-scenario"><p>AND</p></div>
+          <div class="desc-scenario"><p>I'm a data scientist</p></div>
+        </div> -->
+        <div class="container-scenario">
+          <div class="type-scenario">WHEN</div>
+          <div class="desc-scenario"><p>{{data.when}}</p></div>
+        </div>
+        <div class="container-scenario">
+          <div class="type-scenario"><p>THEN</p></div>
+          <div class="desc-scenario"><p>{{data.then}}</p></div>
+        </div>
+        <!-- <div class="container-scenario">
+          <div class="type-scenario"><p>AND</p></div>
+          <div class="desc-scenario"><p>My wallet in this app decrease</p></div>
+        </div> -->
+        {%endfor%}
       </div>
     </div>
   </div>
 </div>
-{% endblock %}
-
-
-{% block script %}
+{% endblock %} {% block script %}
 <script>
   const userStoryContainer = document.getElementById("scenario-container");
   const generateButton = document.querySelector(".btn-submit-button");

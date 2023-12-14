@@ -76,7 +76,35 @@ header a {
   border: 1px solid #F29F05;
 }
 
-.btn-submit-button:hover {
+.submit-button {
+  font-family: 'Poppins';
+  background-color: #F29F05;
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  color: #fff;
+  text-decoration: none;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border: 1px solid #F29F05;
+}
+
+.submit-button:hover {
+  background: transparent;
+  transition: .3s ease;
+  -webkit-transition: .3s ease;
+  -moz-transition: .3s ease;
+  -ms-transition: .3s ease;
+  -o-transition: .3s ease;
+  background-color: #17193D;
+  border: 1px solid #17193D;
+  color: #fff;
+}
+
+
+/* .btn-submit-button:hover {
   background: transparent;
   transition: .3s ease;
   -webkit-transition: .3s ease;
@@ -98,7 +126,7 @@ header a {
 .btn-submit-button a:hover {
   text-decoration: none;
   color: #F29F05;
-}
+} */
 
 .button-link {
   text-decoration: none;

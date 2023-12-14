@@ -7,16 +7,17 @@
   <div class="output-user-story">
     <h5>User Stories :</h5>
     <div class="container-user-story">
-      <a class="numof-container" href="{% url 'client:output-scenario' %}">1</a>
+      <a class="numof-container" >{{counter}}</a>
 
       <div class="as-can-for">
-        <div class="grid-as-can-for-1"><p>As Programmer</p></div>
-        <div class="grid-as-can-for"><p>I'm able to find my smartphone</p></div>
-        <div class="grid-as-can-for-2"><p>For my daily activity</p></div>
+        <div class="grid-as-can-for-1"><p>{{outputStoryIndex.who}}</p></div>
+        <div class="grid-as-can-for"><p>{{outputStoryIndex.what}}</p></div>
+        <div class="grid-as-can-for-2"><p>{{outputStoryIndex.why}}</p></div>
       </div>
     </div>
 
-    <div class="form">
+    <form class="form" action="/output-scenario/{{counter}}" method="post">
+      {% csrf_token %}
       <div class="input-scenario"><h5>Input Title User Story Scenario :</h5></div>
       <input
         type="text"
@@ -31,41 +32,14 @@
           type="text"
           class="form-control"
           id="inputParagraf"
+          name="inputParagraf"
           placeholder="Ketik paragraf"
         ></textarea>
       </div>
       <div class="submit-button">
-        <button class="btn-submit-button" type="button" onclick="OutputUser()">
-          <a href="#"> Generate </a>
-        </button>
+        <input id="generateButton" class="submit-button" type="submit" value="Generate">
       </div>
-    </div>
-
-    <!-- <div class="scenario-content" id="scenario-container">
-      <div class="scenario">
-        <h5>User Story Scenario :</h5>
-        <div class="container-scenario">
-          <div class="type-scenario"><p>GIVEN</p></div>
-          <div class="desc-scenario"><p>I'm a software engineer</p></div>
-        </div>
-        <div class="container-scenario">
-          <div class="type-scenario"><p>AND</p></div>
-          <div class="desc-scenario"><p>I'm a data scientist</p></div>
-        </div>
-        <div class="container-scenario">
-          <div class="type-scenario">WHEN</div>
-          <div class="desc-scenario"><p>I withdraw from this app</p></div>
-        </div>
-        <div class="container-scenario">
-          <div class="type-scenario"><p>THEN</p></div>
-          <div class="desc-scenario"><p>My bank account increase</p></div>
-        </div>
-        <div class="container-scenario">
-          <div class="type-scenario"><p>AND</p></div>
-          <div class="desc-scenario"><p>My wallet in this app decrease</p></div>
-        </div>
-      </div>
-    </div> -->
+    </form>
   </div>
 </div>
 {% endblock %} {% block script %}

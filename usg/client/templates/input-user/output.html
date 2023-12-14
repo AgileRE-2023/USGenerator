@@ -35,7 +35,7 @@
     <h3>User Stories :</h3>
     {% for data in valueOutput%}
     <div class="container-user-story">
-      <a class="numof-container" href="{% url 'client:input-scenario' %}">{{ forloop.counter }}</a>
+      <a class="numof-container" href="{% url 'client:input-scenario' counter=forloop.counter0 %}">{{ forloop.counter0 }}</a>
       <div class="as-can-for">
         <div class="grid-as-can-for-1">
           <p>{{ data.who|join:", " }}</p>
