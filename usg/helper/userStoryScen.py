@@ -70,6 +70,7 @@ class userStoryScena():
                 print(data["when"])
             if "then" in data:
                 print(data["then"])
+        return scenario_final
     
 
 modelScen = userStoryScena()
