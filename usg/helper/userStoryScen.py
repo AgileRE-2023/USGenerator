@@ -27,10 +27,13 @@ def then(sentence):
         return matches[0].strip()  # Return the first match
     else:
         return None
-
+def hapus_nilai_yang_terkandung(when, then):
+    when = [elemen_when for elemen_when in when if not any(elemen_when in elemen_then for elemen_then in then)]
+    return when
 class userStoryScena():
     def nlp_UserStoryScenario(self, input_text):
         paragraph = input_text
+        paragraph = paragraph.replace(',', '.')
         paragraph = paragraph.lower()
         sentences = nltk.sent_tokenize(paragraph)
         scenario = []
@@ -44,25 +47,29 @@ class userStoryScena():
                     sentence = sentence.replace(f"There is another {synonym}, ", "")
                 scenario.append({"given": sentence})
                 prev_key = "given"
-            if when(sentence):
+            elif when(sentence):
                 scenario.append({"when": sentence})
                 prev_key = "when"
-            result = then(sentence)
-            if result:
+            
+            if then(sentence):
                 # Remove the "then" key-value pair if the previous key was "given"
                 if prev_key != "given":
-                    scenario.append({"then": result})
+                    scenario.append({"then": sentence})
             index += 1
+        scenario_final = scenario.copy()
         for dat in scenario:
+            if "when" in dat and any(dat["when"] == item.get("then", "") for item in scenario_final):
+                scenario_final.remove(dat)
+
+        for dat in scenario_final:
             print(dat)
-        for data in scenario:
+        for data in scenario_final:
             if "given" in data:
                 print(data["given"])
             if "when" in data:
                 print(data["when"])
             if "then" in data:
                 print(data["then"])
-        return scenario
     
 
 modelScen = userStoryScena()
