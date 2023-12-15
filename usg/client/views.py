@@ -453,6 +453,7 @@ def outputScenario(request, counter):
                 retrieveUSS=list(retrieveUSS.items())
                 retrieveUSS=retrieveUSS[0][1]
                 print(retrieveUSS)
+                # testing
 
     return render(request, 'output-user-scenario/output_scenario.html', {'user': users_value.val(), 'outputStoryIndex': outputStoryIndex, 'counter': counter,'retrieveUSS': retrieveUSS})
 
