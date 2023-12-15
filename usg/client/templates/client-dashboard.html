@@ -45,36 +45,20 @@
         <!-- {{ UserStory_values}} -->
         {%if UserStory_values%}
         <tbody>
+          {% for arr_users_stories_title,projectTitle,userStories,timestamp in zip_data%}
           <tr>
-            <td>001</td>
-            <td>lorem</td>
-            <td>lorem</td>
-            <td>
-              <a href="{% url 'client:detail-history' %}">
-                <img alt="view" src={% static 'admin/icons/view-button.svg' %}>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>002</td>
-            <td>lorem</td>
-            <td>lorem</td>
-            <td>
-              <a href="{% url 'client:detail-history' %}">
-                <img alt="view" src={% static 'admin/icons/view-button.svg' %}>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>003</td>
-            <td>lorem</td>
-            <td>lorem</td>
-            <td>
-              <a href="{% url 'client:detail-history' %}">
-                <img alt="view" src={% static 'admin/icons/view-button.svg' %}>
-              </a>
-            </td>
-          </tr>
+              <td>{{arr_users_stories_title}}</td>
+              <td>{{ projectTitle }}</td>
+              <td>{{ timestamp }}</td>
+              <td>
+                <a href="{% url 'client:detail-history' arr_users_stories_title %}">
+                  <img alt="view" src={% static 'admin/icons/view-button.svg' %}>
+                </a>
+              </td>
+            </tr>
+          {%endfor%}
+          
+          
         </tbody>
         {% else %}
         <tbody></tbody>

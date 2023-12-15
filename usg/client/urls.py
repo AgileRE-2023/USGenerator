@@ -10,8 +10,7 @@ urlpatterns = [
     path("dashboard/", views.dashboardClient, name="dashboardClient"),
     path("dashboard-non", views.dashboardClientNone, name="dashboard-client-non"),
 
-    path("output-scenario", views.outputScenario, name="output-scenario"),
-    path("detail-history", views.detailHistory, name="detail-history"),
+    path("detail-history/<str:id>", views.detailHistory, name="detail-history"),
     path('base', views.base, name='base'),
     path('baseSignIn', views.baseSignIn, name='base-signin'),
 
@@ -24,6 +23,11 @@ urlpatterns = [
     path('inputUserStory', views.inputUserStory, name='inputUserStory'),
     path('postInputStory/', views.postInputStory),
 
+    #Input User Story Scenario
+    path("input-scenario/<int:counter>", views.inputScenario, name="input-scenario"),
+    path("output-scenario/<int:counter>", views.outputScenario, name="output-scenario"),
+
+
     # Registration & Login
 
     path('', views.signin, name='signin'),
@@ -32,6 +36,7 @@ urlpatterns = [
 
     path('regist', views.regist, name='regist'),
     path('postsignup/', views.postsignup),
+    
 
     path('signout', views.signout, name='signout'),
 

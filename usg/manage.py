@@ -19,4 +19,6 @@ def main():
 
 
 if __name__ == '__main__':
+    from helper import userStory
+    from helper import userStoryScen
     main()

@@ -31,7 +31,35 @@
     </div>
   </form>
 
+  <div class="output-user-story" id="user-story-container">
+    <h3>User Stories :</h3>
+    {% for data in valueOutput%}
+    <div class="container-user-story">
+      <a class="numof-container" href="{% url 'client:input-scenario' counter=forloop.counter0 %}">{{ forloop.counter0 }}</a>
+      <div class="as-can-for">
+        <div class="grid-as-can-for-1">
+          <p>{{ data.who|join:", " }}</p>
+        </div>
+        <div class="grid-as-can-for">
+          <p>{{ data.what|join:", " }}</p>
+        </div>
+        <div class="grid-as-can-for-2">
+          <p>{{ data.why|join:", " }}</p>
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+
+  </div>
 </div>
 {% endblock %} {% block script %}
+<!-- <script>
+  const userStoryContainer = document.getElementById("user-story-container");
+  const generateButton = document.getElementById("generateButton");
+
+  generateButton.addEventListener("click", () => {
+    userStoryContainer.classList.toggle("hidden");
+  });
+</script> -->
 
 {% endblock %}

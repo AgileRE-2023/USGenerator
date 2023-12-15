@@ -7,25 +7,18 @@
   <div class="output-user-story">
     <h5>User Stories :</h5>
     <div class="container-user-story">
-      <a class="numof-container">{{counter}}</a>
+      <a class="numof-container" >{{counter}}</a>
 
       <div class="as-can-for">
-        <div class="grid-as-can-for-1">
-          <p>{{outputStoryIndex.who|join:", "}}</p>
-        </div>
-        <div class="grid-as-can-for">
-          <p>{{outputStoryIndex.what|join:", "}}</p>
-        </div>
-        <div class="grid-as-can-for-2">
-          <p>{{outputStoryIndex.why|join:", "}}</p>
-        </div>
+        <div class="grid-as-can-for-1"><p>{{outputStoryIndex.who|join:", "}}</p></div>
+        <div class="grid-as-can-for"><p>{{outputStoryIndex.what|join:", "}}</p></div>
+        <div class="grid-as-can-for-2"><p>{{outputStoryIndex.why|join:", "}}</p></div>
       </div>
     </div>
+
     <form class="form" action="/output-scenario/{{counter}}" method="post">
       {% csrf_token %}
-      <div class="input-scenario">
-        <h5>Input Title User Story Scenario :</h5>
-      </div>
+      <div class="input-scenario"><h5>Input Title User Story Scenario :</h5></div>
       <input
         type="text"
         class="form-control"
@@ -39,6 +32,7 @@
           type="text"
           class="form-control"
           id="inputParagraf"
+          name="inputParagraf"
           placeholder="Ketik paragraf"
         ></textarea>
       </div>
@@ -46,28 +40,6 @@
         <input id="generateButton" class="submit-button" type="submit" value="Generate">
       </div>
     </form>
-
-    <div class="scenario-content" id="scenario-container">
-      <div class="scenario">
-        <h5>User Story Scenario :</h5>
-        {% for data in retrieveUSS %} {% if 'given' in data %}
-        <div class="container-scenario">
-          <div class="type-scenario"><p>GIVEN</p></div>
-          <div class="desc-scenario"><p>{{ data.given }}</p></div>
-        </div>
-        {% endif %} {% if 'when' in data %}
-        <div class="container-scenario">
-          <div class="type-scenario"><p>WHEN</p></div>
-          <div class="desc-scenario"><p>{{ data.when }}</p></div>
-        </div>
-        {% endif %} {% if 'then' in data %}
-        <div class="container-scenario">
-          <div class="type-scenario"><p>THEN</p></div>
-          <div class="desc-scenario"><p>{{ data.then }}</p></div>
-        </div>
-        {% endif %} {% endfor %}
-      </div>
-    </div>
   </div>
 </div>
 {% endblock %} {% block script %}

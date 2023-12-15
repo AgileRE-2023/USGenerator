@@ -213,7 +213,8 @@ header a {
   border: 1px solid salmon;
   border-radius: 0px 16px 0px 0px;
   width: 480px;
-  height: 50px;
+  min-height: 50px;
+  padding: 5px;
   display: flex;
   align-items: center;
 }
@@ -221,7 +222,8 @@ header a {
 .grid-as-can-for {
   border: 1px solid salmon;
   width: 480px;
-  height: 50px;
+  min-height: 50px;
+  padding: 5px;
   display: flex;
   align-items: center;
 }
@@ -230,7 +232,8 @@ header a {
   border: 1px solid salmon;
   border-radius: 0px 0px 16px 0px;
   width: 480px;
-  height: 50px;
+  min-height: 50px;
+  padding: 5px;
   display: flex;
   align-items: center;
 }
