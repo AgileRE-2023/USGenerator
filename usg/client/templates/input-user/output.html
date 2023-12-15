@@ -38,13 +38,13 @@
       <a class="numof-container" href="{% url 'client:input-scenario' counter=forloop.counter0 %}">{{ forloop.counter0 }}</a>
       <div class="as-can-for">
         <div class="grid-as-can-for-1">
-          <p>{{ data.who|join:", " }}</p>
+          <p>WHO:  {{ data.who|join:", " }}</p>
         </div>
         <div class="grid-as-can-for">
-          <p>{{ data.what|join:", " }}</p>
+          <p>WHAT:  {{ data.what|join:", " }}</p>
         </div>
         <div class="grid-as-can-for-2">
-          <p>{{ data.why|join:", " }}</p>
+          <p>WHY:  {{ data.why|join:", " }}</p>
         </div>
       </div>
     </div>
