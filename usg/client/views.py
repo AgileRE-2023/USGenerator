@@ -276,19 +276,106 @@ def postInputStory(request):
                 outputStory = model_us.nlp_userstory(ValuePar)
                 # print(format(outputStory))
                 # push database
-                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).push(
+                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).child('outputStory').push(
                     {"outputStory": outputStory})
                 # projectTemp=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').get().val()
-                projectTemp = db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').get().val()
-                projectTemp = list(projectTemp.items())
-                valueOutput = projectTemp[0][1]
-                # print(valueOutput)
-                valueOutput = valueOutput['outputStory']
+                # getting Id for user story
+                IdprojectTemp = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').shallow().get()
+                print(IdprojectTemp.val())
+                IdprojectTemp=IdprojectTemp.val()
+                IdprojectTemp = list(IdprojectTemp)
+                valueOutput = IdprojectTemp[0]
                 print(valueOutput)
-                outputStoryIndex = valueOutput[0]
-                print(outputStoryIndex)
+                # get output user story
+                valueOutput=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory/{valueOutput}').get().val()
+                print(valueOutput)
+                valueOutput = list(valueOutput.items())
+                valueOutput=valueOutput[0][1]
+                print(valueOutput)
+                # print(valueOutput)
+                # valueOutput = valueOutput['outputStory']
+                # print(valueOutput)
+                # outputStoryIndex = valueOutput[0]
+                # print(outputStoryIndex)
                 return render(request, 'input-user/output.html', {'valueOutput': valueOutput})
+
+
+def UpdatePostInputStory(request):
+    import time
+    from datetime import datetime, timezone
+    import pytz
+    ProjectTitle = request.POST.get('ProjectTitle')
+    inputParagraf = request.POST.get('inputParagraf')
+    # users_value = db.child(f'users/{user_auth}').get()
+    idtoken = request.session['uid']
+    user_info = auth.get_account_info(idtoken)
+    tz = pytz.timezone('Asia/Jakarta')
+    created_at = datetime.now(timezone.utc).astimezone(tz).isoformat()
+    print(created_at)
+    if 'users' in user_info:
+        users_list = user_info['users']
+        if users_list:
+            user_local_id = users_list[0].get('localId')
+            print(user_local_id)
+            if user_local_id:
+                # print("Data updated successfully")
+                model_us = pickle.load(open('model.sav', 'rb'))
+                user_auth = auth.current_user['localId']
+
+                # get the id of user stories, stll dictionary need to convert to list
+                users_stories_title = db.child(
+                    f'users/{user_auth}/userstories').shallow().get()
+                # convert to list
+                arr_users_stories_title = list(users_stories_title.val())
+                # sort the id
+                arr_users_stories_title.sort()
+                # model nlp
+                lenValue = len(arr_users_stories_title)
+                print(arr_users_stories_title)
+                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).update(
+                    {"ProjectTitle": ProjectTitle, "inputParagraf": inputParagraf, "created_at": created_at})
+                ValuePar = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('inputParagraf').get().val()
+                print("value par ", ValuePar)
+                print(lenValue)
+                outputStory = model_us.nlp_userstory(ValuePar)
+                # print(format(outputStory))
+                # projectTemp=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').get().val()
+                # getting Id for user story
+                IdprojectTemp = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').shallow().get()
+                print(IdprojectTemp.val())
+                IdprojectTemp=IdprojectTemp.val()
+                IdprojectTemp = list(IdprojectTemp)
+                IdprojectTemp.sort()
+                print(IdprojectTemp)
+                # push database
+                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).child('outputStory').child(IdprojectTemp[0]).set(
+                    {"outputStory": outputStory})
+                IdprojectTemp = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory/{IdprojectTemp[0]}').get()
+                IdprojectTemp=IdprojectTemp.val()
+                IdprojectTemp=list(IdprojectTemp)
+                print('tes',IdprojectTemp)
+                IdprojectTemp = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory/{IdprojectTemp[0]}/{IdprojectTemp[0]}').get().val()
+                print(IdprojectTemp)
+                
+                # UpdateValueOutput = IdprojectTemp[(len(IdprojectTemp)-3)]
+                # print(UpdateValueOutput)
+                # get output user story
+                # UpdateValueOutput=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/{UpdateValueOutput}').get().val()
+                # print(UpdateValueOutput)
+                # UpdateValueOutput = list(UpdateValueOutput.items())
+                # UpdateValueOutput=UpdateValueOutput[0][1]
+                # print(UpdateValueOutput)
+                # print(valueOutput)
+                # valueOutput = valueOutput['outputStory']
+                # print(valueOutput)
+                # outputStoryIndex = valueOutput[0]
+                # print(outputStoryIndex)
+                return render(request, 'input-user/output.html', {'valueOutput': UpdateValueOutput})
 
 
 def inputScenario(request, counter):
