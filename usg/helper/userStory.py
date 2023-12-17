@@ -20,8 +20,6 @@ def detect_subject(sentence):
     subjects_ner = [ent.text for ent in doc.ents if ent.label_ == "PERSON"]
     who_set = set(subjects_dep + subjects_ner)
     who = list(who_set)
-    if who==None:
-        who = []
     return who
 def hapus_who_redundan(data_list):
     data_list_copy = data_list.copy()
@@ -71,15 +69,16 @@ def why_selector(sentence):
 
 def hapus_nilai_yang_terkandung(what, why):
     what = [elemen_what for elemen_what in what if not any(elemen_what in elemen_why for elemen_why in why)]
-    if what==None:
-        what = []
     return what
 
-
+def delete_tobe(what_list):
+    tobe = ['is', 'am', 'are', 'can']
+    kata_kalimat = ' '.join(what_list)
+    what = ' '.join(kata for kata in kata_kalimat.split() if kata.lower() not in tobe)
+    return [what]
 class UserStory:
-
     def nlp_userstory(self, ValuePar):
-        input_text = ValuePar 
+        input_text = ValuePar
         input_text = input_text.lower()
         kalimat = nltk.sent_tokenize(input_text)
         useStoryVal = []
@@ -90,23 +89,21 @@ class UserStory:
             who = detect_subject(sentence)
             hapus_who_redundan(who)
             why = why_selector(sentence)
-            # Handle possible None values
-            who = who if who is not None else []
-            why = why if why is not None else []
-            
             what = hapus_nilai_yang_terkandung(what_phrases, why)
-            what = what if what is not None else []
             who = list(set(who))
             why = list(set(why))
             what = list(set(what))
             useStoryVal.append({'who' : who, 'what' : what, 'why' : why})
-            print("Kalimat:", sentence)
-            print("Aspect of Who:", who)
-            print("Aspect of What:", what)
-            print("Aspect of Why:", why)
-            print("-----")
-
+                # print("Kalimat:", sentence)
+                # print("Aspect of Who:", who)
+                # print("Aspect of What:", what)
+                # print("Aspect of Why:", why)
+                # print("-----")
+        for data in useStoryVal:
+            if "what" in data:
+                data["what"] = delete_tobe(data["what"])
         return useStoryVal
+
 
 model = UserStory()
 filename = "model.sav"
