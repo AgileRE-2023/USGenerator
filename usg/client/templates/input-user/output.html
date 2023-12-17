@@ -14,6 +14,7 @@
           id="ProjectTitle"
           name="ProjectTitle"
           placeholder="Ketik projek anda"
+    
         />
       </div>
 
@@ -23,10 +24,16 @@
           class="form-control"
           id="inputParagraf"
           name="inputParagraf"
-          placeholder="Ketik paragraf"></textarea>
+          placeholder="Ketik paragraf"
+        ></textarea>
       </div>
       <div class="submit-button">
-        <input id="generateButton" class="submit-button" type="submit" value="Update">
+        <input
+          id="generateButton"
+          class="submit-button"
+          type="submit"
+          value="Update"
+        />
       </div>
     </div>
   </form>
@@ -35,31 +42,44 @@
     <h3>User Stories :</h3>
     {% for data in valueOutput%}
     <div class="container-user-story">
-      <a class="numof-container" href="{% url 'client:input-scenario' counter=forloop.counter0 %}">{{ forloop.counter0 }}</a>
+      <a
+        class="numof-container"
+        href="{% url 'client:input-scenario' counter=forloop.counter0 %}"
+        >{{ forloop.counter0 }}</a
+      >
       <div class="as-can-for">
         <div class="grid-as-can-for-1">
-          <p>WHO:  {{ data.who|join:", " }}</p>
+          <p>WHO: {{ data.who|join:", " }}</p>
         </div>
         <div class="grid-as-can-for">
-          <p>WHAT:  {{ data.what|join:", " }}</p>
+          <p>WHAT: {{ data.what|join:", " }}</p>
         </div>
         <div class="grid-as-can-for-2">
-          <p>WHY:  {{ data.why|join:", " }}</p>
+          <p>WHY: {{ data.why|join:", " }}</p>
         </div>
       </div>
     </div>
     {%endfor%}
-
   </div>
 </div>
 {% endblock %} {% block script %}
-<!-- <script>
-  const userStoryContainer = document.getElementById("user-story-container");
-  const generateButton = document.getElementById("generateButton");
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const storedProjectTitle = localStorage.getItem('projectTitle');
+  const projectTitleInput = document.getElementById('ProjectTitle');
 
-  generateButton.addEventListener("click", () => {
-    userStoryContainer.classList.toggle("hidden");
-  });
-</script> -->
+  const storedParagrafValue = localStorage.getItem('paragrafValue');
+  const paragrafInput = document.getElementById('inputParagraf');
+
+  if (storedProjectTitle) {
+    projectTitleInput.value = storedProjectTitle;
+  }
+
+  if (storedParagrafValue) {
+    paragrafInput.value = storedParagrafValue;
+  }
+});
+
+</script>
 
 {% endblock %}

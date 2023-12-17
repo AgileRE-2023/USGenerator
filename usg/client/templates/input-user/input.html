@@ -33,5 +33,29 @@
 
 </div>
 {% endblock %} {% block script %}
+<script>
+  // Get the form
+  const form = document.querySelector('form');
+
+  // Function to handle form submission
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+    
+    // Get the title input field and its value
+    const projectTitleInput = document.getElementById('ProjectTitle');
+    const projectTitleValue = projectTitleInput.value;
+    
+    // Get the paragraph input field and its value
+    const paragrafInput = document.getElementById('inputParagraf');
+    const paragrafValue = paragrafInput.value;
+
+    // Store the project title and paragraph value in localStorage
+    localStorage.setItem('projectTitle', projectTitleValue);
+    localStorage.setItem('paragrafValue', paragrafValue);
+
+    // Now submit the form
+    form.submit();
+  });
+</script>
 
 {% endblock %}
