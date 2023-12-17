@@ -354,13 +354,18 @@ def UpdatePostInputStory(request):
                 db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).child('outputStory').child(IdprojectTemp[0]).set(
                     {"outputStory": outputStory})
                 IdprojectTemp = db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory/{IdprojectTemp[0]}').get()
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').shallow().get()
+                print(IdprojectTemp.val())
                 IdprojectTemp=IdprojectTemp.val()
-                IdprojectTemp=list(IdprojectTemp)
-                print('tes',IdprojectTemp)
-                IdprojectTemp = db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory/{IdprojectTemp[0]}/{IdprojectTemp[0]}').get().val()
-                print(IdprojectTemp)
+                IdprojectTemp = list(IdprojectTemp)
+                valueOutput = IdprojectTemp[0]
+                print(valueOutput)
+                # get output user story
+                valueOutput=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory/{valueOutput}').get().val()
+                print(valueOutput)
+                valueOutput = list(valueOutput.items())
+                valueOutput=valueOutput[0][1]
+                print(valueOutput)
                 
                 # UpdateValueOutput = IdprojectTemp[(len(IdprojectTemp)-3)]
                 # print(UpdateValueOutput)
@@ -375,7 +380,7 @@ def UpdatePostInputStory(request):
                 # print(valueOutput)
                 # outputStoryIndex = valueOutput[0]
                 # print(outputStoryIndex)
-                return render(request, 'input-user/output.html', {'valueOutput': UpdateValueOutput})
+                return render(request, 'input-user/output.html', {'valueOutput':valueOutput})
 
 
 def inputScenario(request, counter):
