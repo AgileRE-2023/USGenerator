@@ -5,6 +5,8 @@ import json
 from django.shortcuts import redirect, render
 # from django.contrib import auth
 from django.contrib import messages
+from dateutil import parser
+from datetime import datetime
 
 
 # import json
@@ -117,7 +119,6 @@ def resetpw(request):
 
 
 def dashboardClient(request):
-    from datetime import datetime
 
     user = request.user
     user_auth = auth.current_user['localId']
@@ -132,7 +133,7 @@ def dashboardClient(request):
     arr_users_stories_title = users_stories_title.val()
     # pengecekan apakah ada id userstories jika tidak ada maka akan tampil dashboard non
     if arr_users_stories_title == None:
-        return render(request, 'client-dashboard-non.html')
+        return render(request, 'client-dashboard-non.html', {'user': users_value.val()})
     # jika ada maka akan tampil disini
     else:
         arr_users_stories_title = list(arr_users_stories_title)
@@ -161,7 +162,17 @@ def dashboardClient(request):
             projectTemp = db.child(
                 f'users/{user_auth}/userstories/{i}').child('created_at').get().val()
             # projectTemp=projectTemp
-            timestamp.append(projectTemp)
+
+            # Parse the timestamp string
+            dt_object = parser.parse(projectTemp)
+
+            # Format the date and time components
+            formatted_date = dt_object.strftime('%Y-%m-%d')
+            formatted_time = dt_object.strftime('%H:%M:%S')
+
+            # Append the formatted date and time to the timestamp list
+            timestamp.extend(
+                [formatted_date + ' / ' + formatted_time])
         # print(timestamp)
         # for i in arr_users_stories_title:
         #     i=float(i)
@@ -201,9 +212,21 @@ def detailHistory(request, id):
     arr_users_stories_title.sort()
     # get the time stamp
     timestamp = []
-    timestamp = db.child(
-        f'users/{user_auth}/userstories/{id}').child('created_at').get().val()
-    print(timestamp)
+    for i in arr_users_stories_title:
+        projectTemp = db.child(
+            f'users/{user_auth}/userstories/{i}').child('created_at').get().val()
+        # projectTemp=projectTemp
+
+        # Parse the timestamp string
+        dt_object = parser.parse(projectTemp)
+
+        # Format the date and time components
+        formatted_date = dt_object.strftime('%Y-%m-%d')
+        formatted_time = dt_object.strftime('%H:%M:%S')
+
+        # Append the formatted date and time to the timestamp list
+        timestamp.extend(
+            [formatted_date + ' / ' + formatted_time])
 
     return render(request, 'history/history-detail.html', {'user': users_value.val(), 'timestamp': timestamp})
 
@@ -355,7 +378,7 @@ def inputScenario(request, counter):
                 # hasilOutputStory = []
                 # hasilOutputStory.extend([who, what, why])
                 # print(hasilOutputStory)
-                
+
                 # db.child('users').child(user_local_id).child('userstories').child('userStoryScenario').push(
                 #     {"ScenarioTitlte": ScenarioTitle, "inputParagraf": inputParagraf})
     # user.fromJson(users_by_name)
@@ -424,37 +447,37 @@ def outputScenario(request, counter):
                 db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).child('userStoryScenario').push(
                     {"ScenarioTitlte": ScenarioTitle, "inputParagraf": inputParagraf})
                 # print(format(outputStory))
-                
-                keyvalueUSS=db.child(
+
+                keyvalueUSS = db.child(
                     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario').shallow().get()
-               
-                keyvalueUSS=list(keyvalueUSS.val())
-                valueUss=db.child(
+
+                keyvalueUSS = list(keyvalueUSS.val())
+                valueUss = db.child(
                     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[0]}').get().val()
                 print(valueUss)
-                valueUss=list(valueUss.items())
-                valueUss=valueUss[1][1]
+                valueUss = list(valueUss.items())
+                valueUss = valueUss[1][1]
                 print(valueUss)
                 outputUSScenario = model_us.nlp_UserStoryScenario(valueUss)
-                print('output',outputUSScenario)
+                print('output', outputUSScenario)
                 # push database
                 db.child(
                     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[0]}').push({'outputUSScenario': outputUSScenario})
-                retrieveUSS=db.child(
+                retrieveUSS = db.child(
                     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[0]}').shallow().get()
                 print(retrieveUSS.val())
-                retrieveUSSKey=list(retrieveUSS.val())
+                retrieveUSSKey = list(retrieveUSS.val())
                 # ScenarioTitle=retrieveUSSKey[1]
                 # print(ScenarioTitle)
-                retrieveUSSKey=retrieveUSSKey[0]
-                retrieveUSS=db.child(
+                retrieveUSSKey = retrieveUSSKey[0]
+                retrieveUSS = db.child(
                     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[0]}/{retrieveUSSKey}').get().val()
                 print(retrieveUSS)
-                retrieveUSS=list(retrieveUSS.items())
-                retrieveUSS=retrieveUSS[0][1]
+                retrieveUSS = list(retrieveUSS.items())
+                retrieveUSS = retrieveUSS[0][1]
                 print(retrieveUSS)
 
-    return render(request, 'output-user-scenario/output_scenario.html', {'user': users_value.val(), 'outputStoryIndex': outputStoryIndex, 'counter': counter,'retrieveUSS': retrieveUSS})
+    return render(request, 'output-user-scenario/output_scenario.html', {'user': users_value.val(), 'outputStoryIndex': outputStoryIndex, 'counter': counter, 'retrieveUSS': retrieveUSS})
 
 
 # @login_required
