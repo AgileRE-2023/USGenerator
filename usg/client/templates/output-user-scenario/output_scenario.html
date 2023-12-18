@@ -3,7 +3,7 @@
 
 {% endblock %} {% block title %} Input User {% endblock %} {% block content %}
 <div class="Gui-user">
-  <h1 class="Teks-judul">Project Title</h1>
+  <h1 class="Teks-judul">{{ title }}</h1>
   <div class="output-user-story">
     <h5>User Stories :</h5>
     <div class="container-user-story">
@@ -11,17 +11,27 @@
 
       <div class="as-can-for">
         <div class="grid-as-can-for-1">
+          <p>WHO</p>
+          <span class="colon ms-3">:</span>
           <p>{{outputStoryIndex.who|join:", "}}</p>
         </div>
         <div class="grid-as-can-for">
+          <p>WHAT</p>
+          <span class="colon ms-2">:</span>
           <p>{{outputStoryIndex.what|join:", "}}</p>
         </div>
         <div class="grid-as-can-for-2">
+          <p>WHY</p>
+          <span class="colon ms-3">:</span>
           <p>{{outputStoryIndex.why|join:", "}}</p>
         </div>
       </div>
     </div>
-    <form class="form" action="/update-output-scenario/{{counter}}" method="post">
+    <form
+      class="form"
+      action="/update-output-scenario/{{counter}}"
+      method="post"
+    >
       {% csrf_token %}
       <div class="input-scenario">
         <h5>Input Title User Story Scenario :</h5>
@@ -44,7 +54,12 @@
         ></textarea>
       </div>
       <div class="submit-button">
-        <input id="generateButton" class="submit-button" type="submit" value="Update">
+        <input
+          id="generateButton"
+          class="submit-button"
+          type="submit"
+          value="Update"
+        />
       </div>
     </form>
 
@@ -73,11 +88,20 @@
 </div>
 {% endblock %} {% block script %}
 <script>
-  const userStoryContainer = document.getElementById("scenario-container");
-  const generateButton = document.querySelector(".btn-submit-button");
+  document.addEventListener("DOMContentLoaded", function () {
+    const storedScenarioTitle = localStorage.getItem("ScenarioTitle");
+    const scenarioTitleInput = document.getElementById("ScenarioTitle");
 
-  generateButton.addEventListener("click", () => {
-    userStoryContainer.classList.toggle("hidden");
+    const storedParagrafValue = localStorage.getItem("paragrafValue");
+    const paragrafInput = document.getElementById("inputParagraf");
+
+    if (storedScenarioTitle) {
+      scenarioTitleInput.value = storedScenarioTitle;
+    }
+
+    if (storedParagrafValue) {
+      paragrafInput.value = storedParagrafValue;
+    }
   });
 </script>
 

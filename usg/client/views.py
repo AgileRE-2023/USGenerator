@@ -424,6 +424,10 @@ def inputScenario(request, counter):
                 # model nlp
                 lenValue = len(arr_users_stories_title)
                 print(arr_users_stories_title)
+                # get user stories tittle
+                ValueTitle = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('ProjectTitle').get().val()
+                print("value title ", ValueTitle)
                 ValuePar = db.child(
                     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('inputParagraf').get().val()
                 print("value par ", ValuePar)
@@ -444,7 +448,7 @@ def inputScenario(request, counter):
                 valueOutput=valueOutput[0][1]
                 outputStoryIndex=valueOutput[counter]
                 print(valueOutput)
-    return render(request, 'output-user-scenario/input_scenario.html', {'user': users_value.val(), 'outputStoryIndex': outputStoryIndex, 'counter': counter})
+    return render(request, 'output-user-scenario/input_scenario.html', {'user': users_value.val(), 'outputStoryIndex': outputStoryIndex, 'counter': counter, 'title': ValueTitle})
 
 
 def outputScenario(request, counter):
@@ -486,6 +490,10 @@ def outputScenario(request, counter):
                 # model nlp
                 lenValue = len(arr_users_stories_title)
                 print(arr_users_stories_title)
+                # get user stories tittle
+                ValueTitle = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('ProjectTitle').get().val()
+                print("value title ", ValueTitle)
                 ValuePar = db.child(
                     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('inputParagraf').get().val()
                 print("value par ", ValuePar)
@@ -553,7 +561,7 @@ def outputScenario(request, counter):
                 # print('tes',retrieveUSS)
                 # testing
 
-    return render(request, 'output-user-scenario/output_scenario.html', {'user': users_value.val(), 'outputStoryIndex': outputStoryIndex, 'counter': counter,'retrieveUSS': retrieveUSS})
+    return render(request, 'output-user-scenario/output_scenario.html', {'user': users_value.val(), 'outputStoryIndex': outputStoryIndex, 'counter': counter,'retrieveUSS': retrieveUSS, 'title':ValueTitle})
 
 
 def UpdateOutputScenario(request, counter):
