@@ -512,7 +512,7 @@ def outputScenario(request, counter):
                 # hasilOutputStory=[]
                 # hasilOutputStory.extend([who, what, why])
                 # print(hasilOutputStory)
-                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).child('userStoryScenario').set(
+                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).child('userStoryScenario').push(
                     {"ScenarioTitlte": ScenarioTitle, "inputParagraf": inputParagraf})
                 # print(format(outputStory))
                 
@@ -525,27 +525,32 @@ def outputScenario(request, counter):
                 valueUss=db.child(
                     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[len_keyvalueUSS-1]}').get().val()
                 print(valueUss)
-                # valueUss=list(valueUss.items())
-                # valueUss=valueUss[1][1]
-                # print(valueUss)
+                valueUss=list(valueUss.items())
+                valueUss=valueUss[1][1]
+                print(valueUss)
                 outputUSScenario = model_us.nlp_UserStoryScenario(valueUss)
                 print('output',outputUSScenario)
                 # push database
                 db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario').push({'outputUSScenario': outputUSScenario})
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[len_keyvalueUSS-1]}').child('outputUSScenario').push({'outputUSScenario': outputUSScenario})
                 retrieveUSS=db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/').shallow().get()
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[len_keyvalueUSS-1]}').child('outputUSScenario').shallow().get()
                 print(retrieveUSS.val())
                 retrieveUSSKey=list(retrieveUSS.val())
-                # ScenarioTitle=retrieveUSSKey[1]
-                # print(ScenarioTitle)
+                # # ScenarioTitle=retrieveUSSKey[1]
+                # # print(ScenarioTitle)
                 retrieveUSSKey=retrieveUSSKey[0]
                 retrieveUSS=db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{retrieveUSSKey}').get().val()
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[len_keyvalueUSS-1]}').child('outputUSScenario').child(retrieveUSSKey).get().val()
                 print(retrieveUSS)
+                # retrieveUSS=db.child(
+                #     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{retrieveUSSKey}').get().val()
+                # print(retrieveUSS)
                 retrieveUSS=list(retrieveUSS.items())
                 retrieveUSS=retrieveUSS[0][1]
                 print(retrieveUSS)
+                
+                # print('tes',retrieveUSS)
                 # testing
 
     return render(request, 'output-user-scenario/output_scenario.html', {'user': users_value.val(), 'outputStoryIndex': outputStoryIndex, 'counter': counter,'retrieveUSS': retrieveUSS})
@@ -616,43 +621,68 @@ def UpdateOutputScenario(request, counter):
                 # hasilOutputStory=[]
                 # hasilOutputStory.extend([who, what, why])
                 # print(hasilOutputStory)
-                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).child('userStoryScenario').set(
+
+                # get id user story scenario
+                IdUSScenario=db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).child('userStoryScenario').shallow().get()
+                print(IdUSScenario.val())
+                IdUSScenario=list(IdUSScenario.val())
+                len_IdUSScenario=len(IdUSScenario)
+                # update data project title n input paragraf
+                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).child('userStoryScenario').child(IdUSScenario[len_IdUSScenario-1]).update(
                     {"ScenarioTitlte": ScenarioTitle, "inputParagraf": inputParagraf})
-                # print(format(outputStory))
                 
-                keyvalueUSS=db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario').get().val()
-               
-                keyvalueUSS=list(keyvalueUSS)
-                print('keyvalueUSS',keyvalueUSS)
-                len_keyvalueUSS=len(keyvalueUSS)
+                # retreive data for processing in model
                 valueUss=db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[len_keyvalueUSS-1]}').get().val()
-                print(valueUss)
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{IdUSScenario[0]}/inputParagraf').get().val()
+                print("valueUss",valueUss)
+
+
+                # processing in model
+                outputUSScenario = model_us.nlp_UserStoryScenario(valueUss)
+                print(outputUSScenario)
+
+                # get the id of output user stories scenario, stll dictionary need to convert to list
+                keyvalueOutputUSS=db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{IdUSScenario[0]}/outputUSScenario').shallow().get()
+                print(keyvalueOutputUSS.val())
+               
+                keyvalueOutputUSS=list(keyvalueOutputUSS.val())
+                len_keyvalueOutputUSS=len(keyvalueOutputUSS)
+                keyvalueOutputUSS=keyvalueOutputUSS[len_keyvalueOutputUSS-1]
+                print('keyvalueOutputUSS',keyvalueOutputUSS)
+                
+                # update data output US scenario
+                db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{IdUSScenario[len_IdUSScenario-1]}/outputUSScenario/{keyvalueOutputUSS}').set({'outputUSScenario': outputUSScenario})
+                # print(valueUss)
                 # valueUss=list(valueUss.items())
                 # valueUss=valueUss[1][1]
                 # print(valueUss)
-                outputUSScenario = model_us.nlp_UserStoryScenario(valueUss)
-                print('output',outputUSScenario)
-                # push database
-                db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario').push({'outputUSScenario': outputUSScenario})
-                retrieveUSS=db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/').shallow().get()
-                print(retrieveUSS.val())
-                retrieveUSSKey=list(retrieveUSS.val())
-                # ScenarioTitle=retrieveUSSKey[1]
-                # print(ScenarioTitle)
-                retrieveUSSKey=retrieveUSSKey[0]
-                retrieveUSS=db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{retrieveUSSKey}').get().val()
-                print(retrieveUSS)
-                retrieveUSS=list(retrieveUSS.items())
-                retrieveUSS=retrieveUSS[0][1]
-                print(retrieveUSS)
-                # testing
+                # print('output',outputUSScenario)
+                # # push database
+                # db.child(
+                #     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[len_keyvalueUSS-1]}').push({'outputUSScenario': outputUSScenario})
 
-    return render(request, 'output-user-scenario/output_scenario.html', {'user': users_value.val(), 'outputStoryIndex': outputStoryIndex, 'counter': counter,'retrieveUSS': retrieveUSS})
+                # retreive data for output user story scenario
+                retrieved_data= db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{IdUSScenario[len_IdUSScenario-1]}/outputUSScenario/{keyvalueOutputUSS}/outputUSScenario').get().val()
+                print(retrieved_data)
+                # print(retrieveUSS.val())
+                # retrieveUSSKey=list(retrieveUSS.val())
+                # # ScenarioTitle=retrieveUSSKey[1]
+                # # print(ScenarioTitle)
+                # retrieveUSSKey=retrieveUSSKey[0]
+                # retrieveUSS=db.child(
+                #     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{retrieveUSSKey}').get().val()
+                # print(retrieveUSS)
+                # retrieveUSS=list(retrieveUSS.items())
+                # retrieveUSS=retrieveUSS[0][1]
+                # retrieved_data = retrieveUSS['outputUSScenario']
+                # print(retrieved_data)
+                # # print('tes',retrieveUSS)
+                # # testing
+
+    return render(request, 'output-user-scenario/output_scenario.html', {'user': users_value.val(), 'outputStoryIndex': outputStoryIndex, 'counter': counter,'retrieveUSS': retrieved_data})
 
 
 # @login_required
