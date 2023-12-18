@@ -211,6 +211,12 @@ def detailHistory(request, id):
     # sort the id
     arr_users_stories_title.sort()
     # get the time stamp
+    # get the ProjectTitle
+    projectTitle = []
+    for i in arr_users_stories_title:
+        projectTemp = db.child(
+            f'users/{user_auth}/userstories/{i}').child('ProjectTitle').get().val()
+        projectTitle.append(projectTemp)
     timestamp = []
     for i in arr_users_stories_title:
         projectTemp = db.child(

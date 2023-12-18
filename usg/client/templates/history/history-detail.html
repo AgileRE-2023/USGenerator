@@ -22,7 +22,7 @@
       <div class="blog-slider__content">
         <span class="blog-slider__code">User Stories Title</span>
         <div class="blog-slider__title">Aspect of Who</div>
-        <div class="blog-slider__text">Sebagai seorang pengguna</div>
+        <div class="blog-slider__text">{{ data.who|join:", " }}</div>
       </div>
     </div>
     <div class="blog-slider__item swiper-slide" style="display: flex; flex-direction: row;">
@@ -32,7 +32,7 @@
       <div class="blog-slider__content">
         <span class="blog-slider__code">User Stories Title</span>
         <div class="blog-slider__title">Aspect of What</div>
-        <div class="blog-slider__text">Saya dapat mendaftar akun menggunakan email dan kata sandi</div>
+        <div class="blog-slider__text">{{ data.what|join:", " }}</div>
       </div>
     </div>
     <div class="blog-slider__item swiper-slide" style="display: flex; flex-direction: row;">
@@ -42,7 +42,7 @@
       <div class="blog-slider__content">
         <span class="blog-slider__code">User Stories Title</span>
         <div class="blog-slider__title">Aspect of Why</div>
-        <div class="blog-slider__text">Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</div>
+        <div class="blog-slider__text">{{ data.why|join:", " }}</div>
       </div>
     </div>
   </div>
