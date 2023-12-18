@@ -246,6 +246,10 @@ def postInputStory(request):
     user_info = auth.get_account_info(idtoken)
     tz = pytz.timezone('Asia/Jakarta')
     created_at = datetime.now(timezone.utc).astimezone(tz).isoformat()
+    # Parse the ISO 8601 string into a datetime object
+    dt = datetime.fromisoformat(created_at)
+    # Convert to a different format (regular date format)
+    created_at = dt.strftime("%Y-%m-%d %H:%M:%S")  # Format as desired, e.g., "2023-12-18 10:15:30"
     print(created_at)
     if 'users' in user_info:
         users_list = user_info['users']
