@@ -252,7 +252,7 @@ def baseSignIn(request):
     return render(request, 'base_signin.html')
 
 
-# @login_required
+
 
 
 # @login_required
@@ -324,7 +324,6 @@ def inputScenario(request, counter):
     user = request.user
     user_auth = auth.current_user['localId']
     users_value = db.child(f'users/{user_auth}').get()
-
     ScenarioTitle = request.POST.get('ScenarioTitle')
     inputParagraf = request.POST.get('inputParagraf')
 
