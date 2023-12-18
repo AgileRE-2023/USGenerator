@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <form class="form" action="/output-scenario/{{counter}}" method="post">
+    <form class="form" action="/update-output-scenario/{{counter}}" method="post">
       {% csrf_token %}
       <div class="input-scenario">
         <h5>Input Title User Story Scenario :</h5>
@@ -39,11 +39,12 @@
           type="text"
           class="form-control"
           id="inputParagraf"
+          name="inputParagraf"
           placeholder="Ketik paragraf"
         ></textarea>
       </div>
       <div class="submit-button">
-        <input id="generateButton" class="submit-button" type="submit" value="Generate">
+        <input id="generateButton" class="submit-button" type="submit" value="Update">
       </div>
     </form>
 

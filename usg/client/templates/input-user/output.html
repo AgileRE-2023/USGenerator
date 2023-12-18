@@ -48,15 +48,22 @@
         >{{ forloop.counter0 }}</a
       >
       <div class="as-can-for">
+        {% if 'who' in data %}
         <div class="grid-as-can-for-1">
-          <p>WHO: {{ data.who|join:", " }}</p>
+          <p>WHO:</p>
+          <p>{{ data.who|join:", " }}</p>
         </div>
+        {% endif %} {% if 'what' in data %}
         <div class="grid-as-can-for">
-          <p>WHAT: {{ data.what|join:", " }}</p>
+          <p>WHAT:</p>
+          <p>{{ data.what|join:", " }}</p>
         </div>
+        {% endif %} {% if 'why' in data %}
         <div class="grid-as-can-for-2">
-          <p>WHY: {{ data.why|join:", " }}</p>
+          <P>WHY:</P>
+          <p>{{ data.why|join:", " }}</p>
         </div>
+        {% endif %}
       </div>
     </div>
     {%endfor%}
