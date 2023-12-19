@@ -645,7 +645,7 @@ def UpdateOutputScenario(request, counter):
                 
                 # retreive data for processing in model
                 valueUss=db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{IdUSScenario[0]}/inputParagraf').get().val()
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{IdUSScenario[len_IdUSScenario-1]}/inputParagraf').get().val()
                 print("valueUss",valueUss)
 
 
@@ -665,7 +665,7 @@ def UpdateOutputScenario(request, counter):
                 
                 # update data output US scenario
                 db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{IdUSScenario[len_IdUSScenario-1]}/outputUSScenario/{keyvalueOutputUSS}').set({'outputUSScenario': outputUSScenario})
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{IdUSScenario[len_IdUSScenario-1]}/outputUSScenario/{keyvalueOutputUSS}').update({'outputUSScenario': outputUSScenario})
                 # print(valueUss)
                 # valueUss=list(valueUss.items())
                 # valueUss=valueUss[1][1]
