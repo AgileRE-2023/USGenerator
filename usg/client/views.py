@@ -274,6 +274,10 @@ def postInputStory(request):
     user_info = auth.get_account_info(idtoken)
     tz = pytz.timezone('Asia/Jakarta')
     created_at = datetime.now(timezone.utc).astimezone(tz).isoformat()
+    # Parse the ISO 8601 string into a datetime object
+    dt = datetime.fromisoformat(created_at)
+    # Convert to a different format (regular date format)
+    created_at = dt.strftime("%Y-%m-%d %H:%M:%S")  # Format as desired, e.g., "2023-12-18 10:15:30"
     print(created_at)
     if 'users' in user_info:
         users_list = user_info['users']
@@ -304,19 +308,111 @@ def postInputStory(request):
                 outputStory = model_us.nlp_userstory(ValuePar)
                 # print(format(outputStory))
                 # push database
-                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).push(
+                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).child('outputStory').push(
                     {"outputStory": outputStory})
                 # projectTemp=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').get().val()
-                projectTemp = db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').get().val()
-                projectTemp = list(projectTemp.items())
-                valueOutput = projectTemp[0][1]
-                # print(valueOutput)
-                valueOutput = valueOutput['outputStory']
+                # getting Id for user story
+                IdprojectTemp = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').shallow().get()
+                print(IdprojectTemp.val())
+                IdprojectTemp=IdprojectTemp.val()
+                IdprojectTemp = list(IdprojectTemp)
+                valueOutput = IdprojectTemp[0]
                 print(valueOutput)
-                outputStoryIndex = valueOutput[0]
-                print(outputStoryIndex)
+                # get output user story
+                valueOutput=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory/{valueOutput}').get().val()
+                print(valueOutput)
+                valueOutput = list(valueOutput.items())
+                valueOutput=valueOutput[0][1]
+                print(valueOutput)
+                # print(valueOutput)
+                # valueOutput = valueOutput['outputStory']
+                # print(valueOutput)
+                # outputStoryIndex = valueOutput[0]
+                # print(outputStoryIndex)
                 return render(request, 'input-user/output.html', {'valueOutput': valueOutput})
+
+
+def UpdatePostInputStory(request):
+    import time
+    from datetime import datetime, timezone
+    import pytz
+    ProjectTitle = request.POST.get('ProjectTitle')
+    inputParagraf = request.POST.get('inputParagraf')
+    # users_value = db.child(f'users/{user_auth}').get()
+    idtoken = request.session['uid']
+    user_info = auth.get_account_info(idtoken)
+    tz = pytz.timezone('Asia/Jakarta')
+    created_at = datetime.now(timezone.utc).astimezone(tz).isoformat()
+    print(created_at)
+    if 'users' in user_info:
+        users_list = user_info['users']
+        if users_list:
+            user_local_id = users_list[0].get('localId')
+            print(user_local_id)
+            if user_local_id:
+                # print("Data updated successfully")
+                model_us = pickle.load(open('model.sav', 'rb'))
+                user_auth = auth.current_user['localId']
+
+                # get the id of user stories, stll dictionary need to convert to list
+                users_stories_title = db.child(
+                    f'users/{user_auth}/userstories').shallow().get()
+                # convert to list
+                arr_users_stories_title = list(users_stories_title.val())
+                # sort the id
+                arr_users_stories_title.sort()
+                # model nlp
+                lenValue = len(arr_users_stories_title)
+                print(arr_users_stories_title)
+                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).update(
+                    {"ProjectTitle": ProjectTitle, "inputParagraf": inputParagraf, "created_at": created_at})
+                ValuePar = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('inputParagraf').get().val()
+                print("value par ", ValuePar)
+                print(lenValue)
+                outputStory = model_us.nlp_userstory(ValuePar)
+                # print(format(outputStory))
+                # projectTemp=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').get().val()
+                # getting Id for user story
+                IdprojectTemp = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').shallow().get()
+                print(IdprojectTemp.val())
+                IdprojectTemp=IdprojectTemp.val()
+                IdprojectTemp = list(IdprojectTemp)
+                IdprojectTemp.sort()
+                print(IdprojectTemp)
+                # push database
+                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).child('outputStory').child(IdprojectTemp[0]).set(
+                    {"outputStory": outputStory})
+                IdprojectTemp = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').shallow().get()
+                print(IdprojectTemp.val())
+                IdprojectTemp=IdprojectTemp.val()
+                IdprojectTemp = list(IdprojectTemp)
+                valueOutput = IdprojectTemp[0]
+                print(valueOutput)
+                # get output user story
+                valueOutput=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory/{valueOutput}').get().val()
+                print(valueOutput)
+                valueOutput = list(valueOutput.items())
+                valueOutput=valueOutput[0][1]
+                print(valueOutput)
+                
+                # UpdateValueOutput = IdprojectTemp[(len(IdprojectTemp)-3)]
+                # print(UpdateValueOutput)
+                # get output user story
+                # UpdateValueOutput=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/{UpdateValueOutput}').get().val()
+                # print(UpdateValueOutput)
+                # UpdateValueOutput = list(UpdateValueOutput.items())
+                # UpdateValueOutput=UpdateValueOutput[0][1]
+                # print(UpdateValueOutput)
+                # print(valueOutput)
+                # valueOutput = valueOutput['outputStory']
+                # print(valueOutput)
+                # outputStoryIndex = valueOutput[0]
+                # print(outputStoryIndex)
+                return render(request, 'input-user/output.html', {'valueOutput':valueOutput})
 
 
 def inputScenario(request, counter):
@@ -359,37 +455,147 @@ def inputScenario(request, counter):
                 # model nlp
                 lenValue = len(arr_users_stories_title)
                 print(arr_users_stories_title)
+                # get user stories tittle
+                ValueTitle = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('ProjectTitle').get().val()
+                print("value title ", ValueTitle)
                 ValuePar = db.child(
                     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('inputParagraf').get().val()
                 print("value par ", ValuePar)
                 print(lenValue)
-                # outputStory = model_us.nlp_userstory(ValuePar)
-                # print(format(outputStory))
-                # push database
-                # projectTemp=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').get().val()
-                projectTemp = db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').get().val()
-                print(projectTemp)
-                projectTemp = list(projectTemp.items())
-                valueOutput = projectTemp[0][1]
+                
+                # getting Id for user story
+                IdprojectTemp = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').shallow().get()
+                print(IdprojectTemp.val())
+                IdprojectTemp=IdprojectTemp.val()
+                IdprojectTemp = list(IdprojectTemp)
+                valueOutput = IdprojectTemp[0]
                 print(valueOutput)
-                valueOutput = valueOutput['outputStory']
-                outputStoryIndex = valueOutput[counter]
-                print(outputStoryIndex)
-                # who=outputStoryIndex['who'][0]
-                # what=outputStoryIndex['what'][0]
-                # why=outputStoryIndex['why'][0]
-                # hasilOutputStory = []
-                # hasilOutputStory.extend([who, what, why])
-                # print(hasilOutputStory)
-
-                # db.child('users').child(user_local_id).child('userstories').child('userStoryScenario').push(
-                #     {"ScenarioTitlte": ScenarioTitle, "inputParagraf": inputParagraf})
-    # user.fromJson(users_by_name)
-    return render(request, 'output-user-scenario/input_scenario.html', {'user': users_value.val(), 'outputStoryIndex': outputStoryIndex, 'counter': counter})
+                # get output user story
+                valueOutput=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory/{valueOutput}').get().val()
+                print(valueOutput)
+                valueOutput = list(valueOutput.items())
+                valueOutput=valueOutput[0][1]
+                outputStoryIndex=valueOutput[counter]
+                print(valueOutput)
+    return render(request, 'output-user-scenario/input_scenario.html', {'user': users_value.val(), 'outputStoryIndex': outputStoryIndex, 'counter': counter, 'title': ValueTitle})
 
 
 def outputScenario(request, counter):
+    user = request.user
+    user_auth = auth.current_user['localId']
+    users_value = db.child(f'users/{user_auth}').get()
+
+    import time
+    from datetime import datetime, timezone
+    import pytz
+    # ProjectTitle = request.POST.get('ProjectTitle')
+    ScenarioTitle = request.POST.get('ScenarioTitle')
+    inputParagraf = request.POST.get('inputParagraf')
+    # users_value = db.child(f'users/{user_auth}').get()
+    idtoken = request.session['uid']
+    user_info = auth.get_account_info(idtoken)
+    tz = pytz.timezone('Asia/Jakarta')
+    created_at = datetime.now(timezone.utc).astimezone(tz).isoformat()
+    print(created_at)
+    if 'users' in user_info:
+        users_list = user_info['users']
+        if users_list:
+            user_local_id = users_list[0].get('localId')
+            print(user_local_id)
+            if user_local_id:
+                # db.child('users').child(user_local_id).child('userstories').push(
+                #     {"inputParagraf": inputParagraf,"created_at":created_at})
+                # print("Data updated successfully")
+                model_us = pickle.load(open('modelScenario.sav', 'rb'))
+                user_auth = auth.current_user['localId']
+
+                # get the id of user stories, stll dictionary need to convert to list
+                users_stories_title = db.child(
+                    f'users/{user_auth}/userstories').shallow().get()
+                # convert to list
+                arr_users_stories_title = list(users_stories_title.val())
+                # sort the id
+                arr_users_stories_title.sort()
+                # model nlp
+                lenValue = len(arr_users_stories_title)
+                print(arr_users_stories_title)
+                # get user stories tittle
+                ValueTitle = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('ProjectTitle').get().val()
+                print("value title ", ValueTitle)
+                ValuePar = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('inputParagraf').get().val()
+                print("value par ", ValuePar)
+                print(lenValue)
+                # getting Id for user story
+                IdprojectTemp = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').shallow().get()
+                print(IdprojectTemp.val())
+                IdprojectTemp=IdprojectTemp.val()
+                IdprojectTemp = list(IdprojectTemp)
+                valueOutput = IdprojectTemp[0]
+                print(valueOutput)
+                # get output user story
+                valueOutput=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory/{valueOutput}').get().val()
+                print(valueOutput)
+                valueOutput = list(valueOutput.items())
+                valueOutput=valueOutput[0][1]
+                outputStoryIndex=valueOutput[counter]
+                print(valueOutput)
+                # who=outputStoryIndex['who'][0]
+                # what=outputStoryIndex['what'][0]
+                # why=outputStoryIndex['why'][0]
+                # print(outputStoryIndex)
+                # hasilOutputStory=[]
+                # hasilOutputStory.extend([who, what, why])
+                # print(hasilOutputStory)
+                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).child('userStoryScenario').push(
+                    {"ScenarioTitlte": ScenarioTitle, "inputParagraf": inputParagraf})
+                # print(format(outputStory))
+                
+                keyvalueUSS=db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario').get().val()
+               
+                keyvalueUSS=list(keyvalueUSS)
+                print('keyvalueUSS',keyvalueUSS)
+                len_keyvalueUSS=len(keyvalueUSS)
+                valueUss=db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[len_keyvalueUSS-1]}').get().val()
+                print(valueUss)
+                valueUss = list(valueUss.items())
+                valueUss = valueUss[1][1]
+                print(valueUss)
+                outputUSScenario = model_us.nlp_UserStoryScenario(valueUss)
+                print('output', outputUSScenario)
+                # push database
+                db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[len_keyvalueUSS-1]}').child('outputUSScenario').push({'outputUSScenario': outputUSScenario})
+                retrieveUSS=db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[len_keyvalueUSS-1]}').child('outputUSScenario').shallow().get()
+                print(retrieveUSS.val())
+                retrieveUSSKey=list(retrieveUSS.val())
+                # # ScenarioTitle=retrieveUSSKey[1]
+                # # print(ScenarioTitle)
+                retrieveUSSKey=retrieveUSSKey[0]
+                retrieveUSS=db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[len_keyvalueUSS-1]}').child('outputUSScenario').child(retrieveUSSKey).get().val()
+                print(retrieveUSS)
+                # retrieveUSS=db.child(
+                #     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{retrieveUSSKey}').get().val()
+                # print(retrieveUSS)
+                retrieveUSS=list(retrieveUSS.items())
+                retrieveUSS=retrieveUSS[0][1]
+                print(retrieveUSS)
+                
+                # print('tes',retrieveUSS)
+                # testing
+
+    return render(request, 'output-user-scenario/output_scenario.html', {'user': users_value.val(), 'outputStoryIndex': outputStoryIndex, 'counter': counter,'retrieveUSS': retrieveUSS, 'title':ValueTitle})
+
+
+def UpdateOutputScenario(request, counter):
     user = request.user
     user_auth = auth.current_user['localId']
     users_value = db.child(f'users/{user_auth}').get()
@@ -432,15 +638,21 @@ def outputScenario(request, counter):
                     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').child('inputParagraf').get().val()
                 print("value par ", ValuePar)
                 print(lenValue)
-                # projectTemp=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').get().val()
-                projectTemp = db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}').get().val()
-                print(projectTemp)
-                projectTemp = list(projectTemp.items())
-                valueOutput = projectTemp[0][1]
+                # getting Id for user story
+                IdprojectTemp = db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory').shallow().get()
+                print(IdprojectTemp.val())
+                IdprojectTemp=IdprojectTemp.val()
+                IdprojectTemp = list(IdprojectTemp)
+                valueOutput = IdprojectTemp[0]
                 print(valueOutput)
-                valueOutput = valueOutput['outputStory']
-                outputStoryIndex = valueOutput[counter]
+                # get output user story
+                valueOutput=db.child(f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/outputStory/{valueOutput}').get().val()
+                print(valueOutput)
+                valueOutput = list(valueOutput.items())
+                valueOutput=valueOutput[0][1]
+                outputStoryIndex=valueOutput[counter]
+                print(valueOutput)
                 # who=outputStoryIndex['who'][0]
                 # what=outputStoryIndex['what'][0]
                 # why=outputStoryIndex['why'][0]
@@ -448,40 +660,68 @@ def outputScenario(request, counter):
                 # hasilOutputStory=[]
                 # hasilOutputStory.extend([who, what, why])
                 # print(hasilOutputStory)
-                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).child('userStoryScenario').push(
+
+                # get id user story scenario
+                IdUSScenario=db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).child('userStoryScenario').shallow().get()
+                print(IdUSScenario.val())
+                IdUSScenario=list(IdUSScenario.val())
+                len_IdUSScenario=len(IdUSScenario)
+                # update data project title n input paragraf
+                db.child('users').child(user_local_id).child('userstories').child(arr_users_stories_title[lenValue-1]).child('userStoryScenario').child(IdUSScenario[len_IdUSScenario-1]).update(
                     {"ScenarioTitlte": ScenarioTitle, "inputParagraf": inputParagraf})
-                # print(format(outputStory))
+                
+                # retreive data for processing in model
+                valueUss=db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{IdUSScenario[len_IdUSScenario-1]}/inputParagraf').get().val()
+                print("valueUss",valueUss)
 
-                keyvalueUSS = db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario').shallow().get()
 
-                keyvalueUSS = list(keyvalueUSS.val())
-                valueUss = db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[0]}').get().val()
-                print(valueUss)
-                valueUss = list(valueUss.items())
-                valueUss = valueUss[1][1]
-                print(valueUss)
+                # processing in model
                 outputUSScenario = model_us.nlp_UserStoryScenario(valueUss)
-                print('output', outputUSScenario)
-                # push database
-                db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[0]}').push({'outputUSScenario': outputUSScenario})
-                retrieveUSS = db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[0]}').shallow().get()
-                print(retrieveUSS.val())
-                retrieveUSSKey = list(retrieveUSS.val())
-                # ScenarioTitle=retrieveUSSKey[1]
-                # print(ScenarioTitle)
-                retrieveUSSKey = retrieveUSSKey[0]
-                retrieveUSS = db.child(
-                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[0]}/{retrieveUSSKey}').get().val()
-                print(retrieveUSS)
-                retrieveUSS = list(retrieveUSS.items())
-                retrieveUSS = retrieveUSS[0][1]
-                print(retrieveUSS)
+                print(outputUSScenario)
 
-    return render(request, 'output-user-scenario/output_scenario.html', {'user': users_value.val(), 'outputStoryIndex': outputStoryIndex, 'counter': counter, 'retrieveUSS': retrieveUSS})
+                # get the id of output user stories scenario, stll dictionary need to convert to list
+                keyvalueOutputUSS=db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{IdUSScenario[0]}/outputUSScenario').shallow().get()
+                print(keyvalueOutputUSS.val())
+               
+                keyvalueOutputUSS=list(keyvalueOutputUSS.val())
+                len_keyvalueOutputUSS=len(keyvalueOutputUSS)
+                keyvalueOutputUSS=keyvalueOutputUSS[len_keyvalueOutputUSS-1]
+                print('keyvalueOutputUSS',keyvalueOutputUSS)
+                
+                # update data output US scenario
+                db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{IdUSScenario[len_IdUSScenario-1]}/outputUSScenario/{keyvalueOutputUSS}').update({'outputUSScenario': outputUSScenario})
+                # print(valueUss)
+                # valueUss=list(valueUss.items())
+                # valueUss=valueUss[1][1]
+                # print(valueUss)
+                # print('output',outputUSScenario)
+                # # push database
+                # db.child(
+                #     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{keyvalueUSS[len_keyvalueUSS-1]}').push({'outputUSScenario': outputUSScenario})
+
+                # retreive data for output user story scenario
+                retrieved_data= db.child(
+                    f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{IdUSScenario[len_IdUSScenario-1]}/outputUSScenario/{keyvalueOutputUSS}/outputUSScenario').get().val()
+                print(retrieved_data)
+                # print(retrieveUSS.val())
+                # retrieveUSSKey=list(retrieveUSS.val())
+                # # ScenarioTitle=retrieveUSSKey[1]
+                # # print(ScenarioTitle)
+                # retrieveUSSKey=retrieveUSSKey[0]
+                # retrieveUSS=db.child(
+                #     f'users/{user_auth}/userstories/{arr_users_stories_title[lenValue-1]}/userStoryScenario/{retrieveUSSKey}').get().val()
+                # print(retrieveUSS)
+                # retrieveUSS=list(retrieveUSS.items())
+                # retrieveUSS=retrieveUSS[0][1]
+                # retrieved_data = retrieveUSS['outputUSScenario']
+                # print(retrieved_data)
+                # # print('tes',retrieveUSS)
+                # # testing
+
+    return render(request, 'output-user-scenario/output_scenario.html', {'user': users_value.val(), 'outputStoryIndex': outputStoryIndex, 'counter': counter,'retrieveUSS': retrieved_data})
 
 
 # @login_required

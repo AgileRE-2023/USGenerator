@@ -22,10 +22,12 @@ urlpatterns = [
     # Input User Story
     path('inputUserStory', views.inputUserStory, name='inputUserStory'),
     path('postInputStory/', views.postInputStory),
+    path('UpdatePostInputStory/', views.UpdatePostInputStory),
 
     #Input User Story Scenario
     path("input-scenario/<int:counter>", views.inputScenario, name="input-scenario"),
     path("output-scenario/<int:counter>", views.outputScenario, name="output-scenario"),
+    path("update-output-scenario/<int:counter>", views.UpdateOutputScenario, name="update-output-scenario"),
 
 
     # Registration & Login

@@ -75,11 +75,14 @@ def hapus_nilai_yang_terkandung(what, why):
         what = []
     return what
 
-
+def delete_tobe(what_list):
+    tobe = ['is', 'am', 'are', 'can']
+    kata_kalimat = ' '.join(what_list)
+    what = ' '.join(kata for kata in kata_kalimat.split() if kata.lower() not in tobe)
+    return [what]
 class UserStory:
-
     def nlp_userstory(self, ValuePar):
-        input_text = ValuePar 
+        input_text = ValuePar
         input_text = input_text.lower()
         kalimat = nltk.sent_tokenize(input_text)
         useStoryVal = []
@@ -93,20 +96,23 @@ class UserStory:
             # Handle possible None values
             who = who if who is not None else []
             why = why if why is not None else []
-            
             what = hapus_nilai_yang_terkandung(what_phrases, why)
             what = what if what is not None else []
+
             who = list(set(who))
             why = list(set(why))
             what = list(set(what))
             useStoryVal.append({'who' : who, 'what' : what, 'why' : why})
-            print("Kalimat:", sentence)
-            print("Aspect of Who:", who)
-            print("Aspect of What:", what)
-            print("Aspect of Why:", why)
-            print("-----")
-
+                # print("Kalimat:", sentence)
+                # print("Aspect of Who:", who)
+                # print("Aspect of What:", what)
+                # print("Aspect of Why:", why)
+                # print("-----")
+        for data in useStoryVal:
+            if "what" in data:
+                data["what"] = delete_tobe(data["what"])
         return useStoryVal
+
 
 model = UserStory()
 filename = "model.sav"

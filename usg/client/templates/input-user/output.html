@@ -3,7 +3,7 @@
 {% endblock %} {% block title %} Input User {% endblock %} {% block content %}
 <div class="Gui-user">
   <h1 class="Teks-judul">User Stories</h1>
-  <form class="form-inline" action="/postInputStory/" method="post">
+  <form class="form-inline" action="/UpdatePostInputStory/" method="post">
     <div class="form">
       {% csrf_token %}
       <div class="form-group mb-2">
@@ -14,6 +14,7 @@
           id="ProjectTitle"
           name="ProjectTitle"
           placeholder="Ketik projek anda"
+    
         />
       </div>
 
@@ -23,10 +24,16 @@
           class="form-control"
           id="inputParagraf"
           name="inputParagraf"
-          placeholder="Ketik paragraf"></textarea>
+          placeholder="Ketik paragraf"
+        ></textarea>
       </div>
       <div class="submit-button">
-        <input id="generateButton" class="submit-button" type="submit" value="Generate">
+        <input
+          id="generateButton"
+          class="submit-button"
+          type="submit"
+          value="Update"
+        />
       </div>
     </div>
   </form>
@@ -35,31 +42,51 @@
     <h3>User Stories :</h3>
     {% for data in valueOutput %}
     <div class="container-user-story">
-      <a class="numof-container" href="{% url 'client:input-scenario' counter=forloop.counter0 %}">{{ forloop.counter0 }}</a>
+      <a
+        class="numof-container"
+        href="{% url 'client:input-scenario' counter=forloop.counter0 %}"
+        >{{ forloop.counter0 }}</a
+      >
       <div class="as-can-for">
+        {% if 'who' in data %}
         <div class="grid-as-can-for-1">
-          <p>WHO:  {{ data.who|join:", " }}</p>
+          <p>WHO</p><span class="colon ms-3">:</span>
+          <p>{{ data.who|join:", " }}</p>
         </div>
+        {% endif %} {% if 'what' in data %}
         <div class="grid-as-can-for">
-          <p>WHAT:  {{ data.what|join:", " }}</p>
+          <p>WHAT</p><span class="colon ms-2">:</span>
+          <p>{{ data.what|join:", " }}</p>
         </div>
+        {% endif %} {% if 'why' in data %}
         <div class="grid-as-can-for-2">
-          <p>WHY:  {{ data.why|join:", " }}</p>
+          <P>WHY</P><span class="colon ms-3">:</span>
+          <p>{{ data.why|join:", " }}</p>
         </div>
+        {% endif %}
       </div>
     </div>
     {%endfor%}
-
   </div>
 </div>
 {% endblock %} {% block script %}
-<!-- <script>
-  const userStoryContainer = document.getElementById("user-story-container");
-  const generateButton = document.getElementById("generateButton");
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const storedProjectTitle = localStorage.getItem('projectTitle');
+  const projectTitleInput = document.getElementById('ProjectTitle');
 
-  generateButton.addEventListener("click", () => {
-    userStoryContainer.classList.toggle("hidden");
-  });
-</script> -->
+  const storedParagrafValue = localStorage.getItem('paragrafValue');
+  const paragrafInput = document.getElementById('inputParagraf');
+
+  if (storedProjectTitle) {
+    projectTitleInput.value = storedProjectTitle;
+  }
+
+  if (storedParagrafValue) {
+    paragrafInput.value = storedParagrafValue;
+  }
+});
+
+</script>
 
 {% endblock %}

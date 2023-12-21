@@ -3,16 +3,25 @@
 
 {% endblock %} {% block title %} Input User {% endblock %} {% block content %}
 <div class="Gui-user">
-  <h1 class="Teks-judul">Project Title</h1>
+  <h1 class="Teks-judul">{{ title }}</h1>
   <div class="output-user-story">
     <h5>User Stories :</h5>
     <div class="container-user-story">
       <a class="numof-container" >{{counter}}</a>
 
       <div class="as-can-for">
-        <div class="grid-as-can-for-1"><p>{{outputStoryIndex.who|join:", "}}</p></div>
-        <div class="grid-as-can-for"><p>{{outputStoryIndex.what|join:", "}}</p></div>
-        <div class="grid-as-can-for-2"><p>{{outputStoryIndex.why|join:", "}}</p></div>
+        <div class="grid-as-can-for-1">
+          <p>WHO</p><span class="colon ms-3">:</span>
+          <p>{{outputStoryIndex.who|join:", "}}</p>
+        </div>
+        <div class="grid-as-can-for">
+          <p>WHAT</p><span class="colon ms-2">:</span>
+          <p>{{outputStoryIndex.what|join:", "}}</p>
+        </div>
+        <div class="grid-as-can-for-2">
+          <p>WHY</p><span class="colon ms-3">:</span>
+          <p>{{outputStoryIndex.why|join:", "}}</p>
+        </div>
       </div>
     </div>
 
@@ -44,11 +53,28 @@
 </div>
 {% endblock %} {% block script %}
 <script>
-  const userStoryContainer = document.getElementById("scenario-container");
-  const generateButton = document.querySelector(".btn-submit-button");
+  // Get the form
+  const form = document.querySelector('form');
 
-  generateButton.addEventListener("click", () => {
-    userStoryContainer.classList.toggle("hidden");
+  
+  // Function to handle form submission
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+    
+    // Get the title input field and its value
+    const scenarioTitleInput = document.getElementById('ScenarioTitle');
+    const scenarioTitleValue = scenarioTitleInput.value;
+    
+    // Get the paragraph input field and its value
+    const paragrafInput = document.getElementById('inputParagraf');
+    const paragrafValue = paragrafInput.value;
+
+    // Store the scenario title and paragraph value in localStorage
+    localStorage.setItem('ScenarioTitle', scenarioTitleValue);
+    localStorage.setItem('paragrafValue', paragrafValue);
+
+    // Now submit the form
+    form.submit();
   });
 </script>
 
