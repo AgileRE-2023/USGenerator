@@ -38,6 +38,7 @@
             <th>Project</th>
             <th style="display: flex; gap: 10px; align-items: center;">Timestamp<i class="fa-solid fa-sort"></i></th>
             <th>Result</th>
+            <th>Action</th>
           </tr>
         </thead>
         <!-- batas awal -->
@@ -53,6 +54,13 @@
               <td>
                 <a href="{% url 'client:detail-history' arr_users_stories_title %}">
                   <img alt="view" src={% static 'admin/icons/view-button.svg' %}>
+                </a>
+              </td>
+              <td>
+                <a href="#">
+                  <div class="icon">
+                    <img src="{% static 'trash-2.svg' %}" alt="">
+                  </div>
                 </a>
               </td>
             </tr>
