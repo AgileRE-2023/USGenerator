@@ -14,7 +14,6 @@
           id="ProjectTitle"
           name="ProjectTitle"
           placeholder="Ketik projek anda"
-    
         />
       </div>
 
@@ -50,17 +49,20 @@
       <div class="as-can-for">
         {% if 'who' in data %}
         <div class="grid-as-can-for-1">
-          <p>WHO</p><span class="colon ms-3">:</span>
+          <p>WHO</p>
+          <span class="colon ms-3">:</span>
           <p>{{ data.who|join:", " }}</p>
         </div>
         {% endif %} {% if 'what' in data %}
         <div class="grid-as-can-for">
-          <p>WHAT</p><span class="colon ms-2">:</span>
+          <p>WHAT</p>
+          <span class="colon ms-2">:</span>
           <p>{{ data.what|join:", " }}</p>
         </div>
         {% endif %} {% if 'why' in data %}
         <div class="grid-as-can-for-2">
-          <P>WHY</P><span class="colon ms-3">:</span>
+          <p>WHY</p>
+          <span class="colon ms-3">:</span>
           <p>{{ data.why|join:", " }}</p>
         </div>
         {% endif %}
@@ -71,22 +73,45 @@
 </div>
 {% endblock %} {% block script %}
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const storedProjectTitle = localStorage.getItem('projectTitle');
-  const projectTitleInput = document.getElementById('ProjectTitle');
+  document.addEventListener("DOMContentLoaded", function () {
+    const storedProjectTitle = localStorage.getItem("projectTitle");
+    const projectTitleInput = document.getElementById("ProjectTitle");
 
-  const storedParagrafValue = localStorage.getItem('paragrafValue');
-  const paragrafInput = document.getElementById('inputParagraf');
+    const storedParagrafValue = localStorage.getItem("paragrafValue");
+    const paragrafInput = document.getElementById("inputParagraf");
 
-  if (storedProjectTitle) {
-    projectTitleInput.value = storedProjectTitle;
-  }
+    if (storedProjectTitle) {
+      projectTitleInput.value = storedProjectTitle;
+    }
 
-  if (storedParagrafValue) {
-    paragrafInput.value = storedParagrafValue;
-  }
-});
+    if (storedParagrafValue) {
+      paragrafInput.value = storedParagrafValue;
+    }
 
+  });
+
+  // Get the form
+  const form = document.querySelector('form');
+
+  // Function to handle form submission
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+    
+    // Get the title input field and its value
+    const projectTitleInput = document.getElementById('ProjectTitle');
+    const projectTitleValue = projectTitleInput.value;
+    
+    // Get the paragraph input field and its value
+    const paragrafInput = document.getElementById('inputParagraf');
+    const paragrafValue = paragrafInput.value;
+
+    // Store the project title and paragraph value in localStorage
+    localStorage.setItem('projectTitle', projectTitleValue);
+    localStorage.setItem('paragrafValue', paragrafValue);
+
+    // Now submit the form
+    form.submit();
+  });
 </script>
 
 {% endblock %}
