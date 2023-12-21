@@ -8,7 +8,6 @@ from django.contrib import messages
 from dateutil import parser
 from datetime import datetime
 
-
 # import json
 
 # Create your views here.
@@ -125,7 +124,7 @@ def dashboardClient(request):
     users_value = db.child(f'users/{user_auth}').get()
     users_stories = db.child(f'users/{user_auth}/userstories').get()
 
-    # get the id of user stories, stll dictionary need to convert to list
+    # get the id of user stories, still dictionary need to convert to list
     users_stories_title = db.child(
         f'users/{user_auth}/userstories').shallow().get()
     # convert to list
