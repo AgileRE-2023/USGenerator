@@ -11,7 +11,7 @@
       <h3>{{ user.name }}</h3>
       <a mailto:example@email.com class="text-user">{{ user.email }}</a>
       <p class="text-user">{{ user.phone }}</p>
-      <p class="text-user">72 Project Complished</p>
+      <p class="text-user">{{project_complished}} Project Complished</p>
       <div class="submit-button">
         <a href="{% url 'client:edit-profile' %}">
           <button class="edit-button" type="button">
