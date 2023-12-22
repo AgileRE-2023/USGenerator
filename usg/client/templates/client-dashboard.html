@@ -34,6 +34,7 @@
       <table>
         <thead>
           <tr style="border-radius: 50%">
+            <th>No</th>
             <th>ID</th>
             <th>Project</th>
             <th style="display: flex; gap: 10px; align-items: center;">Timestamp<i class="fa-solid fa-sort"></i></th>
@@ -48,6 +49,7 @@
         <tbody>
           {% for arr_users_stories_title,projectTitle,userStories,timestamp in zip_data%}
           <tr>
+              <td>{{forloop.counter}}</td>
               <td>{{arr_users_stories_title}}</td>
               <td>{{ projectTitle }}</td>
               <td>{{ timestamp }}</td>
@@ -57,7 +59,7 @@
                 </a>
               </td>
               <td>
-                <a href="#">
+                <a href="{% url 'client:delete-userstory' counter=forloop.counter %}">
                   <div class="icon">
                     <img src="{% static 'trash-2.svg' %}" alt="">
                   </div>

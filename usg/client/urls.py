@@ -46,7 +46,8 @@ urlpatterns = [
 
     path('reset', views.reset, name='reset'),
     path('send', views.send, name='send'),
-    path('postreset/', views.postreset, name='postreset')
+    path('postreset/', views.postreset, name='postreset'),
 
-    #
+    #delete
+    path('delete-userstory/<int:counter>', views.deleteUserStory, name='delete-userstory'),
 ]

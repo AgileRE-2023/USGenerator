@@ -251,7 +251,17 @@ def baseSignIn(request):
     return render(request, 'base_signin.html')
 
 
-
+def deleteUserStory(request,counter):
+    user = request.user
+    user_auth = auth.current_user['localId']
+     # get the id of user stories, still dictionary need to convert to list
+    users_stories_title = db.child(
+        f'users/{user_auth}/userstories').shallow().get()
+    arr_users_stories_title=list(users_stories_title.val())
+    arr_users_stories_title.sort()
+    db.child(
+        f'users/{user_auth}/userstories').child(arr_users_stories_title[counter-1]).remove()
+    return redirect('client:dashboardClient')    
 
 
 # @login_required
