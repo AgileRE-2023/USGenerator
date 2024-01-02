@@ -1,0 +1,113 @@
+<testsuite name="features.signIn.Sign Up" tests="2" errors="2" failures="0" skipped="0" time="7.82172" timestamp="2024-01-02T21:11:56.813416" hostname="Reyhan"><testcase classname="features.signIn.Sign Up" name="Success SignUp" status="failed" time="5.407104"><error type="NoSuchWindowException" message="Message: no such window: target window already closed&#10;from unknown error: web view not found&#10;  (Session info: chrome=120.0.6099.130)&#10;Stacktrace:&#10;&#09;GetHandleVerifier [0x00007FF7F8562142+3514994]&#10;&#09;(No symbol) [0x00007FF7F8180CE2]&#10;&#09;(No symbol) [0x00007FF7F80276AA]&#10;&#09;(No symbol) [0x00007FF7F8000AFD]&#10;&#09;(No symbol) [0x00007FF7F809CB1B]&#10;&#09;(No symbol) [0x00007FF7F80B218F]&#10;&#09;(No symbol) [0x00007FF7F8095D93]&#10;&#09;(No symbol) [0x00007FF7F8064BDC]&#10;&#09;(No symbol) [0x00007FF7F8065C64]&#10;&#09;GetHandleVerifier [0x00007FF7F858E16B+3695259]&#10;&#09;GetHandleVerifier [0x00007FF7F85E6737+4057191]&#10;&#09;GetHandleVerifier [0x00007FF7F85DE4E3+4023827]&#10;&#09;GetHandleVerifier [0x00007FF7F82B04F9+689705]&#10;&#09;(No symbol) [0x00007FF7F818C048]&#10;&#09;(No symbol) [0x00007FF7F8188044]&#10;&#09;(No symbol) [0x00007FF7F81881C9]&#10;&#09;(No symbol) [0x00007FF7F81788C4]&#10;&#09;BaseThreadInitThunk [0x00007FF97E5B257D+29]&#10;&#09;RtlUserThreadStart [0x00007FF97E88AA58+40]&#10;">
+<![CDATA[
+Failing step: When i fill all field in SignUp Form with new username ... failed in 4.063s
+Location: client/tests/acceptance/features/signIn.feature:5
+Traceback (most recent call last):
+  File "D:\Python\Lib\site-packages\behave\model.py", line 1329, in run
+    match.run(runner.context)
+  File "D:\Python\Lib\site-packages\behave\matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "client\tests\acceptance\steps\signIn.py", line 18, in step_impl
+    username_input = context.browser.find_element(By.ID, 'name')
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 742, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 348, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=120.0.6099.130)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7F8562142+3514994]
+	(No symbol) [0x00007FF7F8180CE2]
+	(No symbol) [0x00007FF7F80276AA]
+	(No symbol) [0x00007FF7F8000AFD]
+	(No symbol) [0x00007FF7F809CB1B]
+	(No symbol) [0x00007FF7F80B218F]
+	(No symbol) [0x00007FF7F8095D93]
+	(No symbol) [0x00007FF7F8064BDC]
+	(No symbol) [0x00007FF7F8065C64]
+	GetHandleVerifier [0x00007FF7F858E16B+3695259]
+	GetHandleVerifier [0x00007FF7F85E6737+4057191]
+	GetHandleVerifier [0x00007FF7F85DE4E3+4023827]
+	GetHandleVerifier [0x00007FF7F82B04F9+689705]
+	(No symbol) [0x00007FF7F818C048]
+	(No symbol) [0x00007FF7F8188044]
+	(No symbol) [0x00007FF7F81881C9]
+	(No symbol) [0x00007FF7F81788C4]
+	BaseThreadInitThunk [0x00007FF97E5B257D+29]
+	RtlUserThreadStart [0x00007FF97E88AA58+40]
+
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Success SignUp
+    Given i am on SignUp Page ... passed in 1.345s
+    When i fill all field in SignUp Form with new username ... failed in 4.063s
+    And i press SignUp button ... skipped in 0.000s
+    Then i should be on SignIn ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.signIn.Sign Up" name="Incomplete SignUp" status="failed" time="2.414616"><error type="NoSuchWindowException" message="Message: no such window: target window already closed&#10;from unknown error: web view not found&#10;  (Session info: chrome=120.0.6099.130)&#10;Stacktrace:&#10;&#09;GetHandleVerifier [0x00007FF7F8562142+3514994]&#10;&#09;(No symbol) [0x00007FF7F8180CE2]&#10;&#09;(No symbol) [0x00007FF7F80276AA]&#10;&#09;(No symbol) [0x00007FF7F8000AFD]&#10;&#09;(No symbol) [0x00007FF7F809CB1B]&#10;&#09;(No symbol) [0x00007FF7F80B218F]&#10;&#09;(No symbol) [0x00007FF7F8095D93]&#10;&#09;(No symbol) [0x00007FF7F8064BDC]&#10;&#09;(No symbol) [0x00007FF7F8065C64]&#10;&#09;GetHandleVerifier [0x00007FF7F858E16B+3695259]&#10;&#09;GetHandleVerifier [0x00007FF7F85E6737+4057191]&#10;&#09;GetHandleVerifier [0x00007FF7F85DE4E3+4023827]&#10;&#09;GetHandleVerifier [0x00007FF7F82B04F9+689705]&#10;&#09;(No symbol) [0x00007FF7F818C048]&#10;&#09;(No symbol) [0x00007FF7F8188044]&#10;&#09;(No symbol) [0x00007FF7F81881C9]&#10;&#09;(No symbol) [0x00007FF7F81788C4]&#10;&#09;BaseThreadInitThunk [0x00007FF97E5B257D+29]&#10;&#09;RtlUserThreadStart [0x00007FF97E88AA58+40]&#10;">
+<![CDATA[
+Failing step: When i fill in SignUp Form with incomplete data ... failed in 1.106s
+Location: client/tests/acceptance/features/signIn.feature:11
+Traceback (most recent call last):
+  File "D:\Python\Lib\site-packages\behave\model.py", line 1329, in run
+    match.run(runner.context)
+  File "D:\Python\Lib\site-packages\behave\matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "client\tests\acceptance\steps\signIn.py", line 38, in step_impl
+    username_input = context.browser.find_element(By.ID, 'name')
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 742, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 348, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=120.0.6099.130)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7F8562142+3514994]
+	(No symbol) [0x00007FF7F8180CE2]
+	(No symbol) [0x00007FF7F80276AA]
+	(No symbol) [0x00007FF7F8000AFD]
+	(No symbol) [0x00007FF7F809CB1B]
+	(No symbol) [0x00007FF7F80B218F]
+	(No symbol) [0x00007FF7F8095D93]
+	(No symbol) [0x00007FF7F8064BDC]
+	(No symbol) [0x00007FF7F8065C64]
+	GetHandleVerifier [0x00007FF7F858E16B+3695259]
+	GetHandleVerifier [0x00007FF7F85E6737+4057191]
+	GetHandleVerifier [0x00007FF7F85DE4E3+4023827]
+	GetHandleVerifier [0x00007FF7F82B04F9+689705]
+	(No symbol) [0x00007FF7F818C048]
+	(No symbol) [0x00007FF7F8188044]
+	(No symbol) [0x00007FF7F81881C9]
+	(No symbol) [0x00007FF7F81788C4]
+	BaseThreadInitThunk [0x00007FF97E5B257D+29]
+	RtlUserThreadStart [0x00007FF97E88AA58+40]
+
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Incomplete SignUp
+    Given i am on SignUp Page ... passed in 1.309s
+    When i fill in SignUp Form with incomplete data ... failed in 1.106s
+    And i press SignUp button ... skipped in 0.000s
+    Then i should stay on SignUp ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
