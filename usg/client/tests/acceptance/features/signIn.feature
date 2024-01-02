@@ -1,14 +1,15 @@
-@order1
-Feature: Sign Up
-    Scenario: Success SignUp
-    Given i am on SignUp Page
-    When i fill all field in SignUp Form with new username
-    And i press SignUp button
-    Then i should be on SignIn
+@order2
+Feature: Sign In
+    Scenario: Success SignIn
+    Given i am on SignIn Page
+    When i fill in email field with usertesting461@gmail.com
+    And i fill in password field with UserTesting123
+    And i press SignIn button
+    Then i should be on dashboard
 
-    Scenario: Incomplete SignUp
-    Given i am on SignUp Page
-    When i fill in SignUp Form with incomplete data
-    And i press SignUp button
-    Then i should stay on SignUp
-
+    Scenario: Incorrect username or Password
+    Given i am on SignIn Page
+    When i fill in email field with usertesting461@gmail.com
+    And i fill in password field with UserTesting12
+    And i press SignIn button
+    Then i should stay on SignIn

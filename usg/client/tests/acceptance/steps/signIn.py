@@ -4,64 +4,51 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from django.test import Client
 
-@given('I am on SignUp Page')
+@given("I am on SignIn Page")
 def step_impl(context):
     context.client = Client()
     context.browser = webdriver.Chrome()
 
-@when('I fill all field in SignUp Form with new username')
+@when("i fill in username field with admin-chris")
 def step_impl(context):
-    context.SignUn_data = {'fullName': 'User', 'email':'usertesting461@gmail.com', 'telp': '082111533948','password': 'UserTesting123','confirm_password':'UserTesting123'}
-    context.browser.get('http://127.0.0.1:8000/regist')
+    context.browser.get('http://127.0.0.1:8000/accounts/signin') 
 
-    # Replace these values with actual form field names and desired username
-    username_input = context.browser.find_element(By.ID, 'name')
-    email_input = context.browser.find_element(By.ID, 'email')
-    telp_input = context.browser.find_element(By.ID, 'phone')
+    # Example: Use Selenium to fill in form fields
+    username_input = context.browser.find_element(By.ID, 'email')
+    username_input.send_keys('usertesting461@gmail.com')
+
+
+@when("i fill in password field with adelinejulia")
+def step_impl(context):
     password_input = context.browser.find_element(By.ID, 'password')
-    confirm_password_input = context.browser.find_element(By.ID, 'passwordConfirm')
-
-    username_input.send_keys(context.SignUn_data['fullName'])
-    email_input.send_keys(context.SignUn_data['email'])
-    telp_input.send_keys(context.SignUn_data['telp'])
-    password_input.send_keys(context.SignUn_data['password'])
-    confirm_password_input.send_keys(context.SignUn_data['confirm_password'])
-
-
-@when('I fill in SignUp Form with incomplete data')
+    password_input.send_keys('UserTesting123')
+    
+@when("i fill in password field with jokowowkacaw")
 def step_impl(context):
-    # Simulate incomplete data by leaving some fields blank
-    context.SignUn_data = {'fullName': 'User', 'email':'', 'telp': '082111533948','password': 'UserTesting123','confirm_password':'UserTesting123'}
-    context.browser.get('http://127.0.0.1:8000/regist')
+    context.browser.get('http://127.0.0.1:8000/accounts/signin')  # Update with your Django development server URL
 
-    # Replace these values with actual form field names and desired username
-    username_input = context.browser.find_element(By.ID, 'name')
-    email_input = context.browser.find_element(By.ID, 'email')
-    telp_input = context.browser.find_element(By.ID, 'phone')
+    # Example: Use Selenium to fill in form fields
     password_input = context.browser.find_element(By.ID, 'password')
-    confirm_password_input = context.browser.find_element(By.ID, 'passwordConfirm')
+    password_input.send_keys('UserTesting12')
 
-    username_input.send_keys(context.SignUn_data['fullName'])
-    email_input.send_keys(context.SignUn_data['email'])
-    telp_input.send_keys(context.SignUn_data['telp'])
-    password_input.send_keys(context.SignUn_data['password'])
-    confirm_password_input.send_keys(context.SignUn_data['confirm_password'])
-
-
-
-@when('I press SignUp button')
+@when("I press SignIn button")
 def step_impl(context):
-    # Replace 'signup_button' with the actual name or identifier of your signup button
-    signup_button = context.browser.find_element(By.CLASS_NAME, 'sign-up-button')
-    signup_button.click()
+    # Example: Use Selenium to click the SignIn button
+    SignIn_button = context.browser.find_element(By.CLASS_NAME, 'login-button')
+    SignIn_button.click()
 
-@then('I should be on SignIn')
+@then("i should be on dashboard")
 def step_impl(context):
-    # Implement the assertion for being on the SignIn page
-    assert context.browser.current_url == 'http://127.0.0.1:8000/signin', f"Expected SignIn page, but got {context.browser.current_url}"
+    # Implement code to check if the current page is the Search
+    context.browser.get('http://127.0.0.1:8000/dashboard/')
+    assert context.browser.current_url == 'http://127.0.0.1:8000/dashboard/'
 
-@then('I should stay on SignUp')
+@then("i should stay on SignIn")
 def step_impl(context):
-    # Implement the assertion for being on the SignUp page
-    assert context.browser.current_url == 'http://127.0.0.1:8000/regist'
-    assert(context.browser.title) == 'Registration'
+    # Implement code to check if the current page is the SignIn page
+    assert context.browser.current_url == 'http://127.0.0.1:8000/signin'
+
+
+
+    
+    
