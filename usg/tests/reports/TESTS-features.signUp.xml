@@ -1,23 +1,23 @@
-<testsuite name="features.signUp.Sign Up" tests="2" errors="0" failures="0" skipped="0" time="5.526368" timestamp="2024-01-02T21:58:06.915758" hostname="LAPTOP-J2ILCKGQ"><testcase classname="features.signUp.Sign Up" name="Success SignUp" status="passed" time="3.044756"><system-out>
+<testsuite name="features.signUp.Sign Up" tests="2" errors="0" failures="0" skipped="0" time="5.796564" timestamp="2024-01-02T22:51:23.596377" hostname="LAPTOP-J2ILCKGQ"><testcase classname="features.signUp.Sign Up" name="Success SignUp" status="passed" time="3.208774"><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: Success SignUp
-    Given i am on SignUp Page ... passed in 1.470s
-    When i fill all field in SignUp Form with new username ... passed in 0.733s
-    And i press SignUp button ... passed in 0.832s
-    Then i should be on SignIn ... passed in 0.009s
+    Given i am on SignUp Page ... passed in 1.473s
+    When i fill all field in SignUp Form with new username ... passed in 0.885s
+    And i press SignUp button ... passed in 0.830s
+    Then i should be on SignIn ... passed in 0.020s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.signUp.Sign Up" name="Incomplete SignUp" status="passed" time="2.481612"><system-out>
+</system-out></testcase><testcase classname="features.signUp.Sign Up" name="Incomplete SignUp" status="passed" time="2.58779"><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: Incomplete SignUp
-    Given i am on SignUp Page ... passed in 1.589s
-    When i fill in SignUp Form with incomplete data ... passed in 0.803s
-    And i press SignUp button ... passed in 0.074s
-    Then i should stay on SignUp ... passed in 0.015s
+    Given i am on SignUp Page ... passed in 1.626s
+    When i fill in SignUp Form with incomplete data ... passed in 0.881s
+    And i press SignUp button ... passed in 0.067s
+    Then i should stay on SignUp ... passed in 0.014s
 
 @scenario.end
 --------------------------------------------------------------------------------

@@ -21,6 +21,10 @@ def step_impl(context):
 
 @when("i press add project button")
 def step_impl(context):
+    context.client = Client()
+    context.browser = webdriver.Chrome()
+
+    context.browser.get('http://127.0.0.1:8000/dashboard/') 
     # Example: Use Selenium to click the SignIn button
     add_project = context.browser.find_element(By.ID, 'add')
     add_project.click()
@@ -40,7 +44,10 @@ def step_impl(context):
 def step_impl(context):
     generate_button = context.browser.find_element(By.ID, 'generateButton')
     generate_button.click()
+    print(context.browser.current_url)
 
 @Then("i should see user story list")
 def step_impl(context):
+    # context.browser.get('http://127.0.0.1:8000/postInputStory')
     assert context.browser.current_url == 'http://127.0.0.1:8000/postInputStory/'
+    # assert context.browser.find_element(By.CLASS_NAME, 'output-user-story')
