@@ -1,0 +1,28 @@
+<testsuite name="features.input-user-story-scenario.User Story Scenario" tests="1" errors="0" failures="1" skipped="0" time="0.0" timestamp="2024-01-02T20:39:36.276504" hostname="Reyhan"><testcase classname="features.input-user-story-scenario.User Story Scenario" name="User can generate user story scenario" status="failed" time="0"><failure type="NoneType" message="None">
+<![CDATA[
+Failing step: Given I am logged in as a user ... undefined in 0.000s
+Location: client/tests/acceptance/features/input-user-story-scenario.feature:3
+None]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: User can generate user story scenario
+    Given I am logged in as a user ... undefined in 0.000s
+    And I am in "Project List" ... undefined in 0.000s
+    When I press "add" ... undefined in 0.000s
+    Then I should see "Input User Story Page" ... undefined in 0.000s
+    When I fill in "User Stories Title" with "Instagram" ... undefined in 0.000s
+    And I fill in "Paragraf Description" with "Instagram is social media apps for knowing each other. As user can interact with others for sharing. You can post your photos and videos, so that others user can see. You can save photo from the others, so that you can see again that photo" ... undefined in 0.000s
+    And I press "Generate" ... undefined in 0.000s
+    Then I should see "User Stories List" ... undefined in 0.000s
+    When I press one of "user stories list" ... undefined in 0.000s
+    Then I should see "User Stories Scenario input page" ... undefined in 0.000s
+    When I fill in "User Stories Scneario Title" with "User can login home page" ... undefined in 0.000s
+    And I fill in "With a user who has successfully registered for the application and possesses valid credentials. When they initially open the application, they will be directed to the login screen. Here, they are prompted to input their previously registered username and password. After entering the credentials, the system will authenticate the provided information. If the entered credentials match those in the system, the user will gain access to the main interface of the application, enabling them to smoothly explore its features." ... undefined in 0.000s
+    And I press "Generate" ... undefined in 0.000s
+    Then I should see "User Stories Scenario List" ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

@@ -1,0 +1,30 @@
+<testsuite name="features.login.Login" tests="1" errors="1" failures="0" skipped="0" time="1.282409" timestamp="2024-01-02T20:39:39.580260" hostname="Reyhan"><testcase classname="features.login.Login" name="User can login into project list page" status="failed" time="1.282409"><error type="AttributeError" message="'Context' object has no attribute 'host'">
+<![CDATA[
+Failing step: Given I am on login page ... failed in 1.282s
+Location: client/tests/acceptance/features/login.feature:3
+Traceback (most recent call last):
+  File "D:\Python\Lib\site-packages\behave\model.py", line 1329, in run
+    match.run(runner.context)
+  File "D:\Python\Lib\site-packages\behave\matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "client\tests\acceptance\steps\login_step.py", line 15, in step_impl
+    context.selenium.get(f'{context.host}')
+                            ^^^^^^^^^^^^
+  File "D:\Python\Lib\site-packages\behave\runner.py", line 321, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'host'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: User can login into project list page
+    Given I am on login page ... failed in 1.282s
+    When I fill in "Email" with "usertesting461@gmail.com" ... undefined in 0.000s
+    And I fill in "Password" with "UserTesting123" ... undefined in 0.000s
+    And I press "Login Button" ... undefined in 0.000s
+    Then I should see "Project List Page" ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

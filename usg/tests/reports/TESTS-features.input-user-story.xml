@@ -1,0 +1,22 @@
+<testsuite name="features.input-user-story.User Story" tests="1" errors="0" failures="1" skipped="0" time="0.0" timestamp="2024-01-02T20:39:36.280511" hostname="Reyhan"><testcase classname="features.input-user-story.User Story" name="User can generate user story" status="failed" time="0"><failure type="NoneType" message="None">
+<![CDATA[
+Failing step: Given I am logged in as a user ... undefined in 0.000s
+Location: client/tests/acceptance/features/input-user-story.feature:3
+None]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: User can generate user story
+    Given I am logged in as a user ... undefined in 0.000s
+    And I am in "Project List" ... undefined in 0.000s
+    When I press "add" ... undefined in 0.000s
+    Then I should see "Input User Story Page" ... undefined in 0.000s
+    When I fill in "User Stories Title" with "Instagram" ... undefined in 0.000s
+    And I fill in "Paragraf Description" with "Instagram is social media apps for knowing each other. As user can interact with others for sharing. You can post your photos and videos, so that others user can see. You can save photo from the others, so that you can see again that photo" ... undefined in 0.000s
+    And I press "Generate" ... undefined in 0.000s
+    Then I should see "User Stories List" ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
