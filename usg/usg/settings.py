@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'client.apps.ClientConfig',
     'social_django',
     'usg',
+    'behave_django',
     # admin
     'admin_site.apps.AdminSiteConfig',
 ]
