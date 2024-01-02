@@ -21,11 +21,11 @@ def step_impl(context):
     password_input = context.browser.find_element(By.ID, 'password')
     confirm_password_input = context.browser.find_element(By.ID, 'passwordConfirm')
 
-    username_input.send_keys(context.SignUn_data['name'])
+    username_input.send_keys(context.SignUn_data['fullName'])
     email_input.send_keys(context.SignUn_data['email'])
-    telp_input.send_keys(context.SignUn_data['phone'])
+    telp_input.send_keys(context.SignUn_data['telp'])
     password_input.send_keys(context.SignUn_data['password'])
-    confirm_password_input.send_keys(context.SignUn_data['passwordConfirm'])
+    confirm_password_input.send_keys(context.SignUn_data['confirm_password'])
 
 
 @when('I fill in SignUp Form with incomplete data')
@@ -41,18 +41,18 @@ def step_impl(context):
     password_input = context.browser.find_element(By.ID, 'password')
     confirm_password_input = context.browser.find_element(By.ID, 'passwordConfirm')
 
-    username_input.send_keys(context.SignUn_data['name'])
+    username_input.send_keys(context.SignUn_data['fullName'])
     email_input.send_keys(context.SignUn_data['email'])
-    telp_input.send_keys(context.SignUn_data['phone'])
+    telp_input.send_keys(context.SignUn_data['telp'])
     password_input.send_keys(context.SignUn_data['password'])
-    confirm_password_input.send_keys(context.SignUn_data['passwordConfirm'])
+    confirm_password_input.send_keys(context.SignUn_data['confirm_password'])
 
 
 
 @when('I press SignUp button')
 def step_impl(context):
     # Replace 'signup_button' with the actual name or identifier of your signup button
-    signup_button = context.browser.find_element(By.ID, 'signup_button')
+    signup_button = context.browser.find_element(By.CLASS_NAME, 'sign-up-button')
     signup_button.click()
 
 @then('I should be on SignIn')
@@ -60,7 +60,8 @@ def step_impl(context):
     # Implement the assertion for being on the SignIn page
     assert context.browser.current_url == 'http://127.0.0.1:8000/signin', f"Expected SignIn page, but got {context.browser.current_url}"
 
-@then('I should stay on SignUp ')
+@then('I should stay on SignUp')
 def step_impl(context):
     # Implement the assertion for being on the SignUp page
-    assert context.browser.current_url == 'http://127.0.0.1:8000/regist', f"Expected signup page, but got {context.browser.current_url}"
+    assert context.browser.current_url == 'http://127.0.0.1:8000/regist'
+    assert(context.browser.title) == 'Registration'

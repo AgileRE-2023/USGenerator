@@ -10,5 +10,5 @@ Feature: Sign Up
     Given i am on SignUp Page
     When i fill in SignUp Form with incomplete data
     And i press SignUp button
-    Then i should stay on SignUp 
+    Then i should stay on SignUp
 
