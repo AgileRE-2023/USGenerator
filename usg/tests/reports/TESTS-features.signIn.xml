@@ -11,15 +11,15 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.signIn.Sign In" name="Incorrect username or Password" status="passed" time="2.150787"><system-out>
+</system-out></testcase><testcase classname="features.signIn.Sign In" name="Incorrect username or Password" status="passed" time="3.24989"><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: Incorrect username or Password
-    Given i am on SignIn Page ... passed in 1.407s
-    When i fill in email field with usertesting461@gmail.com ... passed in 0.577s
-    And i fill in password field with UserTesting12 ... passed in 0.107s
-    And i press SignIn button ... passed in 0.053s
-    Then i should stay on SignIn ... passed in 0.007s
+    Given i am on SignIn Page ... passed in 2.484s
+    When i fill in email field with usertesting461@gmail.com ... passed in 0.466s
+    And i fill in password field with UserTesting12 ... passed in 0.178s
+    And i press SignIn button ... passed in 0.113s
+    Then i should stay on SignIn ... passed in 0.008s
 
 @scenario.end
 --------------------------------------------------------------------------------

@@ -35,6 +35,10 @@ def step_impl(context):
 
 @when("i fill all field in User Story Form with title and apps desc")
 def step_impl(context):
+    context.client = Client()
+    context.browser = webdriver.Chrome()
+
+    context.browser.get('http://127.0.0.1:8000/inputUserStory') 
     title_input = context.browser.find_element(By.ID, 'ProjectTitle')
     title_input.send_keys('Facebook')
     desc_input = context.browser.find_element(By.ID, 'inputParagraf')
