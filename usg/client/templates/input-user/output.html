@@ -42,7 +42,7 @@
     {% for data in valueOutput %}
     <div class="container-user-story">
       <a
-        class="numof-container"
+        class="numof-container {{ forloop.counter0 }}"
         href="{% url 'client:input-scenario' counter=forloop.counter0 %}"
         >{{ forloop.counter0 }}</a
       >
