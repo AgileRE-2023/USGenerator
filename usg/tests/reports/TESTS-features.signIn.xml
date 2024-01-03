@@ -1,25 +1,25 @@
-<testsuite name="features.signIn.Sign In" tests="2" errors="0" failures="0" skipped="0" time="6.060615" timestamp="2024-01-02T22:51:13.261420" hostname="LAPTOP-J2ILCKGQ"><testcase classname="features.signIn.Sign In" name="Success SignIn" status="passed" time="3.91221"><system-out>
+<testsuite name="features.signIn.Sign In" tests="2" errors="0" failures="0" skipped="0" time="8.41988" timestamp="2024-01-03T12:44:35.369646" hostname="LAPTOP-URI2GRS2"><testcase classname="features.signIn.Sign In" name="Success SignIn" status="passed" time="5.169991"><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: Success SignIn
-    Given i am on SignIn Page ... passed in 1.691s
-    When i fill in email field with usertesting461@gmail.com ... passed in 0.647s
-    And i fill in password field with UserTesting123 ... passed in 0.059s
-    And i press SignIn button ... passed in 0.678s
-    Then i should be on dashboard ... passed in 0.837s
+    Given i am on SignIn Page ... passed in 3.006s
+    When i fill in email field with usertesting461@gmail.com ... passed in 0.521s
+    And i fill in password field with UserTesting123 ... passed in 0.088s
+    And i press SignIn button ... passed in 1.263s
+    Then i should be on dashboard ... passed in 0.293s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.signIn.Sign In" name="Incorrect username or Password" status="passed" time="2.148405"><system-out>
+</system-out></testcase><testcase classname="features.signIn.Sign In" name="Incorrect username or Password" status="passed" time="3.24989"><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: Incorrect username or Password
-    Given i am on SignIn Page ... passed in 1.390s
-    When i fill in email field with usertesting461@gmail.com ... passed in 0.579s
-    And i fill in password field with UserTesting12 ... passed in 0.118s
-    And i press SignIn button ... passed in 0.056s
-    Then i should stay on SignIn ... passed in 0.007s
+    Given i am on SignIn Page ... passed in 2.484s
+    When i fill in email field with usertesting461@gmail.com ... passed in 0.466s
+    And i fill in password field with UserTesting12 ... passed in 0.178s
+    And i press SignIn button ... passed in 0.113s
+    Then i should stay on SignIn ... passed in 0.008s
 
 @scenario.end
 --------------------------------------------------------------------------------

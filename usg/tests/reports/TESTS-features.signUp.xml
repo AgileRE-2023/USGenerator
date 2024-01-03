@@ -1,23 +1,28 @@
-<testsuite name="features.signUp.Sign Up" tests="2" errors="0" failures="0" skipped="0" time="5.796564" timestamp="2024-01-02T22:51:23.596377" hostname="LAPTOP-J2ILCKGQ"><testcase classname="features.signUp.Sign Up" name="Success SignUp" status="passed" time="3.208774"><system-out>
+<testsuite name="features.signUp.Sign Up" tests="2" errors="0" failures="1" skipped="0" time="7.504118" timestamp="2024-01-03T12:44:48.439046" hostname="LAPTOP-URI2GRS2"><testcase classname="features.signUp.Sign Up" name="Success SignUp" status="failed" time="4.143599"><failure type="AssertionError" message="Expected SignIn page, but got http://127.0.0.1:8000/regist">
+<![CDATA[
+Failing step: Then i should be on SignIn ... failed in 0.018s
+Location: client/tests/acceptance/features/signUp.feature:7
+Assertion Failed: Expected SignIn page, but got http://127.0.0.1:8000/regist]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: Success SignUp
-    Given i am on SignUp Page ... passed in 1.473s
-    When i fill all field in SignUp Form with new username ... passed in 0.885s
-    And i press SignUp button ... passed in 0.830s
-    Then i should be on SignIn ... passed in 0.020s
+    Given i am on SignUp Page ... passed in 2.627s
+    When i fill all field in SignUp Form with new username ... passed in 0.777s
+    And i press SignUp button ... passed in 0.722s
+    Then i should be on SignIn ... failed in 0.018s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.signUp.Sign Up" name="Incomplete SignUp" status="passed" time="2.58779"><system-out>
+</system-out></testcase><testcase classname="features.signUp.Sign Up" name="Incomplete SignUp" status="passed" time="3.360519"><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: Incomplete SignUp
-    Given i am on SignUp Page ... passed in 1.626s
-    When i fill in SignUp Form with incomplete data ... passed in 0.881s
-    And i press SignUp button ... passed in 0.067s
-    Then i should stay on SignUp ... passed in 0.014s
+    Given i am on SignUp Page ... passed in 2.514s
+    When i fill in SignUp Form with incomplete data ... passed in 0.712s
+    And i press SignUp button ... passed in 0.103s
+    Then i should stay on SignUp ... passed in 0.031s
 
 @scenario.end
 --------------------------------------------------------------------------------

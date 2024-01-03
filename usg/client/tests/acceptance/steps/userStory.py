@@ -35,18 +35,26 @@ def step_impl(context):
 
 @when("i fill all field in User Story Form with title and apps desc")
 def step_impl(context):
+    context.client = Client()
+    context.browser = webdriver.Chrome()
+
+    context.browser.get('http://127.0.0.1:8000/inputUserStory') 
     title_input = context.browser.find_element(By.ID, 'ProjectTitle')
     title_input.send_keys('Facebook')
     desc_input = context.browser.find_element(By.ID, 'inputParagraf')
     desc_input.send_keys('Facebook is a dynamic social media platform designed for fostering connections and sharing experiences.  Instagram provides a space where individuals can engage with one another through various features for users seeking meaningful interactions. You can post captivating photos and videos for showcasing moments that matter to you. The platform facilitates seamless communication, allowing you to connect with friends, family, and even new acquaintances, so that your memories endure.')
 
-@When("i press generate button")
+@when("i press generate button")
 def step_impl(context):
-    generate_button = context.browser.find_element(By.ID, 'generateButton')
-    generate_button.click()
-    print(context.browser.current_url)
+    # context.client = Client()
+    # context.browser = webdriver.Chrome()
 
-@Then("i should see user story list")
+    # context.browser.get('http://127.0.0.1:8000/inputUserStory') 
+    generate_button = context.browser.find_element(By.CLASS_NAME, 'submit-button')
+    generate_button.click()
+    # print('generate'+context.browser.current_url)
+
+@then("i should see user story list")
 def step_impl(context):
     # context.browser.get('http://127.0.0.1:8000/postInputStory')
     assert context.browser.current_url == 'http://127.0.0.1:8000/postInputStory/'
