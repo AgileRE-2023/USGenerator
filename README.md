@@ -1,6 +1,12 @@
 
 # [**USGenerator**](https://github.com/AgileRE-2023/USGenerator/)
 
+<br />
+<p align="center">
+<img src="https://drive.google.com/uc?id=1WN6fC9X13gEjRKOts5--9lD71xAwtoCi">
+</p>
+<br />
+
 Aplikasi ini memanfaatkan teknik *Natural Language Processing (NLP)* untuk mengotomatiskan pembuatan User Stories dari sebuah paragraf. Dengan menggunakan kerangka kerja *Django*, proyek ini menyediakan solusi web yang memungkinkan pengguna untuk dengan cepat dan konsisten menghasilkan User Story Scenarios. Pendekatan ini menyederhanakan proses tersebut, memastikan efisiensi waktu dalam penyusunan User Stories, sambil menjamin konsistensi dan hasil yang terstandarisasi. Pada akhirnya, ini meningkatkan praktik-praktik yang praktis dalam pengembangan produk dan layanan.
 
 
