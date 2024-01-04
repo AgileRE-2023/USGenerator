@@ -25,23 +25,21 @@
 }
 
 .card-banner {
-  background: url('https://images.unsplash.com/photo-1531330969550-7e8a9b2fb3df?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=a03bd3a711775d6e4f3d742237adbf8e');
   width: inherit;
   height: 200px;
   padding-top: 100px;
-  background-color: #fafafa;
+  background-color: #1d3557;
   background-position: top;
   background-size: cover;
 }
 
 .card-profile {
-  background: url('https://images.unsplash.com/photo-1514846226882-28b324ef7f28?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=427df64ea1bbb4c45008bd6ffe11812a');
   width: 100px;
   height: 100px;
   border-radius: 50%;
   margin: auto auto;
   background-size: cover;
-  background-color: #f1f1f1;
+  background-color: #1d3557;
   border: 3px solid #fff;
   margin-top: 30px;
   margin-bottom: 30px;

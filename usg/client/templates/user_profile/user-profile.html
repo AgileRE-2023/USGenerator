@@ -7,7 +7,9 @@
 <div class="main">
   <div class="profile-card">
     <div class="card-banner">
-      <div class="card-profile"></div>
+      <div class="card-profile">
+       <img src="{% static 'icons8-male-user-96.png' %}" alt="profile">
+      </div>
       <h3>{{ user.name }}</h3>
       <a mailto:example@email.com class="text-user">{{ user.email }}</a>
       <p class="text-user">{{ user.phone }}</p>
