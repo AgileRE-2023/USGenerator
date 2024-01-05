@@ -96,6 +96,14 @@ Untuk panduan lengkap mengenai prosedur penggunaan aplikasi dapat dilihat dari i
 1. Pada halaman *User Profile*, tekan tombol **Edit Profile** untuk mengubah data diri pengguna (Full Name, Email, dan Phone Number)
 2. Kemudian tekan tombol **Save Changes** setelah merubah data diri pengguna
 
+#### Reset Password
+1. Pada halaman *Sign In*, tekan tombol **Forgot Password** untuk masuk ke halaman *Forgot Password*
+2. Masukkan email aktif yang ingin diganti passwordnya pada kolom inputan
+3. Tekan tombol **Send**
+4. Buka history email anda dan carilah kiriman email dari website USGenerator
+5. Klik tautan yang telah dikirim pada email tersebut
+6. Masukkan kata sandi baru anda pada halaman *Reset Password* lalu tekan tombol SAVE
+
 
 
 ## Informasi Lainnya 📍
