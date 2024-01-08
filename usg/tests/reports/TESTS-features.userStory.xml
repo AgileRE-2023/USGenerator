@@ -1,13 +1,13 @@
-<testsuite name="features.userStory.User Story" tests="1" errors="0" failures="0" skipped="0" time="8.795728" timestamp="2024-01-03T19:47:58.813991" hostname="LAPTOP-J2ILCKGQ"><testcase classname="features.userStory.User Story" name="Input Apps Desc" status="passed" time="8.795728"><system-out>
+<testsuite name="features.userStory.User Story" tests="1" errors="0" failures="0" skipped="0" time="15.0151" timestamp="2024-01-05T22:29:56.704395" hostname="LAPTOP-J2ILCKGQ"><testcase classname="features.userStory.User Story" name="Input Apps Desc" status="passed" time="15.0151"><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: Input Apps Desc
-    Given i am on Dashboard Page ... passed in 3.090s
-    When i press add project button ... passed in 4.861s
-    Then i should be on input user story page ... passed in 0.011s
-    When i fill all field in User Story Form with title and apps desc ... passed in 0.624s
-    And i press generate button ... passed in 0.180s
-    Then i should see user story list ... passed in 0.030s
+    Given i am on Dashboard Page ... passed in 3.466s
+    When i press add project button ... passed in 5.276s
+    Then i should be on input user story page ... passed in 0.014s
+    When i fill all field in User Story Form with title and apps desc ... passed in 6.097s
+    And i press generate button ... passed in 0.152s
+    Then i should see user story list ... passed in 0.011s
 
 @scenario.end
 --------------------------------------------------------------------------------

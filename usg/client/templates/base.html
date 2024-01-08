@@ -22,11 +22,11 @@
 <body>
     <header class="d-flex justify-content-between">
         <div class="d-flex align-items-center">
-            <a href="{% url 'client:dashboardClient' %}">User Stories</a>
+            <a id="user_story_button" href="{% url 'client:dashboardClient' %}">User Stories</a>
             {% comment %} <a href="{% url 'client:history' %}">History</a> {% endcomment %}
         </div>
         <div class="d-flex align-items-center">
-            <a href="{% url 'client:user-profile' %}"><img src="{% static 'icons8-male-user-96.png' %}" alt="profile"></a>
+            <a href="{% url 'client:user-profile' %}" class="profile-page"><img src="{% static 'icons8-male-user-96.png' %}" alt="profile"></a>
             <a href="" class="profile ms-3">
                 <p>{{ user.name }}</p>
             </a>

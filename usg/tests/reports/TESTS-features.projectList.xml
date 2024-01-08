@@ -1,0 +1,14 @@
+<testsuite name="features.projectList.Project List" tests="1" errors="0" failures="0" skipped="0" time="4.251892" timestamp="2024-01-05T22:29:12.979300" hostname="LAPTOP-J2ILCKGQ"><testcase classname="features.projectList.Project List" name="can see User Project From Login" status="passed" time="4.251892"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: can see User Project From Login
+    Given I am on SignIn Page ... passed in 1.918s
+    When i fill in email field with usertesting461@gmail.com ... passed in 0.368s
+    And i fill in password field with UserTesting123 ... passed in 0.073s
+    And i press SignIn button ... passed in 1.382s
+    Then i should be on dashboard ... passed in 0.511s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

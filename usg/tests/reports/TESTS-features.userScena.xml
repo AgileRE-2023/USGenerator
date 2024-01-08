@@ -1,6 +1,6 @@
-<testsuite name="features.userScena.User Story" tests="1" errors="1" failures="0" skipped="0" time="4.69801" timestamp="2024-01-03T19:47:47.674663" hostname="LAPTOP-J2ILCKGQ"><testcase classname="features.userScena.User Story" name="Input Apps Desc" status="failed" time="4.69801"><error type="InvalidSelectorException" message="Message: invalid selector: An invalid or illegal selector was specified&#10;  (Session info: chrome=120.0.6099.130); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception&#10;Stacktrace:&#10;&#09;GetHandleVerifier [0x00007FF7A6AB2142+3514994]&#10;&#09;(No symbol) [0x00007FF7A66D0CE2]&#10;&#09;(No symbol) [0x00007FF7A65776AA]&#10;&#09;(No symbol) [0x00007FF7A657CFC0]&#10;&#09;(No symbol) [0x00007FF7A657F38F]&#10;&#09;(No symbol) [0x00007FF7A657F480]&#10;&#09;(No symbol) [0x00007FF7A65C1624]&#10;&#09;(No symbol) [0x00007FF7A65C197C]&#10;&#09;(No symbol) [0x00007FF7A6604EE7]&#10;&#09;(No symbol) [0x00007FF7A65E602F]&#10;&#09;(No symbol) [0x00007FF7A66028F6]&#10;&#09;(No symbol) [0x00007FF7A65E5D93]&#10;&#09;(No symbol) [0x00007FF7A65B4BDC]&#10;&#09;(No symbol) [0x00007FF7A65B5C64]&#10;&#09;GetHandleVerifier [0x00007FF7A6ADE16B+3695259]&#10;&#09;GetHandleVerifier [0x00007FF7A6B36737+4057191]&#10;&#09;GetHandleVerifier [0x00007FF7A6B2E4E3+4023827]&#10;&#09;GetHandleVerifier [0x00007FF7A68004F9+689705]&#10;&#09;(No symbol) [0x00007FF7A66DC048]&#10;&#09;(No symbol) [0x00007FF7A66D8044]&#10;&#09;(No symbol) [0x00007FF7A66D81C9]&#10;&#09;(No symbol) [0x00007FF7A66C88C4]&#10;&#09;BaseThreadInitThunk [0x00007FFF245A257D+29]&#10;&#09;RtlUserThreadStart [0x00007FFF2576AA58+40]&#10;">
+<testsuite name="features.userScena.User Story Scenario" tests="1" errors="1" failures="0" skipped="0" time="5.491856" timestamp="2024-01-05T22:29:39.453002" hostname="LAPTOP-J2ILCKGQ"><testcase classname="features.userScena.User Story Scenario" name="Input Apps Desc" status="failed" time="5.491856"><error type="InvalidSelectorException" message="Message: invalid selector: An invalid or illegal selector was specified&#10;  (Session info: chrome=120.0.6099.131); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception&#10;Stacktrace:&#10;&#09;GetHandleVerifier [0x00007FF77E252142+3514994]&#10;&#09;(No symbol) [0x00007FF77DE70CE2]&#10;&#09;(No symbol) [0x00007FF77DD176AA]&#10;&#09;(No symbol) [0x00007FF77DD1CFC0]&#10;&#09;(No symbol) [0x00007FF77DD1F38F]&#10;&#09;(No symbol) [0x00007FF77DD1F480]&#10;&#09;(No symbol) [0x00007FF77DD61624]&#10;&#09;(No symbol) [0x00007FF77DD6197C]&#10;&#09;(No symbol) [0x00007FF77DDA4EE7]&#10;&#09;(No symbol) [0x00007FF77DD8602F]&#10;&#09;(No symbol) [0x00007FF77DDA28F6]&#10;&#09;(No symbol) [0x00007FF77DD85D93]&#10;&#09;(No symbol) [0x00007FF77DD54BDC]&#10;&#09;(No symbol) [0x00007FF77DD55C64]&#10;&#09;GetHandleVerifier [0x00007FF77E27E16B+3695259]&#10;&#09;GetHandleVerifier [0x00007FF77E2D6737+4057191]&#10;&#09;GetHandleVerifier [0x00007FF77E2CE4E3+4023827]&#10;&#09;GetHandleVerifier [0x00007FF77DFA04F9+689705]&#10;&#09;(No symbol) [0x00007FF77DE7C048]&#10;&#09;(No symbol) [0x00007FF77DE78044]&#10;&#09;(No symbol) [0x00007FF77DE781C9]&#10;&#09;(No symbol) [0x00007FF77DE688C4]&#10;&#09;BaseThreadInitThunk [0x00007FFBAFAD257D+29]&#10;&#09;RtlUserThreadStart [0x00007FFBB0F8AA58+40]&#10;">
 <![CDATA[
-Failing step: When I press one of an user stories ... failed in 0.607s
+Failing step: When I press one of an user stories ... failed in 0.633s
 Location: client/tests/acceptance/features/userScena.feature:5
 Traceback (most recent call last):
   File "c:\users\darfito\appdata\local\programs\python\python39\lib\site-packages\behave\model.py", line 1329, in run
@@ -16,40 +16,40 @@ Traceback (most recent call last):
   File "c:\users\darfito\appdata\local\programs\python\python39\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
     raise exception_class(message, screen, stacktrace)
 selenium.common.exceptions.InvalidSelectorException: Message: invalid selector: An invalid or illegal selector was specified
-  (Session info: chrome=120.0.6099.130); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
+  (Session info: chrome=120.0.6099.131); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
 Stacktrace:
-	GetHandleVerifier [0x00007FF7A6AB2142+3514994]
-	(No symbol) [0x00007FF7A66D0CE2]
-	(No symbol) [0x00007FF7A65776AA]
-	(No symbol) [0x00007FF7A657CFC0]
-	(No symbol) [0x00007FF7A657F38F]
-	(No symbol) [0x00007FF7A657F480]
-	(No symbol) [0x00007FF7A65C1624]
-	(No symbol) [0x00007FF7A65C197C]
-	(No symbol) [0x00007FF7A6604EE7]
-	(No symbol) [0x00007FF7A65E602F]
-	(No symbol) [0x00007FF7A66028F6]
-	(No symbol) [0x00007FF7A65E5D93]
-	(No symbol) [0x00007FF7A65B4BDC]
-	(No symbol) [0x00007FF7A65B5C64]
-	GetHandleVerifier [0x00007FF7A6ADE16B+3695259]
-	GetHandleVerifier [0x00007FF7A6B36737+4057191]
-	GetHandleVerifier [0x00007FF7A6B2E4E3+4023827]
-	GetHandleVerifier [0x00007FF7A68004F9+689705]
-	(No symbol) [0x00007FF7A66DC048]
-	(No symbol) [0x00007FF7A66D8044]
-	(No symbol) [0x00007FF7A66D81C9]
-	(No symbol) [0x00007FF7A66C88C4]
-	BaseThreadInitThunk [0x00007FFF245A257D+29]
-	RtlUserThreadStart [0x00007FFF2576AA58+40]
+	GetHandleVerifier [0x00007FF77E252142+3514994]
+	(No symbol) [0x00007FF77DE70CE2]
+	(No symbol) [0x00007FF77DD176AA]
+	(No symbol) [0x00007FF77DD1CFC0]
+	(No symbol) [0x00007FF77DD1F38F]
+	(No symbol) [0x00007FF77DD1F480]
+	(No symbol) [0x00007FF77DD61624]
+	(No symbol) [0x00007FF77DD6197C]
+	(No symbol) [0x00007FF77DDA4EE7]
+	(No symbol) [0x00007FF77DD8602F]
+	(No symbol) [0x00007FF77DDA28F6]
+	(No symbol) [0x00007FF77DD85D93]
+	(No symbol) [0x00007FF77DD54BDC]
+	(No symbol) [0x00007FF77DD55C64]
+	GetHandleVerifier [0x00007FF77E27E16B+3695259]
+	GetHandleVerifier [0x00007FF77E2D6737+4057191]
+	GetHandleVerifier [0x00007FF77E2CE4E3+4023827]
+	GetHandleVerifier [0x00007FF77DFA04F9+689705]
+	(No symbol) [0x00007FF77DE7C048]
+	(No symbol) [0x00007FF77DE78044]
+	(No symbol) [0x00007FF77DE781C9]
+	(No symbol) [0x00007FF77DE688C4]
+	BaseThreadInitThunk [0x00007FFBAFAD257D+29]
+	RtlUserThreadStart [0x00007FFBB0F8AA58+40]
 
 ]]>
 </error><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: Input Apps Desc
-    Given i am on User Stories Page ... passed in 4.091s
-    When I press one of an user stories ... failed in 0.607s
+    Given i am on User Stories Page ... passed in 4.859s
+    When I press one of an user stories ... failed in 0.633s
     Then i should be on input user story Scenario ... skipped in 0.000s
     When i fill all field in User Story Scenario Form with title and apps desc ... skipped in 0.000s
     And i press generate button in user scenario story ... skipped in 0.000s

@@ -1,5 +1,5 @@
 @order4
-Feature: User Story
+Feature: User Story Scenario
     Scenario: Input Apps Desc
     Given i am on User Stories Page
     When I press one of an user stories

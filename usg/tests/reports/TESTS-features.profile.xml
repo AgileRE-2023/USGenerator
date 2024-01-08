@@ -1,0 +1,17 @@
+<testsuite name="features.profile.User Profile" tests="1" errors="0" failures="0" skipped="0" time="5.393789" timestamp="2024-01-05T22:29:06.345120" hostname="LAPTOP-J2ILCKGQ"><testcase classname="features.profile.User Profile" name="Can edit user profile page" status="passed" time="5.393789"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Can edit user profile page
+    Given As a logged user ... passed in 3.111s
+    When I press profile icon ... passed in 0.781s
+    Then I should see user profile page ... passed in 0.543s
+    When I press edit profile button ... passed in 0.149s
+    Then I should see edit profile page ... passed in 0.090s
+    When I fill all field in edit profile form with new data ... passed in 0.192s
+    And I press save change button ... passed in 0.045s
+    Then I should see user profile page again ... passed in 0.483s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
