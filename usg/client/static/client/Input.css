@@ -15,13 +15,30 @@
 } */
 
 body {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   /* background-color: aqua; */
 }
 
 header {
-  background-color: #17193D;
+  background-color: #17193d;
   padding: 10px 15%;
+}
+
+.head-judul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 55px;
+  padding-bottom: 40px;
+  min-width: 3rem;
+}
+
+.collapse-title {
+  font-weight: bold;
+  color: #17193d;
+  font-family: "Poppins";
 }
 
 header img {
@@ -46,11 +63,12 @@ header a {
 .Teks-judul {
   font-size: 28px;
   font-weight: bold;
-  color: #17193D;
-  font-family: 'Poppins', sans-serif;
-  margin-top: 20px;
+  color: #17193d;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 0;
+  /* margin-top: 20px;
   padding-top: 55px;
-  padding-bottom: 40px;
+  padding-bottom: 40px; */
 }
 
 .form-inline {
@@ -78,9 +96,19 @@ header a {
 .sr-only {
   font-size: 18px;
   font-weight: bold;
-  color: #17193D;
-  font-family: 'Poppins', sans-serif;
+  color: #17193d;
+  font-family: "Poppins", sans-serif;
   padding-right: 20px;
+}
+
+.rules-list {
+  font-size: 18px;
+  font-weight: bold;
+  color: #17193d;
+  font-family: "Poppins", sans-serif;
+}
+.item-rules{
+  margin: 1rem 1rem;
 }
 
 #inputProject {
@@ -105,8 +133,8 @@ header a {
 }
 
 .submit-button {
-  font-family: 'Poppins';
-  background-color: #F29F05;
+  font-family: "Poppins";
+  background-color: #f29f05;
   width: 150px;
   height: 40px;
   border-radius: 20px;
@@ -116,34 +144,34 @@ header a {
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
-  border: 1px solid #F29F05;
+  border: 1px solid #f29f05;
 }
 
 .submit-button:hover {
   background: transparent;
-  transition: .3s ease;
-  -webkit-transition: .3s ease;
-  -moz-transition: .3s ease;
-  -ms-transition: .3s ease;
-  -o-transition: .3s ease;
-  background-color: #17193D;
-  border: 1px solid #17193D;
+  transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  background-color: #17193d;
+  border: 1px solid #17193d;
   color: #fff;
 }
 
 .submit-button a {
   text-decoration: none;
   color: #fff;
-  transition: .3s ease;
-  -webkit-transition: .3s ease;
-  -moz-transition: .3s ease;
-  -ms-transition: .3s ease;
-  -o-transition: .3s ease;
+  transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
 }
 
 .submit-button a:hover {
   text-decoration: none;
-  color: #F29F05;
+  color: #f29f05;
 }
 
 .button-link {
@@ -173,8 +201,8 @@ header a {
 #user-story-container h3 {
   font-size: 18px;
   font-weight: bold;
-  color: #17193D;
-  font-family: 'Poppins', sans-serif;
+  color: #17193d;
+  font-family: "Poppins", sans-serif;
 }
 
 .container-user-story {
@@ -191,7 +219,7 @@ header a {
   width: 150px;
   height: auto;
   font-size: 44px;
-  background-color: #F29F05;
+  background-color: #f29f05;
   display: flex;
   align-items: center;
   justify-content: center;

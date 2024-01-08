@@ -3,7 +3,41 @@
 
 {% endblock %} {% block title %} Input User {% endblock %} {% block content %}
 <div class="Gui-user">
-  <h1 class="Teks-judul">{{ title }}</h1>
+  <div class="head-judul">
+    <h1 class="Teks-judul">{{ title }}</h1>
+    <a
+      class="ms-2"
+      data-bs-toggle="collapse"
+      href="#collapseExample"
+      role="button"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      <span
+        ><img title="Rules" style="height:2rem ;" src={% static 'icons/help-circle.svg' %}></span>
+    </a>
+  </div>
+
+  <div class="collapse my-3 border border-dark rounded" id="collapseExample">
+    <div class="card card-body">
+      <h5 class="collapse-title">Rules Scenario</h5>
+      <ol class="rules-list">
+        <li class="item-rules">
+          Precondition at the beginning of the sentence
+        </li>
+        <li class="item-rules">If there is another precodition then the next sentence has there is another {synonym}, the next precondition</li>
+        <li class="item-rules">
+          After the precondtion is the activity
+        </li>
+        <li class="item-rules">
+          For each activity use simple present
+        </li>
+        <li class="item-rules">
+          For the output of the system use simple future (will, shall)
+        </li>
+      </ol>
+    </div>
+  </div>
   <div class="output-user-story">
     <h5>User Stories :</h5>
     <div class="container-user-story">
@@ -34,7 +68,7 @@
     >
       {% csrf_token %}
       <div class="input-scenario">
-        <h5>Input Title User Story Scenario :</h5>
+        <h5>Input Title User Story Scenario</h5>
       </div>
       <input
         type="text"
