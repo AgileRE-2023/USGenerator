@@ -10,7 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+import firebase_admin
+from firebase_admin import credentials
+import json
+
+# Load Firebase Configuration from the JSON file
+with open('firebase_config.json') as f:
+    firebase_config = json.load(f)
+cred = credentials.Certificate(firebase_config)
+firebase_admin.initialize_app(cred)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,16 +41,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'client.apps.ClientConfig',
-    #admin
+    'social_django',
+    'usg',
+    # admin
     'admin_site.apps.AdminSiteConfig',
-    'bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +62,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
+    'client.middleware.RedirectIfAuthenticatedMiddleware',
 ]
 
 ROOT_URLCONF = 'usg.urls'
@@ -58,7 +71,7 @@ ROOT_URLCONF = 'usg.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates' ],
+        'DIRS': [os.path.join(BASE_DIR / 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
             ],
         },
     },
@@ -119,9 +133,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGIN_URL = 'client:signin'
+LOGIN_REDIRECT_URL = 'client:clientDashboard'
+LOGOUT_URL = 'client:logout'
+LOGOUT_REDIRECT_URL = 'client:signin'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '################'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '###################'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# AUTH_USER_MODEL = 'client.CustomUser'

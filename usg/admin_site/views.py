@@ -1,9 +1,6 @@
 from django.shortcuts import render
 from django.template import loader
 
-# Create your views here.
-
-
 def baseAdmin(request):
     return render(request, 'base-admin.html')
 

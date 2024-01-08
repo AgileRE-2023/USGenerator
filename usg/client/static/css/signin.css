@@ -4,16 +4,6 @@
   font-family: "Poppins";
 }
 
-/* sign {
-    color: #1C2331;
-    text-align: center;
-    font-family: Poppins;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 110%;
-    text-transform: capitalize;
-} */
 .sign {
   font-style: normal;
   font-weight: 600;
@@ -21,7 +11,7 @@
 }
 
 header {
-  background-color: #17193D;
+  background-color: #17193d;
   padding: 10px 15%;
   height: 6rem;
 }
@@ -40,12 +30,12 @@ header a {
 }
 
 header a:hover {
-  color: #F29F05;
-  transition: .3s ease;
-  -webkit-transition: .3s ease;
-  -moz-transition: .3s ease;
-  -ms-transition: .3s ease;
-  -o-transition: .3s ease;
+  color: #f29f05;
+  transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
 }
 
 form {
@@ -77,7 +67,7 @@ form {
   width: 650px;
   height: 400px;
   display: flex;
-  box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   position: absolute;
   margin-left: auto;
   margin-right: auto;
@@ -91,7 +81,6 @@ form {
   bottom: 0;
   left: 0;
   right: 0;
-
   margin: auto;
 }
 
@@ -105,8 +94,8 @@ form {
   text-align: center;
 }
 
-input[type="text"] {
-  width: 584px;
+input {
+  width: 100%;
   height: 50px;
   flex-shrink: 0;
   border-radius: 8px;
@@ -114,30 +103,11 @@ input[type="text"] {
   background: var(--gray-scales-off-white, #f0f2f3);
   padding-left: 20px;
 }
-
-input[type="password"] {
-  width: 584px;
-  height: 50px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  opacity: 0.7;
-  background: var(--gray-scales-off-white, #f0f2f3);
-  padding-left: 20px;
-}
-
-/* #password {
-    width: 584px;
-    height: 50px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    opacity: 0.7;
-    background: var(--gray-scales-off-white, #F0F2F3);
-} */
 
 button {
   width: 584px;
   border-radius: 8px;
-  background-color: #F29F05;
+  background-color: #f29f05;
   color: var(--gray-scales-white, #fff);
   text-align: center;
   font-family: Poppins;
@@ -174,6 +144,7 @@ i {
 
 .input-with-icon {
   position: relative;
+  width: 100%;
 }
 
 .input-with-icon .eye {
@@ -196,10 +167,18 @@ i {
   margin-left: 2rem;
   margin-top: 1.5rem;
   justify-content: space-between;
+  align-items: center;
 }
 
 .remember {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.remember input {
+  margin-right: 8px;
+  width: 20px;
 }
 
 .remember p {
@@ -209,7 +188,7 @@ i {
 .checkbox a {
   margin-right: 32px;
   text-decoration: none;
-  color: #F29F05;
+  color: #f29f05;
 }
 
 .dontHave {
@@ -219,40 +198,33 @@ i {
 
 .signup a {
   text-decoration: none;
-  color: #F29F05;
+  color: #f29f05;
   padding-left: 2px;
-  transition: .5s ease;
-  -webkit-transition: .5s ease;
-  -moz-transition: .5s ease;
-  -ms-transition: .5s ease;
-  -o-transition: .5s ease;
+  transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
 }
 
 .login-button {
   background-color: #f29f05;
-  width: 90%;
-  height: 30px;
+  width: 100%;
+  height: 35px;
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.login-button a {
-  color: #fff;
-  text-align: center;
-}
-
-.login-button a:hover {
-  color: #F29F05;
+  color: #17193D;
+  transition: all .5s ease;
+  border: solid 1px #17193D;
 }
 
 .login-button:hover {
   background-color: transparent;
-  border: solid 1px #f29f05;
-  transition: .5s ease;
-  -webkit-transition: .5s ease;
-  -moz-transition: .5s ease;
-  -ms-transition: .5s ease;
-  -o-transition: .5s ease;
+  border: solid 1px #17193D;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
 }

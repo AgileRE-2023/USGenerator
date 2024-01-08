@@ -1,0 +1,184 @@
+{% extends "base.html" %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'client/input.css' %}" />
+{% endblock %} {% block title %} Input User {% endblock %} {% block content %}
+<div class="Gui-user">
+  <div class="head-judul">
+    <h1 class="Teks-judul">User Stories</h1>
+    <a
+      class="ms-2"
+      data-bs-toggle="collapse"
+      href="#collapseExample"
+      role="button"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+       <span
+        ><img title="Rules" style="height:2rem ;" src={% static 'icons/help-circle.svg' %}></span>
+    </a>
+  </div>
+
+  <div class="collapse my-3 border border-dark rounded" id="collapseExample">
+    <div class="card card-body">
+      <h5 class="collapse-title">Rules Story</h5>
+      <ol class="rules-list">
+        <li class="item-rules">
+          A sentence must contain the actor, feature, and what the feature does
+        </li>
+        <li class="item-rules">Use active voice</li>
+        <li class="item-rules">
+          To define the usefulness of the feature use the word for/so that
+        </li>
+        <li class="item-rules">
+          The actor in the text must be unique (i.e. if there is a user user
+          anton. The user is only one)
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <form class="form-inline" action="/UpdatePostInputStory/" method="post">
+    <div class="form">
+      {% csrf_token %}
+      <div class="input-scenario"><h5>Input Title User Story</h5></div>
+      <div class="form-group mb-2">
+        <label for="ProjectTitle" class="sr-only">Project Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="ProjectTitle"
+          name="ProjectTitle"
+          placeholder="Ketik projek anda"
+        />
+      </div>
+
+      <div class="form-paragraf">
+        <textarea
+          type="text"
+          class="form-control"
+          id="inputParagraf"
+          name="inputParagraf"
+          placeholder="Ketik paragraf"
+        ></textarea>
+      </div>
+      <div class="submit-button">
+        <input
+          id="generateButton"
+          class="submit-button"
+          type="submit"
+          value="Update"
+        />
+      </div>
+    </div>
+  </form>
+
+  <div class="output-user-story" id="user-story-container">
+    <h3>User Stories :</h3>
+    {% for data in valueOutput %}
+    <div class="container-user-story">
+      <a
+        class="numof-container"
+        href="{% url 'client:input-scenario' counter=forloop.counter0 %}"
+        >{{ forloop.counter0 }}</a
+      >
+      <div class="as-can-for">
+        {% if 'who' in data %}
+        <div class="grid-as-can-for-1">
+          <p>WHO</p>
+          <span class="colon ms-3">:</span>
+          <p>{{ data.who|join:", " }}</p>
+        </div>
+        {% endif %} {% if 'what' in data %}
+        <div class="grid-as-can-for">
+          <p>WHAT</p>
+          <span class="colon ms-2">:</span>
+          <p>{{ data.what|join:", " }}</p>
+        </div>
+        {% endif %} {% if 'why' in data %}
+        <div class="grid-as-can-for-2">
+          <p>WHY</p>
+          <span class="colon ms-3">:</span>
+          <p>{{ data.why|join:", " }}</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+</div>
+
+<div
+  class="offcanvas offcanvas-start"
+  tabindex="-1"
+  id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Rules</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      <ol class="rules-list">
+        <li class="item-rules">
+          A sentence must contain the actor, feature, and what the feature does
+        </li>
+        <li class="item-rules">Use active voice</li>
+        <li class="item-rules">
+          To define the usefulness of the feature use the word for/so that
+        </li>
+        <li class="item-rules">
+          The actor in the text must be unique (i.e. if there is a user user
+          anton. The user is only one)
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const storedProjectTitle = localStorage.getItem("projectTitle");
+    const projectTitleInput = document.getElementById("ProjectTitle");
+
+    const storedParagrafValue = localStorage.getItem("paragrafValue");
+    const paragrafInput = document.getElementById("inputParagraf");
+
+    if (storedProjectTitle) {
+      projectTitleInput.value = storedProjectTitle;
+    }
+
+    if (storedParagrafValue) {
+      paragrafInput.value = storedParagrafValue;
+    }
+  });
+
+  // Get the form
+  const form = document.querySelector("form");
+
+  // Function to handle form submission
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Get the title input field and its value
+    const projectTitleInput = document.getElementById("ProjectTitle");
+    const projectTitleValue = projectTitleInput.value;
+
+    // Get the paragraph input field and its value
+    const paragrafInput = document.getElementById("inputParagraf");
+    const paragrafValue = paragrafInput.value;
+
+    // Store the project title and paragraph value in localStorage
+    localStorage.setItem("projectTitle", projectTitleValue);
+    localStorage.setItem("paragrafValue", paragrafValue);
+
+    // Now submit the form
+    form.submit();
+  });
+</script>
+
+{% endblock %}

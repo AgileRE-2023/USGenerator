@@ -1,0 +1,28 @@
+{% extends "base_signin.html" %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+{% endblock %} {% block content %}
+<center>
+  <div class="reset-container">
+    <div class="row">
+      <h1 class="title-reset">Enter your email</h1>
+    </div>
+    <div class="mb-3 par-reset">
+      Enter the email address to get link reset your password
+    </div>
+    <div class="send-container">
+      <form action="/postreset/" method="POST">
+        {% csrf_token %}
+        <label class="mb-1" for="">Email address</label>
+        <div class="form-group mb-5">
+          <input type="email" id="email" placeholder="Lorem@gmail.com" name="email" class="form-control rounded p-2"
+            required />
+          <div id="emailHelp" class="form-text">
+            Make sure your email is active.
+          </div>
+        </div>
+        <input class="reset-button" type="submit" value="Send" />
+      </form>
+    </div>
+  </div>
+</center>
+{%endblock%}

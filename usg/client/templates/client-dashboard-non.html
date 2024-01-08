@@ -12,18 +12,15 @@
         <div class="Project--search">
           {% comment %}
           <div class="search-container">
-            <a href="#"
-              ><img
-                class="search-icon"
-                src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"
-            /></a>
+            <a href="#"><img class="search-icon"
+                src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png" /></a>
             <input type="text" id="search-bar" placeholder="Search.." />
           </div>
           {% endcomment %}
         </div>
         <div class="Project--add">
           <a href="{% url 'client:inputUserStory' %}">
-            <span><img src={% static 'icons/plus.svg'%}></span>
+            <span><img src={% static 'icons/plus.svg' %}></span>
             <span>add</span>
           </a>
         </div>
@@ -33,10 +30,12 @@
       <table>
         <thead>
           <tr style="border-radius: 50%">
-            <th style="width: 91.8px">ID</th>
-            <th style="width: 81.8px">Project</th>
-            <th style="width: 105.85px">Timestamp</th>
-            <th style="width: 105.85px">Result</th>
+            <th>No</th>
+            <th>ID</th>
+            <th>Project</th>
+            <th style="display: flex; gap: 10px; align-items: center;">Timestamp<i class="fa-solid fa-sort"></i></th>
+            <th>Result</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody></tbody>

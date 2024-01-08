@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'client/history.css' %}">
 {% endblock %}
 {% block title %}
-    history
+history
 {% endblock %}
 {% block content %}
 <!-- Tabel -->
@@ -21,7 +21,7 @@
             </div>
         </ul>
     </nav>
-    
+
     <table class="table">
         <thead class="kolom">
             <tr>
@@ -45,15 +45,15 @@
                     <a href="{% url 'client:detail-history' %}" class="btn btn-outline-dark btn-sm">Detail</a>
                 </td>
             </tr>
-                <th scope="row">1696505921</th>
-                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-                <td>Sebagai seorang pengguna</td>
-                <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
-                <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
-                <td>
-                    Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
-                    <a href="{% url 'client:detail-history' %}" class="btn btn-outline-dark btn-sm">Detail</a>
-                </td>
+            <th scope="row">1696505921</th>
+            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+            <td>Sebagai seorang pengguna</td>
+            <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
+            <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
+            <td>
+                Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
+                <a href="{% url 'client:detail-history' %}" class="btn btn-outline-dark btn-sm">Detail</a>
+            </td>
             </tr>
             <tr>
                 <th scope="row">1696505921</th>
@@ -77,26 +77,26 @@
                     <a href="{% url 'client:detail-history' %}" class="btn btn-outline-dark btn-sm">Detail</a>
                 </td>
             </tr>
-                <th scope="row">1696505921</th>
-                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-                <td>Sebagai seorang pengguna</td>
-                <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
-                <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
-                <td>
-                    Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
-                    <a href="{% url 'client:detail-history' %}" class="btn btn-outline-dark btn-sm">Detail</a>
-                </td>
+            <th scope="row">1696505921</th>
+            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+            <td>Sebagai seorang pengguna</td>
+            <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
+            <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
+            <td>
+                Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
+                <a href="{% url 'client:detail-history' %}" class="btn btn-outline-dark btn-sm">Detail</a>
+            </td>
             </tr>
-                <th scope="row">1696505921</th>
-                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-                <td>Sebagai seorang pengguna</td>
-                <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
-                <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
-                <td>
-                    Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
-                    <a href="{% url 'client:detail-history' %}" class="btn btn-outline-dark btn-sm">Detail</a>
-                </td>
-            </tr>   
+            <th scope="row">1696505921</th>
+            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+            <td>Sebagai seorang pengguna</td>
+            <td>Saya dapat mendaftar akun menggunakan email dan kata sandi</td>
+            <td>Agar saya bisa masuk dan mulai menggunakan aplikasi tersebut</td>
+            <td>
+                Pengguna membuka aplikasi. Kemudian pengguna melihat tombol "Sign up" pada halaman aplikasi dan ..
+                <a href="{% url 'client:detail-history' %}" class="btn btn-outline-dark btn-sm">Detail</a>
+            </td>
+            </tr>
         </tbody>
     </table>
 </div>
@@ -105,21 +105,21 @@
 
 
 <script>
-// Tangkap elemen-elemen yang diperlukan
-var filterButton = document.getElementById("filterButton");
-var dropdownContent = document.querySelector(".dropdown-content");
+    // Tangkap elemen-elemen yang diperlukan
+    var filterButton = document.getElementById("filterButton");
+    var dropdownContent = document.querySelector(".dropdown-content");
 
-// Tambahkan event listener untuk tombol
-filterButton.addEventListener("click", function () {
-    dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
-});
+    // Tambahkan event listener untuk tombol
+    filterButton.addEventListener("click", function () {
+        dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+    });
 
-// Event listener untuk item dropdown (misalnya, "Current" atau "Latest")
-dropdownContent.addEventListener("click", function (e) {
-    if (e.target.tagName === "A") {
-        var selectedFilter = e.target.getAttribute("data-filter");
-        filterButton.innerHTML = "FILTER " + selectedFilter + " &#9662;";
-        dropdownContent.style.display = "none";
-    }
-});
+    // Event listener untuk item dropdown (misalnya, "Current" atau "Latest")
+    dropdownContent.addEventListener("click", function (e) {
+        if (e.target.tagName === "A") {
+            var selectedFilter = e.target.getAttribute("data-filter");
+            filterButton.innerHTML = "FILTER " + selectedFilter + " &#9662;";
+            dropdownContent.style.display = "none";
+        }
+    });
 </script>

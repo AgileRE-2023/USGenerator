@@ -10,7 +10,7 @@
     padding: 20px;
     width: 30%;
     height: 100px;
-    background-color: #B63942;
+    background-color: #17193D;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -117,9 +117,14 @@ tr td a {
 
 .User--table thead {
     padding: 0.5rem;
-    /* border: 1px solid black; */
-    background: rgba(182, 57, 66, 0.6);
+    /*border: 1px solid black;
+    */background: #17193D;
     border-radius: 50%;
+    color: #fff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
 
 .User--table span:last-child {
@@ -128,10 +133,18 @@ tr td a {
 
 table thead tr th:first-child {
     border-radius: 4px 0 0 4px;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    -ms-border-radius: 4px 0 0 4px;
+    -o-border-radius: 4px 0 0 4px;
 }
 
 table thead tr th:last-child {
     border-radius: 0 4px 4px 0;
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    -ms-border-radius: 0 4px 4px 0;
+    -o-border-radius: 0 4px 4px 0;
 }
 
 .red-light-indicator {

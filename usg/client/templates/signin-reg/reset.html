@@ -1,0 +1,31 @@
+{% extends "base_signin.html" %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+{% endblock %} {% block content %}
+<center>
+  <div class="reset-container">
+    <div class="row">
+      <h1 class="title-reset">Reset Password</h1>
+    </div>
+    <div class="mb-3 par-reset">
+      Enter your new password
+    </div>
+
+    <div class="send-container">
+      <form action="/resetpw/">
+        {% csrf_token %}
+        <label class="mb-1" for="">New Password</label>
+        <div class="form-group mb-5">
+          <input type="password" id="password" placeholder="New Password" name="password"
+            class="form-control rounded p-2" required />
+        </div>
+        <label class="mb-1" for="">Confirm Password</label>
+        <div class="form-group mb-5">
+          <input type="password" id="password" placeholder="Confirm Password" name="password"
+            class="form-control rounded p-2" required />
+        </div>
+        <input class="reset-button" type="submit" value="Confirm" />
+      </form>
+    </div>
+  </div>
+</center>
+{%endblock%}

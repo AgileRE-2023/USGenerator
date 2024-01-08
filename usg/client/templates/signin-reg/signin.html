@@ -1,34 +1,40 @@
 {% extends "base_signin.html" %} {% block content %}
+
+{% if message %}
+<script>
+  alert('{{ message }}');
+</script>
+{% endif %}
+
 <div class="login-container">
-  <form action="#">
+  <form action="/postsignin/" method="post">
+    {% csrf_token %}
     <h2 class="sign">Sign in</h2>
-    <div class="form-group mb-2">
-      <input type="text" id="email" placeholder="Email" class="form rounded" required />
-    </div>
-    <div class="password mb-2">
-      <div class="input-with-icon">
-        <input type="password" class="form rounded" name="password" id="password" placeholder="Password" />
-        <span class="eye" onclick="showp()">
-          <i id="hide1" class="fa fa-light fa-eye"></i>
-          <i id="hide2" class="fa fa-sharp fa-light fa-eye-slash"></i>
-        </span>
+    <div class="form-content">
+      <div class="form-group mb-2">
+        <input type="email" id="email" placeholder="Email" name="email" class="form rounded" required />
       </div>
-    </div>
-
-    <div class="checkbox">
-      <div class="remember">
-        <input type="checkbox" id="myCheckbox" name="myCheckbox" />
-        <p>Remember Me</p>
+      <div class="form-group mb-2">
+        <div class="input-with-icon">
+          <input type="password" class="form rounded" name="password" id="password" placeholder="Password" required />
+          <span class="eye" onclick="showp()">
+            <i id="hide1" class="fa fa-light fa-eye"></i>
+            <i id="hide2" class="fa fa-sharp fa-light fa-eye-slash"></i>
+          </span>
+        </div>
       </div>
-      <a href="#">Forgot Password</a>
-    </div>
-    <div class="login-button">
-      <a href="{% url 'client:dashboard-client' %}" role="button">Sign In</a>
-    </div>
-
-    <div class="dontHave">
-      <p>Don't have an account?</p>
-      <div class="signup"><a href="{% url 'client:regist' %}">Sign up</a></div>
+      <div class="checkbox">
+        <div class="remember">
+          <input type="checkbox" id="myCheckbox" name="myCheckbox" />
+          <p>Remember Me</p>
+        </div>
+        <a href="{% url 'client:send' %}">Forgot Password</a>
+      </div>
+      <button class="login-button" type="submit">Sign In</button>
+      <div class="dontHave">
+        <p>Don't have an account?</p>
+        <div class="signup"><a href="{% url 'client:regist' %}">Sign up</a></div>
+      </div>
     </div>
   </form>
 </div>
