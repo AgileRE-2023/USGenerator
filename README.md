@@ -35,7 +35,17 @@ Instruksi berikut adalah cara menginstal aplikasi dalam sesi terminal, berikut a
 #### 4.) Lakukan instalasi modul-modul yang digunakan
 
 ```sh
-  pip install -r requirements.txt
+  pip install pyrebase
+```
+```sh
+  pip install nltk
+```
+```sh
+  pip install spacy
+```
+Note: install pickle bila mempunyai python versi dibawah 3.9
+```sh
+  pip install pickle
 ```
 
 #### 5.) Buat migrasi untuk membuat database
