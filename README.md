@@ -34,15 +34,26 @@ Instruksi berikut adalah cara menginstal aplikasi dalam sesi terminal, berikut a
 
 #### 4.) Lakukan instalasi modul-modul yang digunakan
 
+install django
+```sh
+  pip install Django
+```
+
+install pyrebase
 ```sh
   pip install pyrebase
 ```
+
+install nltk
 ```sh
   pip install nltk
 ```
+
+install spacy
 ```sh
   pip install spacy
 ```
+
 Note: install pickle bila mempunyai python versi dibawah 3.9
 ```sh
   pip install pickle
